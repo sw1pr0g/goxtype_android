@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:src="@drawable/image1"/>
+        android:src="@drawable/notification_man"/>
+
     <TextView
         android:id="@+id/texttitle"
         android:layout_width="match_parent"
@@ -21,5 +22,16 @@
         android:text="@string/heading_one"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="28dp"/>
+        android:textSize="28dp" />
+
+    <TextView
+        android:id="@+id/textdescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/desc_one"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16dp" />
 </LinearLayout>
