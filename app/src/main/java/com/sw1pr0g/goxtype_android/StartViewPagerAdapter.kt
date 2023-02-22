@@ -9,7 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 
-class ViewPagerAdapter(var context: Context) : PagerAdapter() {
+class StartViewPagerAdapter(var context: Context) : PagerAdapter() {
     var images = intArrayOf(
         R.drawable.typing_man,
         R.drawable.notification_man,
