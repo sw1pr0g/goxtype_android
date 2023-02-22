@@ -4,25 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/button_text"
     tools:context=".AuthActivity">
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/authTabLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:tabMode="auto">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LOG IN" >
-
-
-        </com.google.android.material.tabs.TabItem>
+            android:text="LOG IN" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SIGN UP" >
+            android:text="SIGN UP" />
 
-        </com.google.android.material.tabs.TabItem>
     </com.google.android.material.tabs.TabLayout>
+    <FrameLayout
+        android:id="@+id/placeHolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>
