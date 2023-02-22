@@ -10,7 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 
-class StartScreen : AppCompatActivity() {
+class StartActivity : AppCompatActivity() {
 
     var mSLideViewPager: ViewPager? = null
     var mDotLayout: LinearLayout? = null
@@ -23,7 +23,7 @@ class StartScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         //
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_start)
 
         backbtn = findViewById(R.id.backbtn)
         nextbtn = findViewById(R.id.nextbtn)
@@ -35,17 +35,17 @@ class StartScreen : AppCompatActivity() {
         }
         nextbtn!!.setOnClickListener {
             if (getitem(0) < 3) mSLideViewPager!!.setCurrentItem(getitem(1), true) else {
-                val i = Intent(this@StartScreen, mainscreen::class.java)
+                val i = Intent(this@StartActivity, AuthActivity:class.java)
                 startActivity(i)
                 finish()
             }
         }
         skipbtn!!.setOnClickListener {
-            val i = Intent(this@StartScreen, mainscreen::class.java)
+            val i = Intent(this@StartActivity, AuthActivity::class.java)
             startActivity(i)
             finish()
         }
-        mSLideViewPager = findViewById(R.id.sliderViewPager) as ViewPager?
+        mSLideViewPager = findViewById(R.id.StartViewPager) as ViewPager?
         mDotLayout = findViewById(R.id.indicator_layout) as LinearLayout?
         startViewPagerAdapter = StartViewPagerAdapter(this)
         mSLideViewPager!!.adapter = startViewPagerAdapter
