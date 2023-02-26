@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.sw1pr0g.goxtype_android"
-        minSdk 24
+        minSdk 21
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -43,10 +43,9 @@ dependencies {
     implementation 'androidx.core:core-ktx:+'
 
     //auth-form dep
-    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'br.com.simplepass:loading-button-android:2.2.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.android.material:material:1.8.0'
-    implementation 'com.github.scottyab:showhidepasswordedittext:0.8'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
