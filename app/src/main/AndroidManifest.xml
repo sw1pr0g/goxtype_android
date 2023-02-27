@@ -12,6 +12,15 @@
         android:theme="@style/Theme.Goxtype_android"
         tools:targetApi="31">
         <activity
+            android:name=".StartActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".LogInActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" >
@@ -25,18 +34,7 @@
             android:name=".SignUpActivity"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".AuthActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StartActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

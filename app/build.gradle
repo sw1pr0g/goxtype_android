@@ -3,13 +3,17 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+
+
 android {
     namespace 'com.sw1pr0g.goxtype_android'
     compileSdk 33
 
+
+
     defaultConfig {
         applicationId "com.sw1pr0g.goxtype_android"
-        minSdk 21
+        minSdk 23
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -36,14 +40,13 @@ android {
 }
 
 dependencies {
-    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.core:core-ktx:+'
 
-    //auth-form dep
-    implementation 'br.com.simplepass:loading-button-android:2.2.0'
+    //auth-activity
+    implementation 'com.github.dmytrodanylyk:android-morphing-button:1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.android.material:material:1.8.0'
 

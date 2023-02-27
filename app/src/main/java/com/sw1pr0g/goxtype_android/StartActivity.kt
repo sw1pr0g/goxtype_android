@@ -21,7 +21,6 @@ class StartActivity : AppCompatActivity() {
     var startViewPagerAdapter: StartViewPagerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start)
 
@@ -35,13 +34,13 @@ class StartActivity : AppCompatActivity() {
         }
         nextbtn!!.setOnClickListener {
             if (getitem(0) < 3) mSLideViewPager!!.setCurrentItem(getitem(1), true) else {
-                val i = Intent(this@StartActivity, AuthActivity::class.java)
+                val i = Intent(this@StartActivity, LogInActivity::class.java)
                 startActivity(i)
                 finish()
             }
         }
         skipbtn!!.setOnClickListener {
-            val i = Intent(this@StartActivity, AuthActivity::class.java)
+            val i = Intent(this@StartActivity, LogInActivity::class.java)
             startActivity(i)
             finish()
         }
