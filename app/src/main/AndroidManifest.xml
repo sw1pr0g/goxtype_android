@@ -20,13 +20,11 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
         <activity
             android:name=".SignUpActivity"
-            android:exported="false" >
-
-        </activity>
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AuthActivity"
             android:exported="false" />
