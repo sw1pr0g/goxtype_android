@@ -8,9 +8,14 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">true</item>
-        <item name="windowNoTitle">false</item>
+    <style name="AppTheme.LogIn">
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="AppTheme.SignUp">
+        <item name="android:statusBarColor">@color/button_text</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 
     <style name="viewParent">

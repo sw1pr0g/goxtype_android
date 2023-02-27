@@ -17,12 +17,13 @@
         <activity
             android:name=".LogInActivity"
             android:exported="true"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme.LogIn" >
         </activity>
 
         <activity
             android:name=".SignUpActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/AppTheme.SignUp" />
 
         <meta-data
             android:name="preloaded_fonts"

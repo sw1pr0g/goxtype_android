@@ -21,6 +21,7 @@ class LogInActivity : AppCompatActivity() {
         onSignUpTextClick.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right, R.anim.stay)
         }
         val onSignUpPlusClick = findViewById<ImageView>(R.id.signUpPlus )
         onSignUpPlusClick.setOnClickListener {
