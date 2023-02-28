@@ -10,11 +10,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+<<<<<<< Updated upstream
         android:gravity="center">
         
 
 
     </LinearLayout>
+=======
+        android:gravity="center"
+        android:id="@+id/test"/>
+>>>>>>> Stashed changes
     
     <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:id="@+id/navBar"
