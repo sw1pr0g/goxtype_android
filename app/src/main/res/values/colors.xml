@@ -27,4 +27,13 @@
     <color name="whiteTextColor">#fff</color>
     <color name="primaryTextColor">#1976D2</color>
 
+    //navBar
+    <color name="selectedIconColor">#1976D2</color>
+    <color name="defaultIconColor">#F6F6F6</color>
+    <color name="countTextColor">#F0F4F3</color>
+    <color name="countBackgroundColor">#1976D2</color>
+    <color name="circleColor">#F0F4F3</color>
+    <color name="backgroundBottomColor">#1976D2</color>
+    <color name="shadowColor">#2E2E2E</color>
+
 </resources>
