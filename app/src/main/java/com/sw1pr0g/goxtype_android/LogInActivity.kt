@@ -33,8 +33,8 @@ class LogInActivity : AppCompatActivity() {
         val onLogInClick = findViewById<Button>(R.id.buttonLogin )
         onLogInClick.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+            finishAffinity()
+            startActivity(intent);
         }
     }
 }

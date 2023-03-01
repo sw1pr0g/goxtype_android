@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
     val ID_HOME = 0
     val ID_TRAINER = 1
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
