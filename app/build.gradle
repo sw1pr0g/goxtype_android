@@ -53,6 +53,8 @@ dependencies {
     //main-activity
     implementation 'com.etebarian:meow-bottom-navigation:1.2.0'
 
+    //profile
+    implementation 'com.mikhaellopez:circularimageview:4.1.1'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
