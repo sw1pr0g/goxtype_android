@@ -5,10 +5,22 @@
     android:layout_height="match_parent"
     tools:context=".TrainerFragment">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="TRAINER fragment"
-        android:gravity="center"/>
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextTextMultiLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:textSize="25dp" />
+
+    </LinearLayout>
 
 </FrameLayout>
