@@ -3,8 +3,11 @@ package com.sw1pr0g.goxtype_android
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import kotlin.math.log
 
 class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,5 +26,19 @@ class SignUpActivity : AppCompatActivity() {
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_left, R.anim.stay)
         }
+
+        val signUpButton = findViewById<Button>(R.id.signUpButton)
+        signUpButton.setOnClickListener {
+            addUser()
+        }
     }
+
+    fun addUser() {
+
+        var login: String = findViewById<TextView>(R.id.textInputEmail).text.toString()
+
+        Toast.makeText(applicationContext, login, Toast.LENGTH_SHORT).show()
+
+    }
+
 }
