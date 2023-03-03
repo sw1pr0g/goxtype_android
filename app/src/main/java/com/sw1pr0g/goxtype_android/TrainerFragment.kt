@@ -1,58 +1,63 @@
 package com.sw1pr0g.goxtype_android
 
-import android.content.Intent
+import android.app.Activity
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
-import android.text.TextWatcher
 import android.text.style.ForegroundColorSpan
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.text.toSpannable
 import androidx.core.widget.addTextChangedListener
-import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.Fragment
 
 class TrainerFragment : Fragment() {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view: View = inflater.inflate(R.layout.fragment_trainer, container, false)
 
         val editTextTrainer: EditText = view.findViewById(R.id.editTextTrainer)
-        val textViewTrainer: TextView = view.findViewById(R.id.textViewTrainer)
+        val startTrainerButton: Button = view.findViewById(R.id.startTrainerButton)
+
+        startTrainerButton.setOnClickListener {
+            editTextTrainer.requestFocus()
+            editTextTrainer.postDelayed(Runnable { editTextTrainer.showKeyboard()} , 50)
+        }
 
         var editLetter: Int = 0
 
         editTextTrainer.addTextChangedListener {
 
-            var toast = Toast.makeText(activity, "Incorrect letter - ${editTextTrainer.text}!", Toast.LENGTH_SHORT)
-            if (editTextTrainer.text[0] == textViewTrainer.text[editLetter]) {
-                toast.cancel()
-                var spannableString: Spannable = SpannableStringBuilder(textViewTrainer.text)
-                spannableString.setSpan(ForegroundColorSpan(Color.RED), editLetter,
-                    editLetter+1, 0)
-                textViewTrainer.setText(spannableString)
-                editTextTrainer.setText("")
-                editLetter++
-            } else {
-                toast.show()
-                editTextTrainer.setText("")
+            val textViewTrainer: TextView = view.findViewById(R.id.textViewTrainer)
+
+            if (editTextTrainer.text.isNotEmpty() && editLetter < textViewTrainer.text.length) {
+
+                var toast = Toast.makeText(activity, "Error! - ${editTextTrainer.text.last()}", Toast.LENGTH_SHORT)
+
+                if (editTextTrainer.text.last() == textViewTrainer.text[editLetter]) {
+                    toast.cancel()
+                    var spannableString = textViewTrainer.text.toSpannable()
+                    spannableString.setSpan(ForegroundColorSpan(Color.BLUE), editLetter,
+                        editLetter+1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    textViewTrainer.setText(spannableString, TextView.BufferType.SPANNABLE)
+                    editLetter++
+                } else {
+                    toast.show()
+                }
             }
 
         }
-
-    }
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_trainer, container, false)
+        return view
     }
 
     companion object {
@@ -61,5 +66,12 @@ class TrainerFragment : Fragment() {
             TrainerFragment().apply {
                 arguments = Bundle().apply {}
             }
+    }
+
+    fun EditText.showKeyboard() {
+        val inputMethodManager = requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        requestFocus()
+        inputMethodManager.showSoftInput(this, 0)
+        setSelection(length())
     }
 }
