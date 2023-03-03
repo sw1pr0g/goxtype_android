@@ -5,10 +5,38 @@
     android:layout_height="match_parent"
     tools:context=".TrainerFragment">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="TRAINER fragment"
-        android:gravity="center"/>
+        android:background="@color/background"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextTrainer"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:background="@color/background"
+            android:inputType="textMultiLine"
+            android:textColor="@color/background"
+            android:textCursorDrawable="@color/background" />
+
+        <TextView
+            android:id="@+id/textViewTrainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/startTrainerButton"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center|center_horizontal"
+            android:text="Press to start" />
+
+    </LinearLayout>
 
 </FrameLayout>

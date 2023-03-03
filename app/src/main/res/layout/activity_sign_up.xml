@@ -25,13 +25,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                
+
                 <TextView
+                    android:id="@+id/SignUpTextView"
                     style="@style/viewParent.headerText.NoMode"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:text="Here's\nyour first\nstep with\nus!"
-                    android:textColor="@color/whiteTextColor"/>
+                    android:textColor="@color/whiteTextColor" />
                 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -112,7 +113,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <Button
-                        android:id="@+id/cirRegisterButton"
+                        android:id="@+id/signUpButton"
                         style="@style/loginButton"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/loginViewsMargin"
