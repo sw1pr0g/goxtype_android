@@ -11,6 +11,15 @@
         android:background="@color/background"
         android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/editTextTrainer"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:background="@color/background"
+            android:inputType="textMultiLine"
+            android:textColor="@color/background"
+            android:textCursorDrawable="@color/background" />
+
         <TextView
             android:id="@+id/textViewTrainer"
             android:layout_width="match_parent"
@@ -27,22 +36,6 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center|center_horizontal"
             android:text="Press to start" />
-
-        <EditText
-            android:id="@+id/editTextTrainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
-            android:background="@color/background"
-            android:cursorVisible="false"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:textColor="@color/background"
-            android:textCursorDrawable="@color/background"
-            android:textSize="25dp"
-            android:visibility="visible" />
 
     </LinearLayout>
 

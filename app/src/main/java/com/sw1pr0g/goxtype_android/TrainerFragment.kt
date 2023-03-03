@@ -28,10 +28,21 @@ class TrainerFragment : Fragment() {
 
         val editTextTrainer: EditText = view.findViewById(R.id.editTextTrainer)
         val startTrainerButton: Button = view.findViewById(R.id.startTrainerButton)
+        var trainerStatus = false
 
         startTrainerButton.setOnClickListener {
-            editTextTrainer.requestFocus()
-            editTextTrainer.postDelayed(Runnable { editTextTrainer.showKeyboard()} , 50)
+            if (!trainerStatus) {
+                trainerStatus = true
+                startTrainerButton.text = "Press to end"
+                editTextTrainer.requestFocus()
+                editTextTrainer.postDelayed(Runnable { editTextTrainer.showKeyboard()} , 50)
+            }
+            else {
+                trainerStatus = false
+                startTrainerButton.text = "Press to start"
+                hideKeyboardFrom(requireContext(), requireView())
+            }
+
         }
 
         var editLetter: Int = 0
@@ -73,5 +84,11 @@ class TrainerFragment : Fragment() {
         requestFocus()
         inputMethodManager.showSoftInput(this, 0)
         setSelection(length())
+    }
+
+    fun hideKeyboardFrom(context: Context, view: View) {
+        val imm =
+            context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
