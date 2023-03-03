@@ -29,31 +29,5 @@ class SignUpActivity : AppCompatActivity() {
             startActivity(intent)
             overridePendingTransition(R.anim.slide_in_left, R.anim.stay)
         }
-
-        val signUpButton = findViewById<Button>(R.id.signUpButton)
-        signUpButton.setOnClickListener {
-
-            val name = findViewById<EditText>(R.id.editTextName).text.toString()
-            val email = findViewById<EditText>(R.id.editTextEmail).text.toString()
-            val phone = findViewById<EditText>(R.id.editTextPhone).text.toString()
-            val password = findViewById<EditText>(R.id.editTextPassword).text.toString()
-
-            if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty())
-            {
-
-
-
-
-                Toast.makeText(applicationContext, "Mistake! Fields empty", Toast.LENGTH_SHORT).show()
-            }
-            else {
-                Toast.makeText(applicationContext, "Success! Data inserted", Toast.LENGTH_LONG).show()
-            }
-
-
-
-
-        }
     }
-
 }

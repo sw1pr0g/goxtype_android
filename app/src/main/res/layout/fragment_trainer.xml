@@ -10,8 +10,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textViewTrainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
         <EditText
-            android:id="@+id/editTextTextMultiLine"
+            android:id="@+id/editTextTrainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
