@@ -20,5 +20,15 @@ class ProfileActivity : AppCompatActivity() {
 
         }
 
+        val logoutBtn: Button = findViewById(R.id.logoutBtn)
+
+        logoutBtn.setOnClickListener {
+
+            val i = Intent(this, LogInActivity::class.java)
+            finishAffinity()
+            startActivity(i)
+
+        }
+
     }
 }

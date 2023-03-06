@@ -28,9 +28,9 @@ class StartActivity : AppCompatActivity() {
         nextbtn = findViewById(R.id.nextbtn)
         skipbtn = findViewById(R.id.skipButton)
         backbtn!!.setOnClickListener {
-            if (getitem(0) > 0) {
+            if (getitem(0) > 0)
                 mSLideViewPager!!.setCurrentItem(getitem(-1), true)
-            }
+
         }
         nextbtn!!.setOnClickListener {
             if (getitem(0) < 3) mSLideViewPager!!.setCurrentItem(getitem(1), true) else {
@@ -48,11 +48,11 @@ class StartActivity : AppCompatActivity() {
         mDotLayout = findViewById(R.id.indicator_layout) as LinearLayout?
         startViewPagerAdapter = StartViewPagerAdapter(this)
         mSLideViewPager!!.adapter = startViewPagerAdapter
-        setUpindicator(0)
+        setupIndicator(0)
         mSLideViewPager!!.addOnPageChangeListener(viewListener)
     }
 
-    fun setUpindicator(position: Int) {
+    fun setupIndicator(position: Int) {
         dots = arrayOfNulls(4)
         mDotLayout!!.removeAllViews()
         for (i in dots.indices) {
@@ -84,7 +84,7 @@ class StartActivity : AppCompatActivity() {
         }
 
         override fun onPageSelected(position: Int) {
-            setUpindicator(position)
+            setupIndicator(position)
             if (position > 0) {
                 backbtn!!.visibility = View.VISIBLE
             } else {

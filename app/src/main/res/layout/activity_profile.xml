@@ -13,12 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/backMain"
             android:background="@color/background"
-            android:scaleType="centerInside"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/profile_arrow_back"
@@ -34,14 +34,18 @@
             android:textStyle="bold"
             android:textColor="@color/black"/>
 
-        <TextView
+        <Button
+            android:id="@+id/logoutBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@null"
+            android:hapticFeedbackEnabled="false"
             android:text="Logout"
-            android:textColor="@color/colorAccent"
-            android:layout_alignParentRight="true"
+            android:textAllCaps="false"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="15dp"
             android:textStyle="normal"
-            android:textSize="15dp"/>
+            style="?android:attr/borderlessButtonStyle"/>
 
     </LinearLayout>
 
