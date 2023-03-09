@@ -16,21 +16,21 @@ class StartViewPagerAdapter(var context: Context) : PagerAdapter() {
         R.drawable.ellipse1,
         R.drawable.ellipse2
     )
-    var headings = intArrayOf(
-        R.string.heading_one,
-        R.string.heading_two,
-        R.string.heading_three,
-        R.string.heading_fourth
+    var heading = intArrayOf(
+        R.string.start_heading_first_slider,
+        R.string.start_heading_second_slider,
+        R.string.start_heading_third_slider,
+        R.string.start_heading_fourth_slider
     )
     var description = intArrayOf(
-        R.string.desc_one,
-        R.string.desc_two,
-        R.string.desc_three,
-        R.string.desc_fourth
+        R.string.start_description_first_slider,
+        R.string.start_description_second_slider,
+        R.string.start_description_third_slider,
+        R.string.start_description_fourth_slider
     )
 
     override fun getCount(): Int {
-        return headings.size
+        return heading.size
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
@@ -51,7 +51,7 @@ class StartViewPagerAdapter(var context: Context) : PagerAdapter() {
         val slideDescription = view.findViewById<View>(R.id.textdescription) as TextView
 
         slidetitleimage.setImageResource(images[position])
-        slideHeading.setText(headings[position])
+        slideHeading.setText(heading[position])
         slideDescription.setText(description[position])
         container.addView(view)
 

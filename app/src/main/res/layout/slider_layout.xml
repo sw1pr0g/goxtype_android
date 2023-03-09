@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="@string/heading_one"
+        android:text="@string/start_heading_first_slider"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="28dp" />
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:fontFamily="@font/poppins"
-        android:text="@string/desc_one"
+        android:text="@string/start_description_first_slider"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="16dp" />

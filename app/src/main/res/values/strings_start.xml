@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="start_skip_button">Skip</string>
+    <string name="start_back_button">Back</string>
+    <string name="start_next_button">Next</string>
+
+    //slider
+    //heading
+    <string name="start_heading_first_slider">Quick &amp; Exactly Typing</string>
+    <string name="start_heading_second_slider">Instant Notifications</string>
+    <string name="start_heading_third_slider">Header3</string>
+    <string name="start_heading_fourth_slider">Header4</string>
+    //description
+    <string name="start_description_first_slider">Improve your typing abilities to perfect \nwith GOXTYPE lessons</string>
+    <string name="start_description_second_slider">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
+    <string name="start_description_third_slider">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
+    <string name="start_description_fourth_slider">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
+
+</resources>
