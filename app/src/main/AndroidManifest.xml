@@ -13,10 +13,8 @@
         tools:targetApi="31">
         <activity
             android:name=".AuthActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Auth"
-            android:exported="false" />
+            android:exported="true"
+            android:theme="@style/AppTheme.LogIn"/>
         <activity
             android:name=".StartActivity"
             android:exported="true">
@@ -28,7 +26,7 @@
         </activity>
         <activity
             android:name=".ProfileActivity"
-            android:exported="true"
+            android:exported="false"
             android:theme="@style/AppTheme.Profile" />
         <activity
             android:name=".LogInActivity"
@@ -36,11 +34,11 @@
             android:theme="@style/AppTheme.LogIn" />
         <activity
             android:name=".SignUpActivity"
-            android:exported="true"
+            android:exported="false"
             android:theme="@style/AppTheme.SignUp" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
+            android:exported="false"
             android:theme="@style/AppTheme.LogIn"
             android:windowSoftInputMode="stateAlwaysVisible" />
 

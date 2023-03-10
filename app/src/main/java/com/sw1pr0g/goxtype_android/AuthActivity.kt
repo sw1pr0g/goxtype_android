@@ -17,4 +17,14 @@ class AuthActivity : AppCompatActivity() {
 
     }
 
+    fun onLogInSelected() {
+        val fragment = LogInFragment()
+        supportFragmentManager.beginTransaction().replace(R.id.auth_fragment_container, fragment)
+    }
+
+    fun onSignUpSelected() {
+        val fragment = LogInFragment()
+        supportFragmentManager.beginTransaction().replace(R.id.auth_fragment_container, fragment)
+    }
+
 }
