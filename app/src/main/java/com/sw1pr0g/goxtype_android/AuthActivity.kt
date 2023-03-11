@@ -2,6 +2,8 @@ package com.sw1pr0g.goxtype_android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.fragment.app.Fragment
 
 class AuthActivity : AppCompatActivity(), LogInFragment.Callbacks {
 
@@ -18,15 +20,11 @@ class AuthActivity : AppCompatActivity(), LogInFragment.Callbacks {
 
     }
 
-    fun onLogInSelected() {
-        val fragment = LogInFragment()
-        supportFragmentManager.beginTransaction().replace(R.id.auth_fragment_container, fragment)
-    }
-
-    override fun onSignUpSelected() {
-        val fragment = SignUpFragment()
-        supportFragmentManager.beginTransaction().replace(R.id.auth_fragment_container, fragment).
-            addToBackStack(null).commit()
+    override fun showFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().
+        setCustomAnimations(R.anim.slide_in_left, R.anim.stay).
+        replace(R.id.auth_fragment_container, fragment).
+        addToBackStack(null).commit()
     }
 
 }

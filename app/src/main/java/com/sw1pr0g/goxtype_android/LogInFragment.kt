@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 class LogInFragment: Fragment() {
 
     interface Callbacks {
-        fun onSignUpSelected()
+        fun showFragment(fragment: Fragment)
     }
 
     private var callbacks: Callbacks? = null
@@ -35,7 +35,7 @@ class LogInFragment: Fragment() {
         buttonLogIn = view.findViewById(R.id.log_in_button) as Button
 
         buttonLogIn.setOnClickListener {
-            callbacks?.onSignUpSelected()
+            showLogInFragment()
         }
 
         return view
@@ -45,5 +45,7 @@ class LogInFragment: Fragment() {
         super.onDetach()
         callbacks = null
     }
+
+    private fun showLogInFragment() = callbacks?.showFragment(SignUpFragment())
 
 }

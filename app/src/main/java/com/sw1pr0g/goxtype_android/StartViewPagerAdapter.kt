@@ -10,19 +10,19 @@ import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 
 class StartViewPagerAdapter(var context: Context) : PagerAdapter() {
-    var images = intArrayOf(
+    private var images = intArrayOf(
         R.drawable.typing_man,
         R.drawable.notification_man,
         R.drawable.ellipse1,
         R.drawable.ellipse2
     )
-    var heading = intArrayOf(
+    private var heading = intArrayOf(
         R.string.start_heading_first_slider,
         R.string.start_heading_second_slider,
         R.string.start_heading_third_slider,
         R.string.start_heading_fourth_slider
     )
-    var description = intArrayOf(
+    private var description = intArrayOf(
         R.string.start_description_first_slider,
         R.string.start_description_second_slider,
         R.string.start_description_third_slider,
@@ -44,13 +44,13 @@ class StartViewPagerAdapter(var context: Context) : PagerAdapter() {
 
         val view = layoutInflater.inflate(R.layout.slider_layout, container, false)
 
-        val slidetitleimage = view.findViewById<View>(R.id.titleImage) as ImageView
+        val slideTitleImage = view.findViewById<View>(R.id.titleImage) as ImageView
 
         val slideHeading = view.findViewById<View>(R.id.texttitle) as TextView
 
         val slideDescription = view.findViewById<View>(R.id.textdescription) as TextView
 
-        slidetitleimage.setImageResource(images[position])
+        slideTitleImage.setImageResource(images[position])
         slideHeading.setText(heading[position])
         slideDescription.setText(description[position])
         container.addView(view)
