@@ -82,7 +82,7 @@
                 android:textSize="@dimen/newsMoreTextSize" />
 
             <Button
-                android:id="@+id/buttonLogin"
+                android:id="@+id/log_in_button"
                 style="@style/loginButton"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/loginViewsMargin"

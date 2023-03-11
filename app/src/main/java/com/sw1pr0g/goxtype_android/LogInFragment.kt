@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 class LogInFragment: Fragment() {
 
     interface Callbacks {
-
+        fun onSignUpSelected()
     }
 
     private var callbacks: Callbacks? = null
@@ -21,37 +21,29 @@ class LogInFragment: Fragment() {
     private lateinit var signUpText: TextView
     private lateinit var signUpPlus: ImageView
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_log_in, container, false)
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         callbacks = context as Callbacks?
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_log_in, container, false)
+        buttonLogIn = view.findViewById(R.id.log_in_button) as Button
+
+        buttonLogIn.setOnClickListener {
+            callbacks?.onSignUpSelected()
+        }
+
+        return view
+    }
+
     override fun onDetach() {
         super.onDetach()
         callbacks = null
-    }
-
-
-    override fun onStart() {
-        super.onStart()
-
-        AuthActivity().ge
-
-
-        buttonLogIn.oncli
-
-    }
-
-    private fun goSignUp() {
-
     }
 
 }
