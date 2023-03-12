@@ -24,9 +24,9 @@ class ProfileActivity : AppCompatActivity() {
 
         logoutBtn.setOnClickListener {
 
-            val i = Intent(this, LogInActivity::class.java)
+            /*val i = Intent(this, LogInActivity::class.java)
             finishAffinity()
-            startActivity(i)
+            startActivity(i)*/
 
         }
 
