@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 
-class SignUpFragment: Fragment() {
+class AuthSignUpFragment: Fragment() {
 
     interface Callbacks {
         fun showFragment(fragment: Fragment,
@@ -33,7 +33,7 @@ class SignUpFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_sign_up, container, false)
+        val view = inflater.inflate(R.layout.fragment_auth_sign_up, container, false)
 
         logInTextView = view.findViewById(R.id.log_in_text_view)
         logInImageView = view.findViewById(R.id.log_in_image_view)
@@ -49,6 +49,6 @@ class SignUpFragment: Fragment() {
         callbacks = null
     }
 
-    private fun showLogInFragment() = callbacks?.showFragment(LogInFragment(), getColor(requireActivity(), R.color.background), true)
+    private fun showLogInFragment() = callbacks?.showFragment(AuthLogInFragment(), getColor(requireActivity(), R.color.background), true)
 
 }

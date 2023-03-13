@@ -1,16 +1,14 @@
 package com.sw1pr0g.goxtype_android
 
 import android.content.Intent
-import android.media.Image
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 
-class MainFragment : Fragment() {
+class MainHomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,13 +25,13 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        return inflater.inflate(R.layout.fragment_main_home, container, false)
     }
 
     companion object {
         @JvmStatic
         fun newInstance() =
-            MainFragment().apply {
+            MainHomeFragment().apply {
                 arguments = Bundle().apply {}
             }
     }

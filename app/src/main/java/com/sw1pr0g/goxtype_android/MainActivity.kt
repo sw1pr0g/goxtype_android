@@ -2,10 +2,7 @@ package com.sw1pr0g.goxtype_android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.sw1pr0g.goxtype_android.databinding.ActivityMainBinding
 
@@ -19,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         var navBar: MeowBottomNavigation = findViewById(R.id.navBar)
 
-        addFragment(MainFragment.newInstance())
+        addFragment(MainHomeFragment.newInstance())
         navBar.show(0)
 
         navBar.add(MeowBottomNavigation.Model(0, R.drawable.baseline_home_24))
@@ -30,11 +27,11 @@ class MainActivity : AppCompatActivity() {
             when(it.id){
 
                 0 -> {
-                    replaceFragment(MainFragment.newInstance())
+                    replaceFragment(MainHomeFragment.newInstance())
                 }
 
                 1 -> {
-                    replaceFragment(TrainerFragment.newInstance())
+                    replaceFragment(MainTrainerFragment.newInstance())
                 }
 
             }

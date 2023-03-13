@@ -6,7 +6,7 @@ import android.view.Window
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 
-class AuthActivity : AppCompatActivity(), LogInFragment.Callbacks, SignUpFragment.Callbacks {
+class AuthActivity : AppCompatActivity(), AuthLogInFragment.Callbacks, AuthSignUpFragment.Callbacks {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,7 +15,7 @@ class AuthActivity : AppCompatActivity(), LogInFragment.Callbacks, SignUpFragmen
         val currentFragment = supportFragmentManager.findFragmentById(R.id.auth_fragment_container)
 
         if (currentFragment == null)
-            showFragment(LogInFragment(), getColor(R.color.background), true)
+            showFragment(AuthLogInFragment(), getColor(R.color.background), true)
 
     }
 

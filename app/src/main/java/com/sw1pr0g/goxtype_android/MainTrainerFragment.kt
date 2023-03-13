@@ -18,13 +18,13 @@ import androidx.core.text.toSpannable
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 
-class TrainerFragment : Fragment() {
+class MainTrainerFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater.inflate(R.layout.fragment_trainer, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_main_trainer, container, false)
 
         val editTextTrainer: EditText = view.findViewById(R.id.editTextTrainer)
         val startTrainerButton: Button = view.findViewById(R.id.startTrainerButton)
@@ -74,7 +74,7 @@ class TrainerFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() =
-            TrainerFragment().apply {
+            MainTrainerFragment().apply {
                 arguments = Bundle().apply {}
             }
     }
