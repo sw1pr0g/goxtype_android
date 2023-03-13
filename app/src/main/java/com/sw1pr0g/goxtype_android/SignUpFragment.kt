@@ -7,12 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 
 class SignUpFragment: Fragment() {
 
     interface Callbacks {
-        fun showFragment(fragment: Fragment)
+        fun showFragment(fragment: Fragment,
+                         statusBarColor: Int,
+                         statusBarDarkText: Boolean)
     }
 
     private var callbacks: Callbacks? = null
@@ -46,6 +49,6 @@ class SignUpFragment: Fragment() {
         callbacks = null
     }
 
-    private fun showLogInFragment() = callbacks?.showFragment(LogInFragment())
+    private fun showLogInFragment() = callbacks?.showFragment(LogInFragment(), getColor(requireActivity(), R.color.background), true)
 
 }

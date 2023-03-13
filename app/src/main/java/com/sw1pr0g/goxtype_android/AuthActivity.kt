@@ -2,6 +2,8 @@ package com.sw1pr0g.goxtype_android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 
 class AuthActivity : AppCompatActivity(), LogInFragment.Callbacks, SignUpFragment.Callbacks {
@@ -12,19 +14,27 @@ class AuthActivity : AppCompatActivity(), LogInFragment.Callbacks, SignUpFragmen
 
         val currentFragment = supportFragmentManager.findFragmentById(R.id.auth_fragment_container)
 
-        if (currentFragment == null) {
-            showFragment(LogInFragment())
-        }
+        if (currentFragment == null)
+            showFragment(LogInFragment(), getColor(R.color.background), true)
+
     }
 
-    override fun showFragment(fragment: Fragment) {
+    override fun showFragment(fragment: Fragment,
+                              statusBarColor: Int, statusBarDarkText: Boolean) {
         supportFragmentManager.beginTransaction().setCustomAnimations(
             R.anim.slide_in,
             R.anim.fade_out,
             R.anim.fade_out,
             R.anim.slide_out,
-        ).replace(R.id.auth_fragment_container, fragment).
-        addToBackStack(null).commit()
+        ).replace(R.id.auth_fragment_container, fragment).addToBackStack(null).commit()
+
+        window.statusBarColor = statusBarColor
+        window.setStatusBarDarkText(statusBarDarkText)
+    }
+
+    private fun Window.setStatusBarDarkText(statusBarDarkText: Boolean) {
+        WindowCompat.getInsetsController(this, decorView)
+            .isAppearanceLightStatusBars = statusBarDarkText
     }
 
 }

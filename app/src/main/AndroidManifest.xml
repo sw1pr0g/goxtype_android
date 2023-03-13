@@ -23,13 +23,12 @@
 
         <activity
             android:name=".AuthActivity"
-            android:exported="true"
-            android:theme="@style/AppTheme.LogIn"/>
+            android:theme="@style/AppTheme.AuthActivity"
+            android:exported="true"/>
 
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:theme="@style/AppTheme.LogIn"
             android:windowSoftInputMode="stateAlwaysVisible" />
 
         <activity
