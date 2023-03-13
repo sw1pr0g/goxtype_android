@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 class SignUpFragment: Fragment() {
 
     interface Callbacks {
-        fun showLogInFragment()
+        fun showFragment(fragment: Fragment)
     }
 
     private var callbacks: Callbacks? = null
@@ -46,6 +46,6 @@ class SignUpFragment: Fragment() {
         callbacks = null
     }
 
-    private fun showLogInFragment() = callbacks?.showLogInFragment()
+    private fun showLogInFragment() = callbacks?.showFragment(LogInFragment())
 
 }

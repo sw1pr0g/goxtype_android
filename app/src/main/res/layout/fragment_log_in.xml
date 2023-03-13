@@ -157,14 +157,15 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/ic_side_bg"/>
 
-    <ImageView
-        android:id="@+id/sign_up_image_view"
+    <ImageButton
+        android:id="@+id/sign_up_image_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="9dp"
         android:layout_marginBottom="30dp"
+        android:background="@android:color/transparent"
         android:src="@drawable/ic_add_img"/>
 
 </RelativeLayout>
