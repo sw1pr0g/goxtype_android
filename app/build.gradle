@@ -1,8 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
+//apply plugin: 'kotlin-kapt'
 
 
 android {
@@ -56,6 +58,10 @@ dependencies {
 
     //profile
     implementation 'com.mikhaellopez:circularimageview:4.1.1'
+
+    //db
+    implementation 'androidx.room:room-runtime:2.5.0'
+    kapt 'androidx.room:room-compiler:2.5.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
