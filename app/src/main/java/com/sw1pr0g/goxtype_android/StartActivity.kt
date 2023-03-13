@@ -34,13 +34,13 @@ class StartActivity : AppCompatActivity() {
         }
         nextbtn!!.setOnClickListener {
             if (getitem(0) < 3) mSLideViewPager!!.setCurrentItem(getitem(1), true) else {
-                val i = Intent(this@StartActivity, LogInActivity::class.java)
+                val i = Intent(this@StartActivity, AuthActivity::class.java)
                 startActivity(i)
                 finish()
             }
         }
         skipbtn!!.setOnClickListener {
-            val i = Intent(this@StartActivity, LogInActivity::class.java)
+            val i = Intent(this@StartActivity, AuthActivity::class.java)
             startActivity(i)
             finish()
         }

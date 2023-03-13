@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity"
+    tools:context=".SignUpFragment"
     android:layout_gravity="center"
     android:background="@color/button_text"
     android:focusableInTouchMode="true"
     android:gravity="center">
-    
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true">
-        
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,14 +33,14 @@
                     android:layout_centerVertical="true"
                     android:text="Here's\nyour first\nstep with\nus!"
                     android:textColor="@color/whiteTextColor" />
-                
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:src="@drawable/ic_login_hero"/>
-                
+
             </RelativeLayout>
 
             <androidx.cardview.widget.CardView
@@ -119,9 +119,9 @@
                         android:layout_marginTop="@dimen/loginViewsMargin"
                         android:text="Sign Up"
                         app:rippleColor="@color/button_text" />
-                    
+
                     <TextView
-                        android:id="@+id/logInText"
+                        android:id="@+id/log_in_text_view"
                         style="@style/parent"
                         android:layout_marginTop="@dimen/loginViewsMargin"
                         android:text="Already have an account?"
@@ -145,7 +145,7 @@
                     android:layout_height="1dp"
                     android:layout_weight="3"
                     android:background="@color/whiteTextColor"/>
-                
+
                 <TextView
                     style="@style/viewParent.headerText.NoMode"
                     android:layout_width="wrap_content"
@@ -183,7 +183,7 @@
                     android:src="@drawable/ic_google_plus"/>
 
             </LinearLayout>
-            
+
         </LinearLayout>
 
     </ScrollView>
@@ -195,9 +195,9 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="20dp"
         android:background="@drawable/ic_side_bg"/>
-    
+
     <ImageView
-        android:id="@+id/logInArrow"
+        android:id="@+id/log_in_image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -206,5 +206,5 @@
         android:layout_marginBottom="30dp"
         android:adjustViewBounds="false"
         android:src="@drawable/ic_back_img"/>
-    
+
 </RelativeLayout>

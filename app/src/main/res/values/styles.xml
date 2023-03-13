@@ -4,18 +4,13 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:statusBarColor">@color/background</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="AppTheme.LogIn">
-        <item name="android:statusBarColor">@color/background</item>
+    <style name="AppTheme.AuthActivity">
         <item name="android:windowLightStatusBar">true</item>
-    </style>
-
-    <style name="AppTheme.SignUp">
-        <item name="android:statusBarColor">@color/button_text</item>
-        <item name="android:windowLightStatusBar">false</item>
     </style>
 
     <style name="AppTheme.Profile">

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LogInActivity"
     android:layout_gravity="center"
     android:gravity="center"
     android:background="@color/background"
@@ -32,7 +30,7 @@
                     style="@style/viewParent.headerText.NoMode"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:text="Already \nhave an \nAccount?" />
+                    android:text="@string/log_in_main_text" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -53,7 +51,8 @@
                     style="@style/modifiedEditText"
                     android:hint="@string/login_email_hint"
                     android:inputType="textEmailAddress"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,7 +66,8 @@
                     style="@style/modifiedEditText"
                     android:hint="@string/login_password_hint"
                     android:inputType="textPassword"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:contentDescription="Write you password here"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,26 +75,22 @@
                 style="@style/viewParent"
                 android:layout_gravity="end"
                 android:layout_marginTop="10dp"
-                android:text="Forgot Password?"
+                android:text="@string/auth_forgot_password_text"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="@dimen/newsMoreTextSize" />
 
             <Button
-                android:id="@+id/buttonLogin"
+                android:id="@+id/log_in_button"
                 style="@style/loginButton"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/loginViewsMargin"
-                android:text="log in" />
-            <!--app:initialCornerAngle="27dp"
-                app:spinning_bar_color="#FFF"
-                app:spinning_bar_padding="6dp"
-                app:spinning_bar_width="4dp"-->
+                android:text="@string/log_in_button_text" />
 
             <TextView
-                android:id="@+id/signUpText"
+                android:id="@+id/sign_up_text_view"
                 style="@style/parent"
                 android:layout_marginTop="@dimen/loginViewsMargin"
-                android:text="New User? Register Now"
+                android:text="@string/auth_sign_up_text"
                 android:textAlignment="center"
                 android:textColor="@color/themeColor"
                 android:textSize="17sp"
@@ -118,7 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="6"
-                    android:text="Use Other Methods"
+                    android:text="@string/auth_other_methods_text"
                     android:textAlignment="center"
                     android:textSize="12sp" />
 
@@ -160,15 +156,16 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/ic_side_bg"/>
-    
-    <ImageView
-        android:id="@+id/signUpPlus"
+
+    <ImageButton
+        android:id="@+id/sign_up_image_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="9dp"
         android:layout_marginBottom="30dp"
+        android:background="@android:color/transparent"
         android:src="@drawable/ic_add_img"/>
 
 </RelativeLayout>
