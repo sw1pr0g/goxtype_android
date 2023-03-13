@@ -17,15 +17,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/StartViewPager"
+    <ScrollView
+        android:id="@+id/start_view_pager_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginVertical="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/StartViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </ScrollView>
 
     <ImageView
         android:id="@+id/ellipse1"
@@ -69,7 +76,7 @@
         android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/StartViewPager">
+        app:layout_constraintStart_toStartOf="@id/start_view_pager_scroll_view">
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

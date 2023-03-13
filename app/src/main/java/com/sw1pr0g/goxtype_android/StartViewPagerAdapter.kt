@@ -42,7 +42,7 @@ class StartViewPagerAdapter(var context: Context) : PagerAdapter() {
         val layoutInflater =
             context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
-        val view = layoutInflater.inflate(R.layout.slider_layout, container, false)
+        val view = layoutInflater.inflate(R.layout.slider_start_layout, container, false)
 
         val slideTitleImage = view.findViewById<View>(R.id.titleImage) as ImageView
 
