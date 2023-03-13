@@ -15,7 +15,10 @@ class AuthActivity : AppCompatActivity(), AuthLogInFragment.Callbacks, AuthSignU
         val currentFragment = supportFragmentManager.findFragmentById(R.id.auth_fragment_container)
 
         if (currentFragment == null)
-            showFragment(AuthLogInFragment(), getColor(R.color.background), true)
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.auth_fragment_container, AuthLogInFragment()).commit()
+
+            //showFragment(AuthLogInFragment(), getColor(R.color.background), true)
 
     }
 

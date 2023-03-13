@@ -27,6 +27,8 @@ class StartActivity : AppCompatActivity() {
         backbtn = findViewById(R.id.backbtn)
         nextbtn = findViewById(R.id.nextbtn)
         skipbtn = findViewById(R.id.skipButton)
+        mSLideViewPager = findViewById(R.id.slider_view_pager) as ViewPager?
+
         backbtn!!.setOnClickListener {
             if (getitem(0) > 0)
                 mSLideViewPager!!.setCurrentItem(getitem(-1), true)
@@ -44,7 +46,7 @@ class StartActivity : AppCompatActivity() {
             startActivity(i)
             finish()
         }
-        mSLideViewPager = findViewById(R.id.StartViewPager) as ViewPager?
+
         mDotLayout = findViewById(R.id.indicator_layout) as LinearLayout?
         startViewPagerAdapter = StartViewPagerAdapter(this)
         mSLideViewPager!!.adapter = startViewPagerAdapter
