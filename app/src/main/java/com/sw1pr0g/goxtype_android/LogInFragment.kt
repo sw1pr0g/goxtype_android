@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -13,13 +12,13 @@ import androidx.fragment.app.Fragment
 class LogInFragment: Fragment() {
 
     interface Callbacks {
-        fun showFragment(fragment: Fragment)
+        fun showSignUpFragment()
     }
 
     private var callbacks: Callbacks? = null
-    private lateinit var buttonLogIn: Button
-    private lateinit var signUpText: TextView
-    private lateinit var signUpPlus: ImageView
+    //private lateinit var logInButton: Button
+    private lateinit var signUpTextView: TextView
+    private lateinit var signUpImageView: ImageView
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -32,11 +31,12 @@ class LogInFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_log_in, container, false)
-        buttonLogIn = view.findViewById(R.id.log_in_button) as Button
 
-        buttonLogIn.setOnClickListener {
-            showLogInFragment()
-        }
+        signUpTextView = view.findViewById(R.id.sign_up_text_view)
+        signUpImageView = view.findViewById(R.id.sign_up_image_view)
+
+        signUpTextView.setOnClickListener { showSignUpFragment() }
+        signUpImageView.setOnClickListener { showSignUpFragment() }
 
         return view
     }
@@ -46,6 +46,6 @@ class LogInFragment: Fragment() {
         callbacks = null
     }
 
-    private fun showLogInFragment() = callbacks?.showFragment(SignUpFragment())
+    private fun showSignUpFragment() = callbacks?.showSignUpFragment()
 
 }

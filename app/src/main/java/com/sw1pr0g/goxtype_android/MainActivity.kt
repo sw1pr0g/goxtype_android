@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
-import com.sw1pr0g.goxtype_android.databinding.ActivityLogInBinding
 import com.sw1pr0g.goxtype_android.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
