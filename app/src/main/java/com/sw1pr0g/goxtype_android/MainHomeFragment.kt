@@ -13,9 +13,9 @@ class MainHomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val profileImage: ImageButton = view.findViewById(R.id.profileImage)
+        val profileImageButton: ImageButton = view.findViewById(R.id.profile_image_button)
 
-        profileImage.setOnClickListener {
+        profileImageButton.setOnClickListener {
             val intent = Intent(activity, ProfileActivity::class.java)
             startActivity(intent)
         }
