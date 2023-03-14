@@ -20,47 +20,51 @@ import androidx.fragment.app.Fragment
 
 class MainTrainerFragment : Fragment() {
 
+    private lateinit var trainerEditText: EditText
+    private lateinit var trainerTextView: TextView
+    private lateinit var trainerStartButton: Button
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater.inflate(R.layout.fragment_main_trainer, container, false)
+        val view = inflater.inflate(R.layout.fragment_main_trainer, container, false)
 
-        val editTextTrainer: EditText = view.findViewById(R.id.editTextTrainer)
-        val startTrainerButton: Button = view.findViewById(R.id.startTrainerButton)
+        trainerEditText = view.findViewById(R.id.trainer_edit_text)
+        trainerStartButton = view.findViewById(R.id.trainer_start_button)
         var trainerStatus = false
 
-        startTrainerButton.setOnClickListener {
+        trainerStartButton.setOnClickListener {
             if (!trainerStatus) {
                 trainerStatus = true
-                startTrainerButton.text = "Press to end"
-                editTextTrainer.requestFocus()
-                editTextTrainer.postDelayed(Runnable { editTextTrainer.showKeyboard()} , 50)
+                trainerStartButton.text = "Press to end"
+                trainerEditText.requestFocus()
+                trainerEditText.postDelayed(Runnable { trainerEditText.showKeyboard()} , 50)
             }
             else {
                 trainerStatus = false
-                startTrainerButton.text = "Press to start"
-                hideKeyboardFrom(requireContext(), requireView())
+                trainerStartButton.text = "Press to start"
+                hideKeyboard(requireContext(), requireView())
             }
 
         }
 
         var editLetter: Int = 0
 
-        editTextTrainer.addTextChangedListener {
+        trainerEditText.addTextChangedListener {
 
-            val textViewTrainer: TextView = view.findViewById(R.id.textViewTrainer)
+            trainerTextView = view.findViewById(R.id.trainer_text_view)
 
-            if (editTextTrainer.text.isNotEmpty() && editLetter < textViewTrainer.text.length) {
+            if (trainerEditText.text.isNotEmpty() && editLetter < trainerTextView.text.length) {
 
-                var toast = Toast.makeText(activity, "Error! - ${editTextTrainer.text.last()}", Toast.LENGTH_SHORT)
+                val toast = Toast.makeText(activity, "Error! - ${trainerEditText.text.last()}", Toast.LENGTH_SHORT)
 
-                if (editTextTrainer.text.last() == textViewTrainer.text[editLetter]) {
+                if (trainerEditText.text.last() == trainerTextView.text[editLetter]) {
                     toast.cancel()
-                    var spannableString = textViewTrainer.text.toSpannable()
+                    val spannableString = trainerTextView.text.toSpannable()
                     spannableString.setSpan(ForegroundColorSpan(Color.BLUE), editLetter,
                         editLetter+1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                    textViewTrainer.setText(spannableString, TextView.BufferType.SPANNABLE)
+                    trainerTextView.setText(spannableString, TextView.BufferType.SPANNABLE)
                     editLetter++
                 } else {
                     toast.show()
@@ -71,22 +75,13 @@ class MainTrainerFragment : Fragment() {
         return view
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() =
-            MainTrainerFragment().apply {
-                arguments = Bundle().apply {}
-            }
-    }
-
-    fun EditText.showKeyboard() {
+    private fun EditText.showKeyboard() {
         val inputMethodManager = requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         requestFocus()
         inputMethodManager.showSoftInput(this, 0)
         setSelection(length())
     }
-
-    fun hideKeyboardFrom(context: Context, view: View) {
+    private fun hideKeyboard(context: Context, view: View) {
         val imm =
             context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)

@@ -12,27 +12,27 @@ class AuthActivity : AppCompatActivity(), AuthLogInFragment.Callbacks, AuthSignU
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
-        val currentFragment = supportFragmentManager.findFragmentById(R.id.auth_fragment_container)
-
-        if (currentFragment == null)
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.auth_fragment_container, AuthLogInFragment()).commit()
-
-            //showFragment(AuthLogInFragment(), getColor(R.color.background), true)
-
+        showFragment(AuthLogInFragment(), getColor(R.color.background), true, firstShowing = true)
     }
 
     override fun showFragment(fragment: Fragment,
-                              statusBarColor: Int, statusBarDarkText: Boolean) {
-        supportFragmentManager.beginTransaction().setCustomAnimations(
+                              statusBarColor: Int,
+                              statusBarDarkText: Boolean,
+                              firstShowing: Boolean) {
+
+        val supportFragmentManager = supportFragmentManager.beginTransaction().setCustomAnimations(
             R.anim.slide_in,
             R.anim.fade_out,
             R.anim.fade_out,
             R.anim.slide_out,
-        ).replace(R.id.auth_fragment_container, fragment).addToBackStack(null).commit()
+        ).replace(R.id.auth_fragment_container, fragment)
+
+        if (!firstShowing) supportFragmentManager.addToBackStack(null)
 
         window.statusBarColor = statusBarColor
         window.setStatusBarDarkText(statusBarDarkText)
+
+        supportFragmentManager.commit()
     }
 
     private fun Window.setStatusBarDarkText(statusBarDarkText: Boolean) {

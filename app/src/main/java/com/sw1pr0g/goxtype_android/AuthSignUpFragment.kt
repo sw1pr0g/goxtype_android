@@ -15,7 +15,8 @@ class AuthSignUpFragment: Fragment() {
     interface Callbacks {
         fun showFragment(fragment: Fragment,
                          statusBarColor: Int,
-                         statusBarDarkText: Boolean)
+                         statusBarDarkText: Boolean,
+                         firstShowing: Boolean)
     }
 
     private var callbacks: Callbacks? = null
@@ -49,6 +50,8 @@ class AuthSignUpFragment: Fragment() {
         callbacks = null
     }
 
-    private fun showLogInFragment() = callbacks?.showFragment(AuthLogInFragment(), getColor(requireActivity(), R.color.background), true)
+    private fun showLogInFragment() = callbacks?.showFragment(AuthLogInFragment(),
+        getColor(requireActivity(), R.color.background), true,
+        firstShowing = false)
 
 }

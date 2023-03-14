@@ -8,7 +8,7 @@
     android:background="@color/background">
     
     <FrameLayout
-        android:id="@+id/framePage"
+        android:id="@+id/main_fragment_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/navBar"

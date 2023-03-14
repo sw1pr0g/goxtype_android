@@ -11,34 +11,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Goxtype_android"
         tools:targetApi="31">
-
+        <activity
+            android:name=".TestActivity"
+            android:exported="false" />
         <activity
             android:name=".StartActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AuthActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.AuthActivity"
-            android:exported="true"/>
-
+            android:theme="@style/AppTheme.AuthActivity" />
         <activity
             android:name=".MainActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysVisible"
-            android:exported="false" />
-
+            android:windowSoftInputMode="stateAlwaysVisible" />
         <activity
             android:name=".ProfileActivity"
+            android:exported="false"
             android:theme="@style/AppTheme.Profile"
-            android:windowSoftInputMode="stateAlwaysVisible"
-            android:exported="false" />
+            android:windowSoftInputMode="stateAlwaysVisible" />
 
         <meta-data
             android:name="preloaded_fonts"

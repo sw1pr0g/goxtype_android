@@ -17,7 +17,8 @@ class AuthLogInFragment: Fragment() {
     interface Callbacks {
         fun showFragment(fragment: Fragment,
                          statusBarColor: Int,
-                         statusBarDarkText: Boolean)
+                         statusBarDarkText: Boolean,
+                         firstShowing: Boolean)
     }
 
     private var callbacks: Callbacks? = null
@@ -44,6 +45,7 @@ class AuthLogInFragment: Fragment() {
         logInButton.setOnClickListener {
             val intent = Intent(activity, MainActivity::class.java)
             startActivity(intent)
+            activity?.finish()
         }
         signUpTextView.setOnClickListener { showSignUpFragment() }
         signUpImageButton.setOnClickListener { showSignUpFragment() }
@@ -56,6 +58,8 @@ class AuthLogInFragment: Fragment() {
         callbacks = null
     }
 
-    private fun showSignUpFragment() = callbacks?.showFragment(AuthSignUpFragment(), getColor(requireActivity(), R.color.button_text), false)
+    private fun showSignUpFragment() = callbacks?.showFragment(AuthSignUpFragment(),
+        getColor(requireActivity(), R.color.button_text), false,
+        firstShowing = false)
 
 }

@@ -6,17 +6,21 @@ import androidx.fragment.app.Fragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.sw1pr0g.goxtype_android.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainHomeFragment.Callbacks, MainProfileFragment.Callbacks {
     private lateinit var binding: ActivityMainBinding
+
+    private lateinit var navBar: MeowBottomNavigation
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var navBar: MeowBottomNavigation = findViewById(R.id.navBar)
+        navBar = findViewById(R.id.navBar)
 
-        addFragment(MainHomeFragment.newInstance())
+        showFragment(MainHomeFragment(), true)
         navBar.show(0)
 
         navBar.add(MeowBottomNavigation.Model(0, R.drawable.baseline_home_24))
@@ -27,11 +31,11 @@ class MainActivity : AppCompatActivity() {
             when(it.id){
 
                 0 -> {
-                    replaceFragment(MainHomeFragment.newInstance())
+                    showFragment(MainHomeFragment(), false)
                 }
 
                 1 -> {
-                    replaceFragment(MainTrainerFragment.newInstance())
+                    showFragment(MainTrainerFragment(), false)
                 }
 
             }
@@ -39,17 +43,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun replaceFragment(fragment: Fragment) {
+    override fun showFragment(fragment: Fragment, firstShowing: Boolean) {
 
-        val fragmentTransition = supportFragmentManager.beginTransaction()
-            fragmentTransition.replace(R.id.framePage, fragment).addToBackStack(Fragment::class.java.simpleName).commit()
+        val supportFragmentManager = supportFragmentManager.beginTransaction()
+            .replace(R.id.main_fragment_container, fragment)
 
-    }
+        if (!firstShowing) supportFragmentManager.addToBackStack(null)
 
-    private fun addFragment(fragment: Fragment) {
-
-        val fragmentTransition = supportFragmentManager.beginTransaction()
-        fragmentTransition.add(R.id.framePage, fragment).addToBackStack(Fragment::class.java.simpleName).commit()
+        supportFragmentManager.commit()
 
     }
 }
