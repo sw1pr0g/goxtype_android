@@ -39,7 +39,7 @@ class MainTrainerFragment : Fragment() {
                 trainerStatus = true
                 trainerStartButton.text = "Press to end"
                 trainerEditText.requestFocus()
-                trainerEditText.postDelayed(Runnable { trainerEditText.showKeyboard()} , 50)
+                trainerEditText.postDelayed({ trainerEditText.showKeyboard()}, 50)
             }
             else {
                 trainerStatus = false
@@ -49,7 +49,7 @@ class MainTrainerFragment : Fragment() {
 
         }
 
-        var editLetter: Int = 0
+        var editLetter = 0
 
         trainerEditText.addTextChangedListener {
 

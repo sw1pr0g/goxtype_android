@@ -1,7 +1,6 @@
 package com.sw1pr0g.goxtype_android
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
