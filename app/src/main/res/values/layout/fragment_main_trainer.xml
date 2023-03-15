@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainTrainerFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/trainer_edit_text"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:background="@color/background"
+            android:inputType="textMultiLine"
+            android:textColor="@color/background"
+            android:textCursorDrawable="@color/background" />
+
+        <TextView
+            android:id="@+id/trainer_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/trainer_start_button"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center|center_horizontal"
+            android:text="Press to start" />
+
+    </LinearLayout>
+
+</FrameLayout>
