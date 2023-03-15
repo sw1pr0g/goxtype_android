@@ -45,10 +45,14 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.core:core-ktx:+'
 
+    //coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+
     //auth-activity
     implementation 'com.github.dmytrodanylyk:android-morphing-button:1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.android.material:material:1.8.0'
+    implementation 'br.com.simplepass:loading-button-android:2.2.0'
 
     //main-activity
     implementation 'com.etebarian:meow-bottom-navigation:1.2.0'

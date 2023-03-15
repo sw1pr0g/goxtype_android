@@ -6,20 +6,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import com.sw1pr0g.goxtype_android.api.ApiInterface
 import com.sw1pr0g.goxtype_android.api.LogInBody
 import com.sw1pr0g.goxtype_android.api.RetrofitInstance
+import kotlinx.coroutines.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class AuthLogInFragment: Fragment() {
 
@@ -38,6 +36,8 @@ class AuthLogInFragment: Fragment() {
     private lateinit var logInButton: Button
     private lateinit var signUpTextView: TextView
     private lateinit var signUpImageButton: ImageButton
+
+    private lateinit var dialogAuthLoading: DialogAuthLoading
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -58,10 +58,19 @@ class AuthLogInFragment: Fragment() {
         emailEditText = view.findViewById(R.id.email_edit_text)
         passwordEditText = view.findViewById(R.id.password_edit_text)
 
+        dialogAuthLoading = DialogAuthLoading(requireActivity())
+
         logInButton.setOnClickListener {
-            logIn(emailEditText.text.toString(),
-                passwordEditText.text.toString())
+
+            dialogAuthLoading.startLoadingDialog()
+
+            Thread(
+                Runnable {
+                    logIn(emailEditText.text.toString(), passwordEditText.text.toString())
+                }
+            ).start()
         }
+
         signUpTextView.setOnClickListener { showSignUpFragment() }
         signUpImageButton.setOnClickListener { showSignUpFragment() }
 
@@ -76,6 +85,7 @@ class AuthLogInFragment: Fragment() {
     private fun showSignUpFragment() = callbacks?.showFragment(AuthSignUpFragment(),
         getColor(requireActivity(), R.color.button_text), false,
         firstShowing = false)
+
 
     private fun logIn(email: String, password: String) {
 
@@ -100,7 +110,8 @@ class AuthLogInFragment: Fragment() {
             }
 
         })
-
+        Thread.sleep(1500)
+        dialogAuthLoading.dismissDialog()
     }
 
 }

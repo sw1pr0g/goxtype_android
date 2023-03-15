@@ -40,6 +40,8 @@ class AuthSignUpFragment: Fragment() {
 
     private lateinit var signUpButton: Button
 
+    private lateinit var dialogAuthLoading: DialogAuthLoading
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -62,14 +64,25 @@ class AuthSignUpFragment: Fragment() {
         emailEditText = view.findViewById(R.id.email_edit_text)
         passwordEditText = view.findViewById(R.id.password_edit_text)
 
+        dialogAuthLoading = DialogAuthLoading(requireActivity())
+
 
         logInTextView.setOnClickListener { showLogInFragment() }
         logInImageView.setOnClickListener { showLogInFragment() }
 
         signUpButton.setOnClickListener {
-            signUp(emailEditText.text.toString(),
-                passwordEditText.text.toString(),
-                nameEditText.text.toString())
+
+            dialogAuthLoading.startLoadingDialog()
+
+            Thread(
+                kotlinx.coroutines.Runnable {
+                    signUp(
+                        emailEditText.text.toString(),
+                        passwordEditText.text.toString(),
+                        nameEditText.text.toString()
+                    )
+                }
+            ).start()
         }
 
         return view
@@ -108,7 +121,8 @@ class AuthSignUpFragment: Fragment() {
             }
 
             })
-
+        Thread.sleep(1500)
+        dialogAuthLoading.dismissDialog()
     }
 
 }
