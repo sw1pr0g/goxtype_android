@@ -65,9 +65,10 @@ class AuthSignUpFragment: Fragment() {
         logInTextView.setOnClickListener { showLogInFragment() }
         logInImageView.setOnClickListener { showLogInFragment() }
         signUpButton.setOnClickListener {
-            signUp(nameEditText.text.toString(),
-                   emailEditText.text.toString(),
-                   passwordEditText.text.toString())
+            signUp(emailEditText.text.toString(),
+                passwordEditText.text.toString(),
+                nameEditText.text.toString())
+
         }
 
 

@@ -16,7 +16,7 @@ interface ApiInterface {
     fun logIn(@Body info: LogInBody): retrofit2.Call<ResponseBody>
 
     @Headers("Content-Type:application/json")
-    @POST("users")
+    @POST("signup")
     fun signUp(
         @Body info: UserBody
     ): retrofit2.Call<ResponseBody>
@@ -25,7 +25,7 @@ interface ApiInterface {
 
 class RetrofitInstance {
     companion object {
-        private const val BASE_URL: String = "http://127.0.0.1:3001"
+        private const val BASE_URL: String = "http://192.168.0.166:3001"
 
         private val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
             this.level = HttpLoggingInterceptor.Level.BODY
