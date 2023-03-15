@@ -55,6 +55,7 @@ class AuthSignUpFragment: Fragment() {
 
         logInTextView = view.findViewById(R.id.log_in_text_view)
         logInImageView = view.findViewById(R.id.log_in_image_view)
+
         signUpButton = view.findViewById(R.id.sign_up_button)
 
         nameEditText = view.findViewById(R.id.name_edit_text)
@@ -64,14 +65,12 @@ class AuthSignUpFragment: Fragment() {
 
         logInTextView.setOnClickListener { showLogInFragment() }
         logInImageView.setOnClickListener { showLogInFragment() }
+
         signUpButton.setOnClickListener {
             signUp(emailEditText.text.toString(),
                 passwordEditText.text.toString(),
                 nameEditText.text.toString())
-
         }
-
-
 
         return view
     }
@@ -101,11 +100,10 @@ class AuthSignUpFragment: Fragment() {
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
 
-                if (response.code() == 201) {
+                if (response.code() == 201)
                     Toast.makeText(activity, "SignUp Success", Toast.LENGTH_SHORT).show()
-                } else {
+                else
                     Toast.makeText(activity, "ERROR! SignUp Non Success", Toast.LENGTH_SHORT).show()
-                }
 
             }
 

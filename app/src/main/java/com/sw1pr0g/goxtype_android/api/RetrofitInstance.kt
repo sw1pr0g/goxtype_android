@@ -12,7 +12,7 @@ import retrofit2.http.POST
 interface ApiInterface {
 
     @Headers("Content-Type:application/json")
-    @POST("auth_tokens")
+    @POST("login")
     fun logIn(@Body info: LogInBody): retrofit2.Call<ResponseBody>
 
     @Headers("Content-Type:application/json")
@@ -25,7 +25,10 @@ interface ApiInterface {
 
 class RetrofitInstance {
     companion object {
-        private const val BASE_URL: String = "http://192.168.0.166:3001"
+
+        //local macOS ADDRESS - http://192.168.0.166:3001
+        //ngrock ADDRESS - https://8e1c-193-242-170-2.eu.ngrok.io
+        private const val BASE_URL: String = "https://8e1c-193-242-170-2.eu.ngrok.io"
 
         private val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
             this.level = HttpLoggingInterceptor.Level.BODY
