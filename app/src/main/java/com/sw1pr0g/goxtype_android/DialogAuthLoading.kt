@@ -12,6 +12,7 @@ class DialogAuthLoading internal constructor(var activity: Activity) {
         builder.setCancelable(true)
         dialog = builder.create()
         dialog.show()
+        dialog.window?.setLayout(500, 550)
     }
 
     fun dismissDialog() {
