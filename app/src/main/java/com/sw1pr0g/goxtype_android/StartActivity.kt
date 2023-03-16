@@ -26,12 +26,12 @@ class StartActivity : AppCompatActivity() {
         installSplashScreen()
         setContentView(R.layout.activity_start)
 
-        backbtn = findViewById(R.id.backbtn)
+        /*backbtn = findViewById(R.id.backbtn)
         nextbtn = findViewById(R.id.nextbtn)
-        skipbtn = findViewById(R.id.skipButton)
-        mSLideViewPager = findViewById(R.id.slider_view_pager) as ViewPager?
+        skipbtn = findViewById(R.id.skipButton)*/
+        //mSLideViewPager = findViewById(R.id.slider_view_pager) as ViewPager?
 
-        backbtn!!.setOnClickListener {
+        /*backbtn!!.setOnClickListener {
             if (getitem(0) > 0)
                 mSLideViewPager!!.setCurrentItem(getitem(-1), true)
 
@@ -42,18 +42,18 @@ class StartActivity : AppCompatActivity() {
                 startActivity(i)
                 finish()
             }
-        }
-        skipbtn!!.setOnClickListener {
+        }*/
+        /*skipbtn!!.setOnClickListener {
             val i = Intent(this@StartActivity, AuthActivity::class.java)
             startActivity(i)
             finish()
-        }
+        }*/
 
-        mDotLayout = findViewById(R.id.indicator_layout) as LinearLayout?
+        /*mDotLayout = findViewById(R.id.indicator_layout) as LinearLayout?
         startViewPagerAdapter = StartViewPagerAdapter(this)
         mSLideViewPager!!.adapter = startViewPagerAdapter
         setupIndicator(0)
-        mSLideViewPager!!.addOnPageChangeListener(viewListener)
+        mSLideViewPager!!.addOnPageChangeListener(viewListener)*/
     }
 
     fun setupIndicator(position: Int) {
