@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Goxtype_android" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/background</item>
+        <item name="colorPrimary">#1976D2</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->

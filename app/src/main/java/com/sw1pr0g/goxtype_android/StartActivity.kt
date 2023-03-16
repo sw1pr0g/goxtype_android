@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.viewpager.widget.ViewPager
 
 class StartActivity : AppCompatActivity() {
@@ -22,6 +23,7 @@ class StartActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         setContentView(R.layout.activity_start)
 
         backbtn = findViewById(R.id.backbtn)

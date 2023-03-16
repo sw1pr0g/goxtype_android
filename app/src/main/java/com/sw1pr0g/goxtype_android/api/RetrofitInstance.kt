@@ -27,8 +27,7 @@ class RetrofitInstance {
     companion object {
 
         //local macOS ADDRESS - http://192.168.0.166:3001
-        //ngrock ADDRESS - https://8e1c-193-242-170-2.eu.ngrok.io
-        private const val BASE_URL: String = "https://8e1c-193-242-170-2.eu.ngrok.io"
+        private const val BASE_URL: String = "https://b3ad-193-242-170-2.eu.ngrok.io"
 
         private val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
             this.level = HttpLoggingInterceptor.Level.BODY

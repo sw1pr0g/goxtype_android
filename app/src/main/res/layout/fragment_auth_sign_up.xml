@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".AuthSignUpFragment"
     android:layout_gravity="center"
-    android:background="@color/button_text"
+    android:background="@color/colorPrimary"
     android:focusableInTouchMode="true"
     android:gravity="center">
 
@@ -104,7 +104,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/loginViewsMargin"
                         android:text="Sign Up"
-                        app:rippleColor="@color/button_text" />
+                        app:rippleColor="@color/colorPrimary" />
 
                     <TextView
                         android:id="@+id/log_in_text_view"
@@ -112,7 +112,7 @@
                         android:layout_marginTop="@dimen/loginViewsMargin"
                         android:text="Already have an account?"
                         android:textAlignment="center"
-                        android:textColor="@color/button_text"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="17sp"
                         android:textStyle="bold"/>
                 </LinearLayout>

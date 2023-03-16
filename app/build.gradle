@@ -48,6 +48,9 @@ dependencies {
     //coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
 
+    //splash API
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+
     //auth-activity
     implementation 'com.github.dmytrodanylyk:android-morphing-button:1.0'
     implementation 'androidx.cardview:cardview:1.0.0'

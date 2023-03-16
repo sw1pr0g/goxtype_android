@@ -83,7 +83,7 @@ class AuthLogInFragment: Fragment() {
     }
 
     private fun showSignUpFragment() = callbacks?.showFragment(AuthSignUpFragment(),
-        getColor(requireActivity(), R.color.button_text), false,
+        getColor(requireActivity(), R.color.colorPrimary), false,
         firstShowing = false)
 
 
