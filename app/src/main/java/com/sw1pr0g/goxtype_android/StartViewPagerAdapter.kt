@@ -33,9 +33,8 @@ class StartViewPagerAdapter(var context: Context) : PagerAdapter() {
         return heading.size
     }
 
-    override fun isViewFromObject(view: View, `object`: Any): Boolean {
-        return view === `object` as LinearLayout
-    }
+    override fun isViewFromObject(view: View, `object`: Any): Boolean =
+        view === `object` as LinearLayout
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
 

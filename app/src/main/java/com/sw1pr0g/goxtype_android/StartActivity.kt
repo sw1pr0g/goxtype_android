@@ -12,12 +12,12 @@ import androidx.viewpager.widget.ViewPager
 
 class StartActivity : AppCompatActivity() {
 
-    private lateinit var startViewPager: ViewPager
+    private var startViewPager: ViewPager? = null
     private var mDotLayout: LinearLayout? = null
-    private lateinit var nextButton: Button
-    private lateinit var skipButton: Button
+    private var nextButton: Button? = null
+    private var skipButton: Button? = null
     private lateinit var dots: Array<TextView?>
-    private lateinit var startViewPagerAdapter: StartViewPagerAdapter
+    private var startViewPagerAdapter: StartViewPagerAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,17 +28,17 @@ class StartActivity : AppCompatActivity() {
         skipButton = findViewById(R.id.skip_button)
         startViewPager = findViewById(R.id.start_view_pager)
 
-        nextButton.setOnClickListener {
-            if (getItem(0) < 3) startViewPager.setCurrentItem(getItem(1), true)
+        nextButton!!.setOnClickListener {
+            if (getItem(0) < 3) startViewPager!!.setCurrentItem(getItem(1), true)
             else startMainActivity()
         }
-        skipButton.setOnClickListener { startMainActivity() }
+        skipButton!!.setOnClickListener { startMainActivity() }
 
-        mDotLayout = findViewById(R.id.indicator_layout) as LinearLayout?
+        mDotLayout = findViewById(R.id.indicator_layout)
         startViewPagerAdapter = StartViewPagerAdapter(this)
-        startViewPager.adapter = startViewPagerAdapter
+        startViewPager!!.adapter = startViewPagerAdapter
         setupIndicator(0)
-        startViewPager.addOnPageChangeListener(viewListener)
+        startViewPager!!.addOnPageChangeListener(viewListener)
     }
 
     fun setupIndicator(position: Int) {
@@ -76,7 +76,7 @@ class StartActivity : AppCompatActivity() {
     }
 
     private fun getItem(i: Int): Int {
-        return startViewPager.currentItem + i
+        return startViewPager!!.currentItem + i
     }
 
     private fun startMainActivity() {
