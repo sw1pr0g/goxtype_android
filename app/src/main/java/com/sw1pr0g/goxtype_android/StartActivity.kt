@@ -3,57 +3,42 @@ package com.sw1pr0g.goxtype_android
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Html
-import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.text.HtmlCompat
 import androidx.viewpager.widget.ViewPager
 
 class StartActivity : AppCompatActivity() {
 
-    var mSLideViewPager: ViewPager? = null
-    var mDotLayout: LinearLayout? = null
-    var backbtn: Button? = null
-    var nextbtn: Button? = null
-    var skipbtn: Button? = null
-    lateinit var dots: Array<TextView?>
-    var startViewPagerAdapter: StartViewPagerAdapter? = null
+    private lateinit var startViewPager: ViewPager
+    private var mDotLayout: LinearLayout? = null
+    private lateinit var nextButton: Button
+    private lateinit var skipButton: Button
+    private lateinit var dots: Array<TextView?>
+    private lateinit var startViewPagerAdapter: StartViewPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         setContentView(R.layout.activity_start)
 
-        /*backbtn = findViewById(R.id.backbtn)
-        nextbtn = findViewById(R.id.nextbtn)
-        skipbtn = findViewById(R.id.skipButton)*/
-        //mSLideViewPager = findViewById(R.id.slider_view_pager) as ViewPager?
+        nextButton = findViewById(R.id.next_button)
+        skipButton = findViewById(R.id.skip_button)
+        startViewPager = findViewById(R.id.start_view_pager)
 
-        /*backbtn!!.setOnClickListener {
-            if (getitem(0) > 0)
-                mSLideViewPager!!.setCurrentItem(getitem(-1), true)
-
+        nextButton.setOnClickListener {
+            if (getItem(0) < 3) startViewPager.setCurrentItem(getItem(1), true)
+            else startMainActivity()
         }
-        nextbtn!!.setOnClickListener {
-            if (getitem(0) < 3) mSLideViewPager!!.setCurrentItem(getitem(1), true) else {
-                val i = Intent(this@StartActivity, AuthActivity::class.java)
-                startActivity(i)
-                finish()
-            }
-        }*/
-        /*skipbtn!!.setOnClickListener {
-            val i = Intent(this@StartActivity, AuthActivity::class.java)
-            startActivity(i)
-            finish()
-        }*/
+        skipButton.setOnClickListener { startMainActivity() }
 
-        /*mDotLayout = findViewById(R.id.indicator_layout) as LinearLayout?
+        mDotLayout = findViewById(R.id.indicator_layout) as LinearLayout?
         startViewPagerAdapter = StartViewPagerAdapter(this)
-        mSLideViewPager!!.adapter = startViewPagerAdapter
+        startViewPager.adapter = startViewPagerAdapter
         setupIndicator(0)
-        mSLideViewPager!!.addOnPageChangeListener(viewListener)*/
+        startViewPager.addOnPageChangeListener(viewListener)
     }
 
     fun setupIndicator(position: Int) {
@@ -61,45 +46,42 @@ class StartActivity : AppCompatActivity() {
         mDotLayout!!.removeAllViews()
         for (i in dots.indices) {
             dots[i] = TextView(this)
-            dots[i]?.setText(Html.fromHtml("&#8226"))
+            dots[i]?.text = HtmlCompat.fromHtml("&#8226", HtmlCompat.FROM_HTML_MODE_LEGACY)
             dots[i]!!.textSize = 35f
             dots[i]?.setTextColor(
-                getResources().getColor(
+                resources.getColor(
                     R.color.inactive,
-                    getApplicationContext().getTheme()
+                    applicationContext.theme
                 )
             )
             mDotLayout!!.addView(dots[i])
         }
         dots[position]?.setTextColor(
-            getResources().getColor(
+            resources.getColor(
                 R.color.active,
-                getApplicationContext().getTheme()
+                applicationContext.theme
             )
         )
     }
 
-    var viewListener: ViewPager.OnPageChangeListener = object : ViewPager.OnPageChangeListener {
+    private var viewListener: ViewPager.OnPageChangeListener = object : ViewPager.OnPageChangeListener {
         override fun onPageScrolled(
             position: Int,
             positionOffset: Float,
             positionOffsetPixels: Int
         ) {
         }
-
-        override fun onPageSelected(position: Int) {
-            setupIndicator(position)
-            if (position > 0) {
-                backbtn!!.visibility = View.VISIBLE
-            } else {
-                backbtn!!.visibility = View.INVISIBLE
-            }
-        }
-
+        override fun onPageSelected(position: Int) { setupIndicator(position) }
         override fun onPageScrollStateChanged(state: Int) {}
     }
 
-    private fun getitem(i: Int): Int {
-        return mSLideViewPager!!.currentItem + i
+    private fun getItem(i: Int): Int {
+        return startViewPager.currentItem + i
+    }
+
+    private fun startMainActivity() {
+        val i = Intent(this@StartActivity, AuthActivity::class.java)
+        startActivity(i)
+        finish()
     }
 }
