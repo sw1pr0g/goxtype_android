@@ -58,7 +58,7 @@ class StartActivity : AppCompatActivity() {
         }
         dots[position]?.setTextColor(
             resources.getColor(
-                R.color.active,
+                R.color.colorPrimary,
                 applicationContext.theme
             )
         )

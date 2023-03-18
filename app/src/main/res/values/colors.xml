@@ -13,8 +13,7 @@
 
     <color name="background">#FFFFFF</color>
 
-    <color name="inactive">#C4C4C4</color>
-    <color name="active">#50C2C9</color>
+    <color name="inactive">#E6E6E6</color>
 
     //auth-colors
     <color name="colorPrimary">#6798E1</color>
