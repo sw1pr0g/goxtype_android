@@ -33,6 +33,7 @@ class StartViewPagerAdapter(var context: Context) : PagerAdapter() {
         return heading.size
     }
 
+    //error here
     override fun isViewFromObject(view: View, `object`: Any): Boolean =
         view === `object` as LinearLayout
 
