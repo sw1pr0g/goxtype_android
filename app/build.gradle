@@ -42,7 +42,7 @@ android {
 dependencies {
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.core:core:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.core:core-ktx:+'
 
@@ -55,6 +55,7 @@ dependencies {
 
     //splash API
     implementation 'androidx.core:core-splashscreen:1.0.0'
+    implementation 'me.relex:circleindicator:2.1.6'
 
     //auth-activity
     implementation 'com.github.dmytrodanylyk:android-morphing-button:1.0'
@@ -66,18 +67,18 @@ dependencies {
     implementation 'com.etebarian:meow-bottom-navigation:1.2.0'
 
     //profile
-    implementation 'com.mikhaellopez:circularimageview:4.1.1'
+    implementation 'com.mikhaellopez:circularimageview:4.3.1'
 
     //db
     implementation 'androidx.room:room-runtime:2.5.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.code.gson:gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     implementation 'io.reactivex.rxjava2:rxjava:2.1.13'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+    implementation 'com.google.android.gms:play-services-auth:20.4.1'
 
 
     testImplementation 'junit:junit:4.13.2'
