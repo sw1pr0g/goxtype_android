@@ -19,7 +19,7 @@ class StartViewPagerAdapter2(private var image: List<Int>,
         val itemDescription: TextView = itemView.findViewById(R.id.slider_start_description)
 
         init {
-            itemImage.setOnClickListener {v: View ->
+            itemImage.setOnClickListener {
                 val position = adapterPosition
                 Toast.makeText(itemView.context, "You clicked on item #${position+1}", Toast.LENGTH_SHORT).show()
             }
