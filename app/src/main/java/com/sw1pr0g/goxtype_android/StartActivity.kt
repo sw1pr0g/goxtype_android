@@ -10,6 +10,8 @@ class StartActivity : AppCompatActivity() {
 
     private lateinit var viewPager2: ViewPager2
 
+
+
     private var imageList = mutableListOf<Int>()
     private var headingList = mutableListOf<Int>()
     private var descriptionList = mutableListOf<Int>()
@@ -18,6 +20,8 @@ class StartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         setContentView(R.layout.activity_start)
+
+        viewPager2 = findViewById(R.id.start_view_pager2)
 
         viewPager2.adapter = StartViewPagerAdapter2(imageList, headingList, descriptionList)
         viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
