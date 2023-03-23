@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
         android:fontFamily="@font/raleway_medium"
+        android:textColor="@color/text_color"
         android:gravity="center_horizontal"
         android:text="@string/start_description_first_slider"
         android:textSize="23sp"

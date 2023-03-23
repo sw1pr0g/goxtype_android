@@ -51,7 +51,7 @@ class AuthLogInFragment: Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_auth_log_in, container, false)
 
-        logInButton = view.findViewById(R.id.log_in_button)
+        /*logInButton = view.findViewById(R.id.log_in_button)
         signUpTextView = view.findViewById(R.id.sign_up_text_view)
         signUpImageButton = view.findViewById(R.id.sign_up_image_button)
 
@@ -69,10 +69,10 @@ class AuthLogInFragment: Fragment() {
                     logIn(emailEditText.text.toString(), passwordEditText.text.toString())
                 }
             ).start()
-        }
+        }*/
 
-        signUpTextView.setOnClickListener { showSignUpFragment() }
-        signUpImageButton.setOnClickListener { showSignUpFragment() }
+        /*signUpTextView.setOnClickListener { showSignUpFragment() }
+        signUpImageButton.setOnClickListener { showSignUpFragment() }*/
 
         return view
     }
