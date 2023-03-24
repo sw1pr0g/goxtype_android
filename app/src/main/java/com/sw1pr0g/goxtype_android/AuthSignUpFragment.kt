@@ -79,7 +79,6 @@ class AuthSignUpFragment: Fragment() {
         signUpButton.setOnClickListener {
 
             validateSignUpData()
-            val g = validateChecks
             if (validateChecks) {
                 dialogAuthLoading.startLoadingDialog()
 
@@ -124,8 +123,14 @@ class AuthSignUpFragment: Fragment() {
 
                 if (response.code() == 201)
                     Toast.makeText(activity, "SignUp Success", Toast.LENGTH_SHORT).show()
-                else
-                    Toast.makeText(activity, "ERROR! SignUp Non Success", Toast.LENGTH_SHORT).show()
+                else {
+
+                    if (response.message() == "User email already exists!") {
+                        Toast.makeText(activity, "Please", Toast.LENGTH_SHORT).show()
+                        validateChecks = true
+                    }
+
+                }
 
             }
 
@@ -193,7 +198,7 @@ class AuthSignUpFragment: Fragment() {
         }
     }
 
-    internal fun EditText.isEmailValid(): Boolean {
+    private fun EditText.isEmailValid(): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(this.text.toString()).matches()
     }
 }
