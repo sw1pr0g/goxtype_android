@@ -34,8 +34,7 @@ class AuthLogInFragment: Fragment() {
     private lateinit var passwordEditText: EditText
 
     private lateinit var logInButton: Button
-    private lateinit var signUpTextView: TextView
-    private lateinit var signUpImageButton: ImageButton
+    private lateinit var goSignUpButton: Button
 
     private lateinit var dialogAuthLoading: DialogAuthLoading
 
@@ -51,9 +50,8 @@ class AuthLogInFragment: Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_auth_log_in, container, false)
 
-        /*logInButton = view.findViewById(R.id.log_in_button)
-        signUpTextView = view.findViewById(R.id.sign_up_text_view)
-        signUpImageButton = view.findViewById(R.id.sign_up_image_button)
+        logInButton = view.findViewById(R.id.log_in_button)
+        goSignUpButton = view.findViewById(R.id.go_sign_up_button)
 
         emailEditText = view.findViewById(R.id.email_edit_text)
         passwordEditText = view.findViewById(R.id.password_edit_text)
@@ -69,10 +67,11 @@ class AuthLogInFragment: Fragment() {
                     logIn(emailEditText.text.toString(), passwordEditText.text.toString())
                 }
             ).start()
-        }*/
+        }
 
-        /*signUpTextView.setOnClickListener { showSignUpFragment() }
-        signUpImageButton.setOnClickListener { showSignUpFragment() }*/
+        goSignUpButton.setOnClickListener { callbacks?.showFragment(AuthSignUpFragment(),
+            getColor(requireActivity(), R.color.colorPrimary), false,
+            firstShowing = false) }
 
         return view
     }
@@ -81,11 +80,6 @@ class AuthLogInFragment: Fragment() {
         super.onDetach()
         callbacks = null
     }
-
-    private fun showSignUpFragment() = callbacks?.showFragment(AuthSignUpFragment(),
-        getColor(requireActivity(), R.color.colorPrimary), false,
-        firstShowing = false)
-
 
     private fun logIn(email: String, password: String) {
 
