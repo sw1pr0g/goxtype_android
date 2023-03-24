@@ -6,7 +6,6 @@
     android:background="@color/background">
 
     <TextView
-        android:id="@+id/app_name_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -14,7 +13,7 @@
         android:fontFamily="@font/inter_bold"
         android:text="@string/app_name"
         android:textColor="@color/colorPrimary"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,12 +29,11 @@
         android:text="@string/start_skip_button"
         android:textAllCaps="false"
         android:textColor="@color/start_skip_button"
-        android:textSize="26sp"
+        android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/start_view_pager2"
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="56dp"
@@ -45,7 +43,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/skip_button">
 
-    </androidx.viewpager2.widget.ViewPager2>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/start_view_pager2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </ScrollView>
+
+
 
     <me.relex.circleindicator.CircleIndicator3
         android:id="@+id/circle_indicator"
@@ -71,7 +76,7 @@
         android:fontFamily="@font/raleway_bold"
         android:text="@string/start_next_button"
         android:textAllCaps="false"
-        android:textSize="26sp"
+        android:textSize="21sp"
         app:cornerRadius="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
