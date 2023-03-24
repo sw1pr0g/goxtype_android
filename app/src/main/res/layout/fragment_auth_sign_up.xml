@@ -10,11 +10,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="61dp"
         android:fontFamily="@font/inter_bold"
         android:text="@string/app_name"
         android:textColor="@color/colorPrimary"
-        android:textSize="30sp"
-        android:layout_marginTop="61dp"/>
+        android:textSize="25sp" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -34,7 +34,7 @@
             android:inputType="textEmailAddress"
             android:singleLine="true"
             android:textColor="@color/text_color"
-            android:textSize="25sp" />
+            android:textSize="21sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,7 +57,7 @@
             android:inputType="textPassword"
             android:singleLine="true"
             android:textColor="@color/text_color"
-            android:textSize="25sp" />
+            android:textSize="21sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -80,9 +80,22 @@
             android:inputType="textPassword"
             android:singleLine="true"
             android:textColor="@color/text_color"
-            android:textSize="25sp" />
+            android:textSize="21sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/sign_up_accept_terms_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="42dp"
+        android:fontFamily="@font/raleway_medium"
+        android:text="I have read and accept all terms and conditions"
+        android:textColor="@color/text_color"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/sign_up_button"
@@ -93,21 +106,8 @@
         android:fontFamily="@font/raleway_bold"
         android:text="Sign Up"
         android:textAllCaps="false"
-        android:textSize="25sp"
+        android:textSize="21sp"
         app:cornerRadius="13dp" />
-
-    <CheckBox
-        android:id="@+id/sign_up_accept_terms_checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="I have read and accept all terms and conditions"
-        android:fontFamily="@font/raleway_medium"
-        android:textSize="18sp"
-        android:textColor="@color/text_color"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="42dp"
-        android:layout_marginRight="42dp"
-        android:layout_gravity="center_horizontal"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -118,21 +118,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Already have an account?"
             android:fontFamily="@font/raleway_medium"
-            android:textSize="23sp"
-            android:textColor="@color/text_color"/>
+            android:text="Already have an account?"
+            android:textColor="@color/text_color"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/go_log_in_button"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="?android:attr/borderlessButtonStyle"
-            android:textColor="@color/colorPrimary"
-            android:textAllCaps="false"
+            android:fontFamily="@font/raleway_bold"
             android:text="Log In"
-            android:textSize="26sp"
-            android:fontFamily="@font/raleway_bold"/>
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="21sp" />
 
     </LinearLayout>
 

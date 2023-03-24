@@ -20,7 +20,7 @@
         android:fontFamily="@font/inter_bold"
         android:text="@string/app_name"
         android:textColor="@color/colorPrimary"
-        android:textSize="30sp" />
+        android:textSize="25sp" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -40,7 +40,7 @@
             android:inputType="textEmailAddress"
             android:singleLine="true"
             android:textColor="@color/text_color"
-            android:textSize="25sp" />
+            android:textSize="21sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,7 +63,7 @@
             android:inputType="textPassword"
             android:singleLine="true"
             android:textColor="@color/text_color"
-            android:textSize="25sp" />
+            android:textSize="21sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,7 +76,7 @@
         android:fontFamily="@font/raleway_bold"
         android:text="Log In"
         android:textAllCaps="false"
-        android:textSize="25sp"
+        android:textSize="21sp"
         app:cornerRadius="13dp" />
 
     <LinearLayout
@@ -88,21 +88,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New member?"
             android:fontFamily="@font/raleway_medium"
-            android:textSize="23sp"
-            android:textColor="@color/text_color"/>
+            android:text="New member?"
+            android:textColor="@color/text_color"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/go_sign_up_button"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="?android:attr/borderlessButtonStyle"
-            android:textColor="@color/colorPrimary"
-            android:textAllCaps="false"
+            android:fontFamily="@font/raleway_bold"
             android:text="Sign Up now"
-            android:textSize="26sp"
-            android:fontFamily="@font/raleway_bold"/>
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="21sp" />
 
     </LinearLayout>
 

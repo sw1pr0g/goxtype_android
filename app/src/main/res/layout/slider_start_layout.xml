@@ -27,7 +27,7 @@
         android:text="@string/start_heading_first_slider"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
-        android:textSize="34sp"
+        android:textSize="29sp"
         app:layout_constraintTop_toBottomOf="@+id/slider_start_image_view"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -37,10 +37,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
         android:fontFamily="@font/raleway_medium"
-        android:textColor="@color/text_color"
         android:gravity="center_horizontal"
         android:text="@string/start_description_first_slider"
-        android:textSize="23sp"
+        android:textColor="@color/text_color"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/slider_start_heading" />
