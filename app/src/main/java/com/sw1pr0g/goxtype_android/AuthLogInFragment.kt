@@ -1,13 +1,17 @@
 package com.sw1pr0g.goxtype_android
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputLayout
 import com.sw1pr0g.goxtype_android.api.ApiInterface
 import com.sw1pr0g.goxtype_android.api.LogInBody
 import com.sw1pr0g.goxtype_android.api.RetrofitInstance
@@ -27,8 +31,11 @@ class AuthLogInFragment: Fragment() {
 
     private var callbacks: Callbacks? = null
 
-    private lateinit var authEmailEditText: EditText
-    private lateinit var authPasswordEditText: EditText
+    private lateinit var logInEmailTextLayout: TextInputLayout
+    private lateinit var logInEmailEditText: EditText
+
+    private lateinit var logInPasswordTextLayout: TextInputLayout
+    private lateinit var logInPasswordEditText: EditText
 
     private lateinit var logInButton: Button
     private lateinit var goSignUpButton: Button
@@ -50,21 +57,34 @@ class AuthLogInFragment: Fragment() {
         logInButton = view.findViewById(R.id.log_in_button)
         goSignUpButton = view.findViewById(R.id.go_sign_up_button)
 
-        authEmailEditText = view.findViewById(R.id.auth_email_edit_text)
-        authPasswordEditText = view.findViewById(R.id.auth_password_edit_text)
+        logInEmailTextLayout = view.findViewById(R.id.log_in_email_text_layout)
+        logInEmailEditText = view.findViewById(R.id.log_in_email_edit_text)
+
+        logInPasswordTextLayout = view.findViewById(R.id.log_in_password_text_layout)
+        logInPasswordEditText = view.findViewById(R.id.log_in_password_edit_text)
 
         dialogAuthLoading = DialogAuthLoading(requireActivity())
 
         logInButton.setOnClickListener {
 
-            dialogAuthLoading.startLoadingDialog()
+            if (logInEmailEditText.text.isNotEmpty() && logInPasswordEditText.text.isNotEmpty()) {
+                dialogAuthLoading.startLoadingDialog()
 
-            Thread(
-                Runnable {
-                    logIn(authEmailEditText.text.toString(), authPasswordEditText.text.toString())
-                }
-            ).start()
+                Thread(
+                    Runnable {
+                        logIn(
+                            logInEmailEditText.text.toString(),
+                            logInPasswordEditText.text.toString()
+                        )
+                    }
+                ).start()
+            }
+            validateLogInData()
+
         }
+
+        logInEmailEditText.addTextChangedListener { validateLogInData() }
+        logInPasswordEditText.addTextChangedListener { validateLogInData() }
 
         goSignUpButton.setOnClickListener { callbacks?.showFragment(AuthSignUpFragment(),false) }
 
@@ -93,9 +113,12 @@ class AuthLogInFragment: Fragment() {
                     val intent = Intent(activity, MainActivity::class.java)
                     startActivity(intent)
                     activity?.finish()
-                } else
-                    Toast.makeText(activity, "ERROR! LogIn Non Success", Toast.LENGTH_SHORT).show()
-
+                } else {
+                    logInEmailTextLayout.isErrorEnabled = true
+                    logInEmailTextLayout.error = "Incorrect email"
+                    logInPasswordTextLayout.isErrorEnabled = true
+                    logInPasswordTextLayout.error = "Incorrect password"
+                }
             }
 
         })
@@ -103,4 +126,31 @@ class AuthLogInFragment: Fragment() {
         dialogAuthLoading.dismissDialog()
     }
 
+    private fun validateLogInData() {
+        if (logInEmailEditText.text.isNotEmpty()) {
+            logInEmailTextLayout.isErrorEnabled = false
+        }
+        if (logInPasswordEditText.text.isNotEmpty()) {
+            logInPasswordTextLayout.isErrorEnabled = false
+        }
+        if (logInEmailEditText.text.isNotEmpty() && logInPasswordEditText.text.isNotEmpty()) {
+            logInEmailTextLayout.isErrorEnabled = false
+            logInPasswordTextLayout.isErrorEnabled = false
+        }
+        if (logInEmailEditText.text.isEmpty() && logInPasswordEditText.text.isEmpty()) {
+            logInEmailTextLayout.isErrorEnabled = true
+            logInEmailTextLayout.error = "Email is required"
+            logInPasswordTextLayout.isErrorEnabled = true
+            logInPasswordTextLayout.error = "Password is required"
+        } else if (logInEmailEditText.text.isEmpty()) {
+            logInEmailTextLayout.isErrorEnabled = true
+            logInEmailTextLayout.error = "Email is required"
+        } else if (logInPasswordEditText.text.isEmpty()) {
+            logInPasswordTextLayout.isErrorEnabled = true
+            logInPasswordTextLayout.error = "Password is required"
+        } else {
+            logInEmailTextLayout.isErrorEnabled = false
+            logInPasswordTextLayout.isErrorEnabled = false
+        }
+    }
 }
