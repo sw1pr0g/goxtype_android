@@ -11,25 +11,18 @@
         android:id="@+id/main_fragment_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/navBar"
+        app:layout_constraintBottom_toTopOf="@+id/main_bottom_navigation_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-    
-    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
-        android:id="@+id/navBar"
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/main_bottom_navigation_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav"
-        app:mbn_shadowColor="@color/shadowColor"
-        app:mbn_backgroundBottomColor="@color/backgroundBottomColor"
-        app:mbn_circleColor="@color/circleColor"
-        app:mbn_countBackgroundColor="@color/countBackgroundColor"
-        app:mbn_countTextColor="@color/countTextColor"
-        app:mbn_defaultIconColor="@color/defaultIconColor"
-        app:mbn_selectedIconColor="@color/selectedIconColor"/>
+        app:menu="@menu/bottom_nav" />
     
 </androidx.constraintlayout.widget.ConstraintLayout>

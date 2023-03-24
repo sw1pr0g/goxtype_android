@@ -28,11 +28,10 @@
         <activity
             android:name=".AuthActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.AuthActivity" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"
+            android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysVisible" />
 

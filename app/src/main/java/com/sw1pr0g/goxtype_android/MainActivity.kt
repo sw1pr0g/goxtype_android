@@ -2,14 +2,13 @@ package com.sw1pr0g.goxtype_android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import com.etebarian.meowbottomnavigation.MeowBottomNavigation
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sw1pr0g.goxtype_android.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), MainHomeFragment.Callbacks, MainProfileFragment.Callbacks {
+class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var navBar: MeowBottomNavigation
+    private lateinit var mainBottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -18,32 +17,26 @@ class MainActivity : AppCompatActivity(), MainHomeFragment.Callbacks, MainProfil
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        navBar = findViewById(R.id.navBar)
+        mainBottomNavigationView = findViewById(R.id.main_bottom_navigation_view)
 
-        showFragment(MainHomeFragment(), true)
-        navBar.show(0)
+        //showFragment(MainHomeFragment(), true)
+        mainBottomNavigationView.selectedItemId = 0
 
-        navBar.add(MeowBottomNavigation.Model(0, R.drawable.baseline_home_24))
-        navBar.add(MeowBottomNavigation.Model(1, R.drawable.baseline_keyboard_24))
+        binding.mainBottomNavigationView.setOnItemSelectedListener {
 
-        binding.navBar.setOnClickMenuListener {
+            when(it.itemId) {
 
-            when(it.id){
 
-                0 -> {
-                    showFragment(MainHomeFragment(), false)
-                }
 
-                1 -> {
-                    showFragment(MainTrainerFragment(), false)
-                }
 
             }
 
         }
-    }
 
-    override fun showFragment(fragment: Fragment, firstShowing: Boolean) {
+    }
+}
+
+    /*fun showFragment(fragment: Fragment, firstShowing: Boolean) {
 
         val supportFragmentManager = supportFragmentManager.beginTransaction()
             .replace(R.id.main_fragment_container, fragment)
@@ -52,5 +45,4 @@ class MainActivity : AppCompatActivity(), MainHomeFragment.Callbacks, MainProfil
 
         supportFragmentManager.commit()
 
-    }
-}
+    }*/

@@ -23,6 +23,7 @@
         android:textSize="25sp" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/log_in_email_text_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,18 +34,19 @@
         android:textColorHint="@color/colorAccent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/auth_email_edit_text"
+            android:id="@+id/log_in_email_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/raleway_bold"
             android:inputType="textEmailAddress"
             android:singleLine="true"
             android:textColor="@color/text_color"
-            android:textSize="21sp" />
+            android:textSize="21sp"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/log_in_password_text_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,7 +58,7 @@
         app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/auth_password_edit_text"
+            android:id="@+id/log_in_password_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/raleway_bold"
