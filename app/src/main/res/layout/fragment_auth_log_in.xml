@@ -86,20 +86,27 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="57dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Not registered yet?" />
+            android:text="New member?"
+            android:fontFamily="@font/raleway_medium"
+            android:textSize="23sp"
+            android:textColor="@color/text_color"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="?android:attr/borderlessButtonStyle"
-            android:textColor="@color/black"
+            android:textColor="@color/colorPrimary"
             android:textAllCaps="false"
-            android:text="Sign Up now" />
+            android:text="Sign Up now"
+            android:textSize="26sp"
+            android:fontFamily="@font/raleway_bold"/>
 
     </LinearLayout>
 
