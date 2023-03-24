@@ -2,8 +2,6 @@ package com.sw1pr0g.goxtype_android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Window
-import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 
 class AuthActivity : AppCompatActivity(), AuthLogInFragment.Callbacks, AuthSignUpFragment.Callbacks {
@@ -12,12 +10,10 @@ class AuthActivity : AppCompatActivity(), AuthLogInFragment.Callbacks, AuthSignU
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
-        showFragment(AuthLogInFragment(), getColor(R.color.background), true, firstShowing = true)
+        showFragment(AuthLogInFragment(), true)
     }
 
     override fun showFragment(fragment: Fragment,
-                              statusBarColor: Int,
-                              statusBarDarkText: Boolean,
                               firstShowing: Boolean) {
 
         val supportFragmentManager = supportFragmentManager.beginTransaction().setCustomAnimations(
@@ -29,15 +25,7 @@ class AuthActivity : AppCompatActivity(), AuthLogInFragment.Callbacks, AuthSignU
 
         if (!firstShowing) supportFragmentManager.addToBackStack(null)
 
-        window.statusBarColor = statusBarColor
-        window.setStatusBarDarkText(statusBarDarkText)
-
         supportFragmentManager.commit()
-    }
-
-    private fun Window.setStatusBarDarkText(statusBarDarkText: Boolean) {
-        WindowCompat.getInsetsController(this, decorView)
-            .isAppearanceLightStatusBars = statusBarDarkText
     }
 
 }

@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import com.sw1pr0g.goxtype_android.api.ApiInterface
 import com.sw1pr0g.goxtype_android.api.LogInBody
@@ -23,15 +22,13 @@ class AuthLogInFragment: Fragment() {
 
     interface Callbacks {
         fun showFragment(fragment: Fragment,
-                         statusBarColor: Int,
-                         statusBarDarkText: Boolean,
                          firstShowing: Boolean)
     }
 
     private var callbacks: Callbacks? = null
 
-    private lateinit var emailEditText: EditText
-    private lateinit var passwordEditText: EditText
+    private lateinit var authEmailEditText: EditText
+    private lateinit var authPasswordEditText: EditText
 
     private lateinit var logInButton: Button
     private lateinit var goSignUpButton: Button
@@ -53,8 +50,8 @@ class AuthLogInFragment: Fragment() {
         logInButton = view.findViewById(R.id.log_in_button)
         goSignUpButton = view.findViewById(R.id.go_sign_up_button)
 
-        emailEditText = view.findViewById(R.id.email_edit_text)
-        passwordEditText = view.findViewById(R.id.password_edit_text)
+        authEmailEditText = view.findViewById(R.id.auth_email_edit_text)
+        authPasswordEditText = view.findViewById(R.id.auth_password_edit_text)
 
         dialogAuthLoading = DialogAuthLoading(requireActivity())
 
@@ -64,14 +61,12 @@ class AuthLogInFragment: Fragment() {
 
             Thread(
                 Runnable {
-                    logIn(emailEditText.text.toString(), passwordEditText.text.toString())
+                    logIn(authEmailEditText.text.toString(), authPasswordEditText.text.toString())
                 }
             ).start()
         }
 
-        goSignUpButton.setOnClickListener { callbacks?.showFragment(AuthSignUpFragment(),
-            getColor(requireActivity(), R.color.colorPrimary), false,
-            firstShowing = false) }
+        goSignUpButton.setOnClickListener { callbacks?.showFragment(AuthSignUpFragment(),false) }
 
         return view
     }
