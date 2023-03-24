@@ -49,9 +49,7 @@
         android:layout_marginRight="42dp"
         android:hint="Password"
         android:textColorHint="@color/colorAccent"
-        app:endIconMode="password_toggle"
-        app:counterEnabled="true"
-        >
+        app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/sign_up_password_edit_text"

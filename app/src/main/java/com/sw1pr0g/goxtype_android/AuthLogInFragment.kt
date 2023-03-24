@@ -1,9 +1,7 @@
 package com.sw1pr0g.goxtype_android
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +28,7 @@ class AuthLogInFragment: Fragment() {
     }
 
     private var callbacks: Callbacks? = null
+    private var validateChecks: Boolean = false
 
     private lateinit var logInEmailTextLayout: TextInputLayout
     private lateinit var logInEmailEditText: EditText
@@ -67,7 +66,8 @@ class AuthLogInFragment: Fragment() {
 
         logInButton.setOnClickListener {
 
-            if (logInEmailEditText.text.isNotEmpty() && logInPasswordEditText.text.isNotEmpty()) {
+            validateLogInData()
+            if (validateChecks) {
                 dialogAuthLoading.startLoadingDialog()
 
                 Thread(
@@ -79,7 +79,6 @@ class AuthLogInFragment: Fragment() {
                     }
                 ).start()
             }
-            validateLogInData()
 
         }
 
@@ -118,6 +117,7 @@ class AuthLogInFragment: Fragment() {
                     logInEmailTextLayout.error = "Incorrect email"
                     logInPasswordTextLayout.isErrorEnabled = true
                     logInPasswordTextLayout.error = "Incorrect password"
+                    validateChecks = false
                 }
             }
 
@@ -127,39 +127,31 @@ class AuthLogInFragment: Fragment() {
     }
 
     private fun validateLogInData() {
-        if (logInEmailEditText.text.isNotEmpty()) {
-            logInEmailTextLayout.isErrorEnabled = false
-        }
-        if (logInPasswordEditText.text.isNotEmpty()) {
-            logInPasswordTextLayout.isErrorEnabled = false
-        }
-        if (logInEmailEditText.text.isNotEmpty() && logInPasswordEditText.text.isNotEmpty()) {
-            logInEmailTextLayout.isErrorEnabled = false
-            logInPasswordTextLayout.isErrorEnabled = false
-        }
         if (logInEmailEditText.text.isEmpty() && logInPasswordEditText.text.isEmpty()) {
             logInEmailTextLayout.isErrorEnabled = true
             logInEmailTextLayout.error = "Email is required"
             logInPasswordTextLayout.isErrorEnabled = true
             logInPasswordTextLayout.error = "Password is required"
+            validateChecks = false
         } else if (logInEmailEditText.text.isEmpty()) {
             logInEmailTextLayout.isErrorEnabled = true
             logInEmailTextLayout.error = "Email is required"
+            validateChecks = false
         } else if (logInPasswordEditText.text.isEmpty()) {
             logInPasswordTextLayout.isErrorEnabled = true
             logInPasswordTextLayout.error = "Password is required"
-        } else {
-            logInEmailTextLayout.isErrorEnabled = false
-            logInPasswordTextLayout.isErrorEnabled = false
+            validateChecks = false
         }
     }
 
     private fun checkOffMistakes() {
         if (logInEmailEditText.text.isNotEmpty()) {
             logInEmailTextLayout.isErrorEnabled = false
+            validateChecks = true
         }
         if (logInPasswordEditText.text.isNotEmpty()) {
             logInPasswordTextLayout.isErrorEnabled = false
+            validateChecks = true
         }
     }
 }

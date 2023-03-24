@@ -55,7 +55,6 @@
         android:layout_marginRight="42dp"
         android:hint="Password"
         android:textColorHint="@color/colorAccent"
-        app:helperTextTextColor="@color/error_color"
         app:endIconMode="password_toggle">
 
         <com.google.android.material.textfield.TextInputEditText
