@@ -11,20 +11,18 @@ import androidx.fragment.app.Fragment
 
 class MainProfileFragment: Fragment() {
 
-    interface Callbacks {
+    /*interface Callbacks {
 
         fun showFragment(fragment: Fragment, firstShowing: Boolean)
 
-    }
+    }*/
 
-    private var callbacks: Callbacks? = null
+    /*private var callbacks: Callbacks? = null*/
 
-    private lateinit var backToMainImageButton: ImageButton
-
-    override fun onAttach(context: Context) {
+    /*override fun onAttach(context: Context) {
         super.onAttach(context)
         callbacks = context as Callbacks?
-    }
+    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,16 +31,12 @@ class MainProfileFragment: Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_main_profile, container, false)
 
-        backToMainImageButton = view.findViewById(R.id.back_to_main_image_button)
-
-        backToMainImageButton.setOnClickListener { callbacks?.showFragment(MainHomeFragment(), false) }
-
         return view
     }
 
-    override fun onDetach() {
+    /*override fun onDetach() {
         super.onDetach()
         callbacks = null
-    }
+    }*/
 
 }
