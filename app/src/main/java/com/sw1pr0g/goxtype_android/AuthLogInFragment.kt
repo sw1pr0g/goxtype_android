@@ -83,8 +83,8 @@ class AuthLogInFragment: Fragment() {
 
         }
 
-        logInEmailEditText.addTextChangedListener { validateLogInData() }
-        logInPasswordEditText.addTextChangedListener { validateLogInData() }
+        logInEmailEditText.addTextChangedListener { checkOffMistakes() }
+        logInPasswordEditText.addTextChangedListener { checkOffMistakes() }
 
         goSignUpButton.setOnClickListener { callbacks?.showFragment(AuthSignUpFragment(),false) }
 
@@ -150,6 +150,15 @@ class AuthLogInFragment: Fragment() {
             logInPasswordTextLayout.error = "Password is required"
         } else {
             logInEmailTextLayout.isErrorEnabled = false
+            logInPasswordTextLayout.isErrorEnabled = false
+        }
+    }
+
+    private fun checkOffMistakes() {
+        if (logInEmailEditText.text.isNotEmpty()) {
+            logInEmailTextLayout.isErrorEnabled = false
+        }
+        if (logInPasswordEditText.text.isNotEmpty()) {
             logInPasswordTextLayout.isErrorEnabled = false
         }
     }
