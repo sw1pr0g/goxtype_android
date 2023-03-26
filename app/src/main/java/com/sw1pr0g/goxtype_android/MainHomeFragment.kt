@@ -16,7 +16,6 @@ class MainHomeFragment : Fragment() {
 
     private var callbacks: Callbacks? = null*/
 
-    private lateinit var profileImageButton: ImageButton
     private lateinit var typingTestStartButton: Button
     private lateinit var typingRuleFullDescButton: Button
 
@@ -31,12 +30,11 @@ class MainHomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_main_home, container, false)
 
-        profileImageButton = view.findViewById(R.id.profile_image_button)
-        typingTestStartButton = view.findViewById(R.id.typing_test_start_button)
+        /*typingTestStartButton = view.findViewById(R.id.typing_test_start_button)
         typingRuleFullDescButton = view.findViewById(R.id.typing_rule_full_desc_button)
 
         typingTestStartButton.setOnClickListener { TODO("Write Typing test and call fragment here") }
-        typingRuleFullDescButton.setOnClickListener { TODO("Write show all func") }
+        typingRuleFullDescButton.setOnClickListener { TODO("Write show all func") }*/
 
         return view
     }
