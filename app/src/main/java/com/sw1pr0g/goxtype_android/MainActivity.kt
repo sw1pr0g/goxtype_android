@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.home -> showFragment(MainHomeFragment(), false)
                 R.id.trainer -> showFragment(MainTrainerFragment(), false)
+                R.id.notifications -> showFragment(MainNotificationsFragment(), false)
                 R.id.profile -> showFragment(MainProfileFragment(), false)
 
             }

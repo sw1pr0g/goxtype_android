@@ -16,6 +16,8 @@
 
     <color name="text_color">#79859D</color>
 
+    <color name="profile_welcome_color">#114B5F</color>
+
     //auth-colors
     <color name="colorPrimary">#6798E1</color>
     <color name="colorPrimaryDark">#000</color>
