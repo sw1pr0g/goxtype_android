@@ -1,6 +1,7 @@
 package com.sw1pr0g.goxtype_android
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.telecom.Call
 import android.view.LayoutInflater
@@ -8,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainProfileFragment: Fragment() {
 
@@ -18,6 +21,9 @@ class MainProfileFragment: Fragment() {
     }*/
 
     /*private var callbacks: Callbacks? = null*/
+
+    private lateinit var profileInfoCardView: MaterialCardView
+    private lateinit var logOutCardView: MaterialCardView
 
     /*override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -30,6 +36,28 @@ class MainProfileFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_main_profile, container, false)
+
+        profileInfoCardView = view.findViewById(R.id.profile_info_card_view)
+        logOutCardView = view.findViewById(R.id.log_out_card_view)
+
+        profileInfoCardView.setOnClickListener {  }
+
+        logOutCardView.setOnClickListener {
+
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(resources.getString((R.string.alert_exit_title)))
+                .setMessage(resources.getString(R.string.alert_exit_supporting_text))
+                .setNegativeButton(resources.getString(R.string.alert_exit_no)) { _, _ -> }
+                .setPositiveButton(resources.getString(R.string.alert_exit_yes)) { _, _ ->
+
+                    val intent = Intent(activity, AuthActivity::class.java)
+                    startActivity(intent)
+                    activity?.finish()
+
+                }
+                .show()
+
+        }
 
         return view
     }

@@ -67,6 +67,7 @@
         app:cardBackgroundColor="@color/profile_welcome_color" />
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/profile_info_card_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="51dp"
@@ -110,6 +111,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/log_out_card_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/Widget.AppCompat.Button.Borderless"
