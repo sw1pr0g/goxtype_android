@@ -108,6 +108,8 @@ class AuthLogInFragment: Fragment() {
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
 
+                //TODO("Add checks for mistakes")
+
                 if (response.isSuccessful) {
                     val intent = Intent(activity, MainActivity::class.java)
                     startActivity(intent)
