@@ -70,58 +70,52 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="35dp" />
 
-    <ScrollView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="12dp"
+        app:cardBackgroundColor="@color/colorPrimary">
 
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="19dp"
-            android:layout_marginEnd="12dp"
-            app:cardBackgroundColor="@color/colorPrimary">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:text="Typing test"
-                        android:textAppearance="?attr/textAppearanceHeadline6"
-                        android:textColor="@color/profile_welcome_color" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Take a test to determine the level of your typing"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="@color/lightBlack"
-                        android:fontFamily="@font/raleway_bold"/>
-
-                </LinearLayout>
-
-                <com.google.android.material.button.MaterialButton
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="Start typing test"
-                    android:layout_gravity="center_horizontal"/>
+                    android:fontFamily="@font/raleway_semibold"
+                    android:text="Typing test"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/profile_welcome_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Take a test to determine the level of your typing"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textColor="@color/lightBlack"
+                    android:fontFamily="@font/raleway_bold"/>
 
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Start typing test"
+                android:layout_gravity="center_horizontal"/>
 
-    </ScrollView>
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>
