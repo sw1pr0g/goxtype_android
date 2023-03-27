@@ -19,6 +19,7 @@ class MainProfileFragment: Fragment() {
     interface Callbacks {
 
         fun showFragment(fragment: Fragment, firstShowing: Boolean)
+        add
 
     }
 
