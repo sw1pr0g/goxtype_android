@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.sw1pr0g.goxtype_android.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainProfileFragment.Callbacks, MainProfileInfoFragment.Callbacks {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var mainBottomNavigationView: BottomNavigationView
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun showFragment(fragment: Fragment, firstShowing: Boolean) {
+    override fun showFragment(fragment: Fragment, firstShowing: Boolean) {
 
         val supportFragmentManager = supportFragmentManager.beginTransaction()
             .replace(R.id.main_fragment_container, fragment)
