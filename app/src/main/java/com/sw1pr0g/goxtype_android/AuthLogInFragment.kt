@@ -122,7 +122,7 @@ class AuthLogInFragment: Fragment() {
             }
 
         })
-        Thread.sleep(1500)
+        Thread.sleep(500)
         dialogAuthLoading.dismissDialog()
     }
 

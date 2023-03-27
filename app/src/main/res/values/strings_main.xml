@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+
+
+    //profile tab
+    <string name="alert_exit_title">Log Out</string>
+    <string name="alert_exit_supporting_text">Are you sure?</string>
+    <string name="alert_exit_yes">Yes</string>
+    <string name="alert_exit_no">No</string>
+
+
+</resources>
