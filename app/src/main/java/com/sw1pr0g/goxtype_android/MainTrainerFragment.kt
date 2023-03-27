@@ -24,6 +24,14 @@ class MainTrainerFragment : Fragment() {
     private lateinit var trainerTextView: TextView
     private lateinit var trainerStartButton: Button
 
+    private lateinit var userClicksTextView: TextView
+
+    private var userClicks = 0
+    private var userMistakes = 0
+    private var userAccuracy = 0.0
+    private var userCPM = 0.0
+    private var editLetter = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,6 +40,9 @@ class MainTrainerFragment : Fragment() {
 
         trainerEditText = view.findViewById(R.id.trainer_edit_text)
         trainerStartButton = view.findViewById(R.id.trainer_start_button)
+
+        userClicksTextView = view.findViewById(R.id.user_clicks_text_view)
+
         var trainerStatus = false
 
         trainerStartButton.setOnClickListener {
@@ -45,11 +56,11 @@ class MainTrainerFragment : Fragment() {
                 trainerStatus = false
                 trainerStartButton.text = "Press to start"
                 hideKeyboard(requireContext(), requireView())
+                userClicks = 0
+                userClicksTextView.text = "Clicks: $userClicks"
             }
 
         }
-
-        var editLetter = 0
 
         trainerEditText.addTextChangedListener {
 
@@ -66,8 +77,14 @@ class MainTrainerFragment : Fragment() {
                         editLetter+1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                     trainerTextView.setText(spannableString, TextView.BufferType.SPANNABLE)
                     editLetter++
+                    userClicks++
+                    userClicksTextView.text = "Clicks: $userClicks"
+
                 } else {
                     toast.show()
+                    userClicks++
+                    userMistakes++
+                    userClicksTextView.text = "Clicks: $userClicks"
                 }
             }
 
