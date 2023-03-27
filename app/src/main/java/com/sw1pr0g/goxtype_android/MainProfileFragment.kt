@@ -54,11 +54,9 @@ class MainProfileFragment: Fragment() {
                 .setNegativeButton(resources.getString(R.string.alert_exit_no)) { _, _ -> }
                 .setPositiveButton(resources.getString(R.string.alert_exit_yes)) { _, _ ->
 
-                    textView.text = textView.width.toString()
-
-                    /*val intent = Intent(activity, AuthActivity::class.java)
+                    val intent = Intent(activity, AuthActivity::class.java)
                     startActivity(intent)
-                    activity?.finish()*/
+                    activity?.finish()
 
                 }
                 .show()

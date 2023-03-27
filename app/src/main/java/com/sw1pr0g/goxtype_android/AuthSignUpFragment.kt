@@ -1,6 +1,7 @@
 package com.sw1pr0g.goxtype_android
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -121,9 +122,13 @@ class AuthSignUpFragment: Fragment() {
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
 
-                if (response.code() == 201)
-                    Toast.makeText(activity, "SignUp Success", Toast.LENGTH_SHORT).show()
-                else {
+                if (response.code() == 201){
+
+                    val intent = Intent(activity, MainActivity::class.java)
+                    startActivity(intent)
+                    activity?.finish()
+
+                } else {
 
                     if (response.message() == "User email already exists!") {
                         Toast.makeText(activity, "Please", Toast.LENGTH_SHORT).show()
@@ -135,7 +140,7 @@ class AuthSignUpFragment: Fragment() {
             }
 
             })
-        Thread.sleep(1500)
+        Thread.sleep(500)
         dialogAuthLoading.dismissDialog()
     }
 
