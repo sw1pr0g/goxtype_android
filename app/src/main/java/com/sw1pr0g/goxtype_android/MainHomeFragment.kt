@@ -28,15 +28,13 @@ class MainHomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_main_home, container, false)
+        return inflater.inflate(R.layout.fragment_main_home, container, false)
 
         /*typingTestStartButton = view.findViewById(R.id.typing_test_start_button)
         typingRuleFullDescButton = view.findViewById(R.id.typing_rule_full_desc_button)
 
         typingTestStartButton.setOnClickListener { TODO("Write Typing test and call fragment here") }
         typingRuleFullDescButton.setOnClickListener { TODO("Write show all func") }*/
-
-        return view
     }
 
     /*override fun onDetach() {
