@@ -1,5 +1,6 @@
 package com.sw1pr0g.goxtype_android.startslider
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,9 @@ class StartSliderAdapter(
         val sliderStartImageView: ImageView = view.findViewById(R.id.slider_start_image_view)
         val sliderStartHeading: TextView = view.findViewById(R.id.slider_start_heading)
         val sliderStartDescription: TextView = view.findViewById(R.id.slider_start_description)
+
+
+        val nextButton: TextView = view.findViewById(R.id.next_button)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StartSliderViewHolder {
@@ -26,7 +30,14 @@ class StartSliderAdapter(
     }
 
     override fun onBindViewHolder(holder: StartSliderViewHolder, position: Int) {
-        val slide = data[position]
+        var recyclerViewPosition = position
+
+        holder.nextButton.setOnClickListener {
+            if (position == itemCount) StartActivity().showAuthActivity()
+            else recyclerViewPosition++
+        }
+
+        val slide = data[recyclerViewPosition]
 
         holder.sliderStartImageView.setImageResource(slide.imageResourceId)
         holder.sliderStartHeading.setText(slide.headingResourceId)
