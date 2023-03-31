@@ -13,7 +13,6 @@ import kotlin.properties.Delegates
 class StartSliderAdapter(
     private val data: List<Slide>
 ) : RecyclerView.Adapter<StartSliderAdapter.StartSliderViewHolder>() {
-
     class StartSliderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val sliderStartImageView: ImageView = view.findViewById(R.id.slider_start_image_view)
         val sliderStartHeading: TextView = view.findViewById(R.id.slider_start_heading)
@@ -36,5 +35,4 @@ class StartSliderAdapter(
     }
 
     override fun getItemCount(): Int = data.size
-
 }
