@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sw1pr0g.goxtype_android.R
+import kotlin.properties.Delegates
 
 class StartSliderAdapter(
     private val data: List<Slide>
@@ -17,9 +18,6 @@ class StartSliderAdapter(
         val sliderStartImageView: ImageView = view.findViewById(R.id.slider_start_image_view)
         val sliderStartHeading: TextView = view.findViewById(R.id.slider_start_heading)
         val sliderStartDescription: TextView = view.findViewById(R.id.slider_start_description)
-
-
-        val nextButton: TextView = view.findViewById(R.id.next_button)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StartSliderViewHolder {
@@ -30,14 +28,7 @@ class StartSliderAdapter(
     }
 
     override fun onBindViewHolder(holder: StartSliderViewHolder, position: Int) {
-        var recyclerViewPosition = position
-
-        holder.nextButton.setOnClickListener {
-            if (position == itemCount) StartActivity().showAuthActivity()
-            else recyclerViewPosition++
-        }
-
-        val slide = data[recyclerViewPosition]
+        val slide = data[position]
 
         holder.sliderStartImageView.setImageResource(slide.imageResourceId)
         holder.sliderStartHeading.setText(slide.headingResourceId)

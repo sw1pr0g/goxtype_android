@@ -19,18 +19,18 @@ class StartActivity : AppCompatActivity() {
 
         binding.skipButton.setOnClickListener { showAuthActivity() }
 
-        val recyclerViewAdapter = StartSliderAdapter(StartData().loadSlides())
+        binding.startSliderViewPager2.adapter = StartSliderAdapter(StartData().loadSlides())
+        binding.startSliderViewPager2.currentItem
 
-        binding.startSliderRecyclerView.adapter = recyclerViewAdapter
-        binding.startSliderRecyclerView.setHasFixedSize(true)
+        binding.circleIndicator.setViewPager(binding.startSliderViewPager2)
 
-        val pagerSnapHelper = PagerSnapHelper()
-
-        pagerSnapHelper.attachToRecyclerView(binding.startSliderRecyclerView)
-        binding.circleIndicator.attachToRecyclerView(binding.startSliderRecyclerView, pagerSnapHelper)
+        binding.nextButton.setOnClickListener {
+            if (binding.startSliderViewPager2.currentItem == binding.circleIndicator.childCount-1) showAuthActivity()
+            else binding.startSliderViewPager2.currentItem++
+        }
     }
 
-    fun showAuthActivity() {
+    private fun showAuthActivity() {
         val intent = Intent(this, AuthActivity::class.java)
         startActivity(intent)
         this.finish()
