@@ -1,10 +1,9 @@
-package com.sw1pr0g.goxtype_android
+package com.sw1pr0g.goxtype_android.ui.main
 
 import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.os.SystemClock
 import android.text.Spannable
 import android.text.style.ForegroundColorSpan
@@ -20,11 +19,8 @@ import android.widget.Toast
 import androidx.core.text.toSpannable
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import org.w3c.dom.Text
-import java.math.RoundingMode
+import com.sw1pr0g.goxtype_android.R
 import java.text.DecimalFormat
-import java.util.TimerTask
-import kotlin.math.roundToInt
 
 class MainTrainerFragment : Fragment() {
 

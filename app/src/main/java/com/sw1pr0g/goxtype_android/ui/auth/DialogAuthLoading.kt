@@ -1,7 +1,8 @@
-package com.sw1pr0g.goxtype_android
+package com.sw1pr0g.goxtype_android.ui.auth
 
 import android.app.Activity
 import android.app.AlertDialog
+import com.sw1pr0g.goxtype_android.R
 
 class DialogAuthLoading internal constructor(var activity: Activity) {
     private lateinit var dialog: AlertDialog

@@ -1,4 +1,4 @@
-package com.sw1pr0g.goxtype_android
+package com.sw1pr0g.goxtype_android.ui.main
 
 import android.content.Context
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
+import com.sw1pr0g.goxtype_android.R
 
 class MainProfileInfoFragment: Fragment() {
 

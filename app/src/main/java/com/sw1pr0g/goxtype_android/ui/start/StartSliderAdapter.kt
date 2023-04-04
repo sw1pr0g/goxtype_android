@@ -1,6 +1,5 @@
-package com.sw1pr0g.goxtype_android.startslider
+package com.sw1pr0g.goxtype_android.ui.start
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.sw1pr0g.goxtype_android.R
-import kotlin.properties.Delegates
 
 class StartSliderAdapter(
     private val data: List<Slide>

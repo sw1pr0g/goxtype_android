@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Goxtype_android"
         tools:targetApi="31">
         <activity
-            android:name=".startslider.StartActivity"
+            android:name=".ui.start.StartActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MyApp.Splash">
@@ -26,11 +26,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AuthActivity"
+            android:name=".ui.auth.AuthActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysVisible" />

@@ -1,12 +1,14 @@
-package com.sw1pr0g.goxtype_android
+package com.sw1pr0g.goxtype_android.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.sw1pr0g.goxtype_android.R
 import com.sw1pr0g.goxtype_android.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), MainProfileFragment.Callbacks, MainProfileInfoFragment.Callbacks {
+class MainActivity : AppCompatActivity(), MainProfileFragment.Callbacks,
+    MainProfileInfoFragment.Callbacks {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var mainBottomNavigationView: BottomNavigationView

@@ -1,12 +1,11 @@
-package com.sw1pr0g.goxtype_android.startslider
+package com.sw1pr0g.goxtype_android.ui.start
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.recyclerview.widget.PagerSnapHelper
-import com.sw1pr0g.goxtype_android.AuthActivity
 import com.sw1pr0g.goxtype_android.databinding.ActivityStartBinding
+import com.sw1pr0g.goxtype_android.ui.auth.AuthActivity
 
 class StartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStartBinding
@@ -14,6 +13,7 @@ class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
+
         binding = ActivityStartBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

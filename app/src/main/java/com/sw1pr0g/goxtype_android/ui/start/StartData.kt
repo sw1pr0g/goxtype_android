@@ -1,4 +1,4 @@
-package com.sw1pr0g.goxtype_android.startslider
+package com.sw1pr0g.goxtype_android.ui.start
 
 import com.sw1pr0g.goxtype_android.R
 
