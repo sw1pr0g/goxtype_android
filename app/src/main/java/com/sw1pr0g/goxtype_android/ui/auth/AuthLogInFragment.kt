@@ -1,29 +1,17 @@
 package com.sw1pr0g.goxtype_android.ui.auth
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import com.google.android.material.textfield.TextInputLayout
-import com.sw1pr0g.goxtype_android.R
-import com.sw1pr0g.goxtype_android.data.api.ApiInterface
-import com.sw1pr0g.goxtype_android.data.api.LogInBody
-import com.sw1pr0g.goxtype_android.data.api.RetrofitInstance
 import com.sw1pr0g.goxtype_android.databinding.FragmentAuthLogInBinding
 import com.sw1pr0g.goxtype_android.domain.DataValidation
 import com.sw1pr0g.goxtype_android.domain.UserAuthAction
 import com.sw1pr0g.goxtype_android.ui.Component
 import com.sw1pr0g.goxtype_android.ui.main.MainActivity
 import kotlinx.coroutines.*
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class AuthLogInFragment: Fragment() {
@@ -31,8 +19,7 @@ class AuthLogInFragment: Fragment() {
     private val binding get() = _binding!!
 
     interface Callbacks {
-        fun showFragment(fragment: Fragment,
-                         firstShowing: Boolean)
+        fun showFragment(fragment: Fragment)
     }
 
     private var callbacks: Callbacks? = null
@@ -94,8 +81,7 @@ class AuthLogInFragment: Fragment() {
 
         binding.goSignUpButton.setOnClickListener {
             callbacks?.showFragment(
-                AuthSignUpFragment(),
-                false)
+                AuthSignUpFragment())
         }
 
         return view

@@ -26,8 +26,7 @@ import retrofit2.Response
 class AuthSignUpFragment: Fragment() {
 
     interface Callbacks {
-        fun showFragment(fragment: Fragment,
-                         firstShowing: Boolean)
+        fun showFragment(fragment: Fragment)
     }
 
     private var callbacks: Callbacks? = null
@@ -77,7 +76,7 @@ class AuthSignUpFragment: Fragment() {
 
         dialogAuthLoading = DialogAuthLoading(requireActivity())
 
-        goLogInButton.setOnClickListener { callbacks?.showFragment(AuthLogInFragment(), false) }
+        goLogInButton.setOnClickListener { callbacks?.showFragment(AuthLogInFragment()) }
 
         signUpButton.setOnClickListener {
 

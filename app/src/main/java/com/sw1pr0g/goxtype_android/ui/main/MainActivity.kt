@@ -8,7 +8,7 @@ import com.sw1pr0g.goxtype_android.ui.Component
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val component = Component(this)
+    private val component = Component(this, supportFragmentManager)
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        component.showFragment(MainHomeFragment(), true)
+        component.showFragment(MainHomeFragment())
         binding.mainBottomNavigationView.selectedItemId = 0
 
         binding.mainBottomNavigationView.setOnItemSelectedListener {
