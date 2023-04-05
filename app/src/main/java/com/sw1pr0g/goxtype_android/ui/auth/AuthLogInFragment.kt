@@ -17,6 +17,7 @@ import com.sw1pr0g.goxtype_android.data.api.RetrofitInstance
 import com.sw1pr0g.goxtype_android.databinding.FragmentAuthLogInBinding
 import com.sw1pr0g.goxtype_android.domain.DataValidation
 import com.sw1pr0g.goxtype_android.domain.UserAuthAction
+import com.sw1pr0g.goxtype_android.ui.Component
 import com.sw1pr0g.goxtype_android.ui.main.MainActivity
 import kotlinx.coroutines.*
 import okhttp3.ResponseBody
@@ -26,8 +27,8 @@ import retrofit2.Response
 
 
 class AuthLogInFragment: Fragment() {
-
-    private lateinit var binding: FragmentAuthLogInBinding
+    private var _binding: FragmentAuthLogInBinding? = null
+    private val binding get() = _binding!!
 
     interface Callbacks {
         fun showFragment(fragment: Fragment,
@@ -39,6 +40,7 @@ class AuthLogInFragment: Fragment() {
 
     private lateinit var dialogAuthLoading: DialogAuthLoading
     private val dataValidation = DataValidation()
+    private val component = Component(activity)
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -50,14 +52,15 @@ class AuthLogInFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAuthLogInBinding.inflate(inflater, container, false)
+        _binding = FragmentAuthLogInBinding.inflate(inflater, container, false)
+        val view = binding.root
 
         dialogAuthLoading = DialogAuthLoading(requireActivity())
         val userAuthAction = UserAuthAction()
 
         binding.logInButton.setOnClickListener {
 
-            validateLogInData()
+            //validateLogInData()
             if (validateChecks) {
                 dialogAuthLoading.startLoadingDialog()
 
@@ -71,11 +74,7 @@ class AuthLogInFragment: Fragment() {
 
                         when (userAuthResult) {
 
-                            true -> {
-                                val intent = Intent(activity, MainActivity::class.java)
-                                startActivity(intent)
-                                activity?.finish()
-                            }
+                            true -> component.newActivity(MainActivity::class.java)
                             else -> {
                                 dataValidation.auth(
                                     binding.logInEmailTextLayout,
@@ -90,8 +89,8 @@ class AuthLogInFragment: Fragment() {
 
         }
 
-        binding.logInEmailEditText.addTextChangedListener { checkOffMistakes() }
-        binding.logInPasswordEditText.addTextChangedListener { checkOffMistakes() }
+        /*binding.logInEmailEditText.addTextChangedListener { checkOffMistakes() }
+        binding.logInPasswordEditText.addTextChangedListener { checkOffMistakes() }*/
 
         binding.goSignUpButton.setOnClickListener {
             callbacks?.showFragment(
@@ -102,14 +101,17 @@ class AuthLogInFragment: Fragment() {
         return view
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     override fun onDetach() {
         super.onDetach()
         callbacks = null
     }
 
-
-
-    private fun validateLogInData() {
+    /*private fun validateLogInData() {
         if (logInEmailEditText.text.isEmpty() && logInPasswordEditText.text.isEmpty()) {
             logInEmailTextLayout.isErrorEnabled = true
             logInEmailTextLayout.error = "Email is required"
@@ -136,5 +138,5 @@ class AuthLogInFragment: Fragment() {
             logInPasswordTextLayout.isErrorEnabled = false
             validateChecks = true
         }
-    }
+    }*/
 }

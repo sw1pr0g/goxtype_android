@@ -1,13 +1,8 @@
 package com.sw1pr0g.goxtype_android.domain
 
-import android.content.Intent
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import com.sw1pr0g.goxtype_android.data.api.ApiInterface
 import com.sw1pr0g.goxtype_android.data.api.LogInBody
 import com.sw1pr0g.goxtype_android.data.api.RetrofitInstance
-import com.sw1pr0g.goxtype_android.ui.auth.DialogAuthLoading
-import com.sw1pr0g.goxtype_android.ui.main.MainActivity
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
