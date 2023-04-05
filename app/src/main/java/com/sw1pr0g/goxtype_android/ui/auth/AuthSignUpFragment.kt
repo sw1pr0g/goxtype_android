@@ -25,11 +25,7 @@ import retrofit2.Response
 
 class AuthSignUpFragment: Fragment() {
 
-    interface Callbacks {
-        fun showFragment(fragment: Fragment)
-    }
-
-    private var callbacks: Callbacks? = null
+    private var callbacks: AuthShowFragmentCallback? = null
     private var validateChecks: Boolean = false
 
     private lateinit var signUpEmailTextLayout: TextInputLayout
@@ -50,7 +46,7 @@ class AuthSignUpFragment: Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        callbacks = context as Callbacks?
+        callbacks = context as AuthShowFragmentCallback?
     }
 
     override fun onCreateView(
@@ -76,7 +72,7 @@ class AuthSignUpFragment: Fragment() {
 
         dialogAuthLoading = DialogAuthLoading(requireActivity())
 
-        goLogInButton.setOnClickListener { callbacks?.showFragment(AuthLogInFragment()) }
+        goLogInButton.setOnClickListener { callbacks?.showFragment(AuthLogInFragment(), false) }
 
         signUpButton.setOnClickListener {
 
