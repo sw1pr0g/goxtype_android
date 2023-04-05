@@ -18,16 +18,7 @@ class AuthActivity : AppCompatActivity(), AuthLogInFragment.Callbacks,
     override fun showFragment(fragment: Fragment,
                               firstShowing: Boolean) {
 
-        val supportFragmentManager = supportFragmentManager.beginTransaction().setCustomAnimations(
-            R.anim.slide_in,
-            R.anim.fade_out,
-            R.anim.fade_out,
-            R.anim.slide_out,
-        ).replace(R.id.auth_fragment_container, fragment)
 
-        if (!firstShowing) supportFragmentManager.addToBackStack(null)
-
-        supportFragmentManager.commit()
     }
 
 }
