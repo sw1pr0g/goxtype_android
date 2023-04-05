@@ -14,6 +14,9 @@ import com.sw1pr0g.goxtype_android.R
 import com.sw1pr0g.goxtype_android.data.api.ApiInterface
 import com.sw1pr0g.goxtype_android.data.api.LogInBody
 import com.sw1pr0g.goxtype_android.data.api.RetrofitInstance
+import com.sw1pr0g.goxtype_android.databinding.FragmentAuthLogInBinding
+import com.sw1pr0g.goxtype_android.domain.DataValidation
+import com.sw1pr0g.goxtype_android.domain.UserAuthAction
 import com.sw1pr0g.goxtype_android.ui.main.MainActivity
 import kotlinx.coroutines.*
 import okhttp3.ResponseBody
@@ -24,6 +27,8 @@ import retrofit2.Response
 
 class AuthLogInFragment: Fragment() {
 
+    private lateinit var binding: FragmentAuthLogInBinding
+
     interface Callbacks {
         fun showFragment(fragment: Fragment,
                          firstShowing: Boolean)
@@ -32,16 +37,8 @@ class AuthLogInFragment: Fragment() {
     private var callbacks: Callbacks? = null
     private var validateChecks: Boolean = false
 
-    private lateinit var logInEmailTextLayout: TextInputLayout
-    private lateinit var logInEmailEditText: EditText
-
-    private lateinit var logInPasswordTextLayout: TextInputLayout
-    private lateinit var logInPasswordEditText: EditText
-
-    private lateinit var logInButton: Button
-    private lateinit var goSignUpButton: Button
-
     private lateinit var dialogAuthLoading: DialogAuthLoading
+    private val dataValidation = DataValidation()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -53,20 +50,12 @@ class AuthLogInFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_auth_log_in, container, false)
-
-        logInButton = view.findViewById(R.id.log_in_button)
-        goSignUpButton = view.findViewById(R.id.go_sign_up_button)
-
-        logInEmailTextLayout = view.findViewById(R.id.log_in_email_text_layout)
-        logInEmailEditText = view.findViewById(R.id.log_in_email_edit_text)
-
-        logInPasswordTextLayout = view.findViewById(R.id.log_in_password_text_layout)
-        logInPasswordEditText = view.findViewById(R.id.log_in_password_edit_text)
+        binding = FragmentAuthLogInBinding.inflate(inflater, container, false)
 
         dialogAuthLoading = DialogAuthLoading(requireActivity())
+        val userAuthAction = UserAuthAction()
 
-        logInButton.setOnClickListener {
+        binding.logInButton.setOnClickListener {
 
             validateLogInData()
             if (validateChecks) {
@@ -74,20 +63,41 @@ class AuthLogInFragment: Fragment() {
 
                 Thread(
                     Runnable {
-                        logIn(
-                            logInEmailEditText.text.toString(),
-                            logInPasswordEditText.text.toString()
+
+                        val userAuthResult = userAuthAction.logIn(
+                            binding.logInEmailEditText.text.toString(),
+                            binding.logInPasswordEditText.text.toString()
                         )
+
+                        when (userAuthResult) {
+
+                            true -> {
+                                val intent = Intent(activity, MainActivity::class.java)
+                                startActivity(intent)
+                                activity?.finish()
+                            }
+                            else -> {
+                                dataValidation.auth(
+                                    binding.logInEmailTextLayout,
+                                    binding.logInPasswordTextLayout
+                                )
+                            }
+
+                        }
                     }
                 ).start()
             }
 
         }
 
-        logInEmailEditText.addTextChangedListener { checkOffMistakes() }
-        logInPasswordEditText.addTextChangedListener { checkOffMistakes() }
+        binding.logInEmailEditText.addTextChangedListener { checkOffMistakes() }
+        binding.logInPasswordEditText.addTextChangedListener { checkOffMistakes() }
 
-        goSignUpButton.setOnClickListener { callbacks?.showFragment(AuthSignUpFragment(),false) }
+        binding.goSignUpButton.setOnClickListener {
+            callbacks?.showFragment(
+                AuthSignUpFragment(),
+                false)
+        }
 
         return view
     }
