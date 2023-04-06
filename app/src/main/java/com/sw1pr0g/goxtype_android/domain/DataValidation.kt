@@ -2,10 +2,10 @@ package com.sw1pr0g.goxtype_android.domain
 
 import com.google.android.material.textfield.TextInputLayout
 
-class DataValidation {
+class DataValidation(private val emailLayout: TextInputLayout,
+                     private val passwordLayout: TextInputLayout) {
 
-    fun authLogIn(emailLayout: TextInputLayout,
-                  passwordLayout: TextInputLayout) : Boolean {
+    fun authLogIn() : Boolean {
         var returns = true
 
         if (emailLayout.editText!!.text.isEmpty() && passwordLayout.editText!!.text.isEmpty()) {
@@ -30,6 +30,13 @@ class DataValidation {
                         passwordLayout: TextInputLayout) {
         emailLayout.isErrorEnabled = false
         passwordLayout.isErrorEnabled = false
+    }
+
+    fun authDataIncorrect() {
+        emailLayout.isErrorEnabled = true
+        emailLayout.error = "Incorrect email"
+        passwordLayout.isErrorEnabled = true
+        passwordLayout.error = "Incorrect password"
     }
 
 }

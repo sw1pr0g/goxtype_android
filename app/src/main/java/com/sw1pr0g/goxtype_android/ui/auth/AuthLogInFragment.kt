@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import com.sw1pr0g.goxtype_android.R
 import com.sw1pr0g.goxtype_android.databinding.FragmentAuthLogInBinding
 import com.sw1pr0g.goxtype_android.domain.DataValidation
 import com.sw1pr0g.goxtype_android.domain.UserAuthAction
@@ -23,7 +24,10 @@ class AuthLogInFragment: Fragment() {
 
     private var callbacks: AuthShowFragmentCallback? = null
 
-    private val dataValidation = DataValidation()
+    private lateinit var dataValidation: DataValidation
+    private lateinit var userAuthAction: UserAuthAction
+    private lateinit var dialogAuthLoading: DialogAuthLoading
+
     private val component = Component(activity)
 
     override fun onAttach(context: Context) {
@@ -39,41 +43,13 @@ class AuthLogInFragment: Fragment() {
         _binding = FragmentAuthLogInBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val userAuthAction = UserAuthAction()
+        dataValidation = DataValidation(binding.logInEmailTextLayout, binding.logInPasswordTextLayout)
 
-        binding.logInButton.setOnClickListener {
-            val dialogAuthLoading = DialogAuthLoading(requireActivity())
+        userAuthAction = UserAuthAction()
 
-            if (dataValidation.authLogIn(
-                    binding.logInEmailTextLayout,
-                    binding.logInPasswordTextLayout)) {
-                dialogAuthLoading.startLoadingDialog()
+        dialogAuthLoading = DialogAuthLoading(requireActivity())
 
-                Thread(Runnable {
-                        val userAuthResult = userAuthAction.logIn(
-                            binding.logInEmailEditText.text.toString(),
-                            binding.logInPasswordEditText.text.toString()
-                        )
-
-                        when (userAuthResult) {
-                            true -> component.newActivity(MainActivity::class.java)
-                            else -> {
-                                dataValidation.authLogIn(
-                                    binding.logInEmailTextLayout,
-                                    binding.logInPasswordTextLayout
-                                )
-                                Looper.prepare()
-                                Toast.makeText(activity, "Error with fetching data from server! Try again later", Toast.LENGTH_SHORT).show()
-                                Looper.loop()
-
-                            }
-                        }
-                    }
-                ).start()
-
-            }
-            dialogAuthLoading.dismissDialog()
-        }
+        binding.logInButton.setOnClickListener { logIn() }
 
         binding.logInEmailEditText.addTextChangedListener { dataValidation.authOffMistakes(binding.logInEmailTextLayout, binding.logInPasswordTextLayout) }
         binding.logInPasswordEditText.addTextChangedListener { dataValidation.authOffMistakes(binding.logInEmailTextLayout, binding.logInPasswordTextLayout) }
@@ -94,6 +70,45 @@ class AuthLogInFragment: Fragment() {
     override fun onDetach() {
         super.onDetach()
         callbacks = null
+    }
+
+    private fun logIn() {
+        var userAuthResult = 0
+
+        Thread(Runnable {
+            dialogAuthLoading.startLoadingDialog()
+
+            if (dataValidation.authLogIn()) {
+                userAuthResult = userAuthAction.logIn(
+                    binding.logInEmailEditText.text.toString(),
+                    binding.logInPasswordEditText.text.toString()
+                )
+            }
+
+            Thread.sleep(1000)
+            dialogAuthLoading.dismissDialog()
+        })
+
+        if (userAuthResult != 0) {
+            when (userAuthResult) {
+                201 -> component.newActivity(MainActivity::class.java)
+                404 -> {
+                    Looper.prepare()
+                    dataValidation.authDataIncorrect()
+                    Toast.makeText(
+                        activity,
+                        R.string.log_in_server_error,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    Looper.loop()
+                }
+                else -> {
+                    Looper.prepare()
+                    dataValidation.authDataIncorrect()
+                    Looper.loop()
+                }
+            }
+        }
     }
 
 }

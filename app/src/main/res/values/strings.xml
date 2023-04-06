@@ -14,4 +14,6 @@
     <string name="auth_other_methods_text">Use Other Methods</string>
     <string name="log_in_main_text">Already \nhave an \nAccount?</string>
 
+    <string name="log_in_server_error">Error with fetching data from server! Try again later.</string>
+
 </resources>
