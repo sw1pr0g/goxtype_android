@@ -1,6 +1,8 @@
 package com.sw1pr0g.goxtype_android.ui.auth
 
 import android.content.Context
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NO_HISTORY
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -14,6 +16,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import com.sw1pr0g.goxtype_android.R
 import com.sw1pr0g.goxtype_android.data.api.response.BaseResponse
+import com.sw1pr0g.goxtype_android.data.api.response.LoginResponse
 import com.sw1pr0g.goxtype_android.databinding.FragmentAuthLogInBinding
 import com.sw1pr0g.goxtype_android.domain.DataValidation
 import com.sw1pr0g.goxtype_android.domain.UserAuthAction
@@ -103,7 +106,43 @@ class AuthLogInFragment: Fragment() {
         callbacks = null
     }
 
+    private fun navigateToHome() {
+        val intent = Intent(requireActivity(), MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        intent.addFlags(FLAG_ACTIVITY_NO_HISTORY)
+        startActivity(intent)
+    }
 
+    private fun doLogin() {
+        val email = binding.logInEmailEditText.text.toString()
+        val pwd = binding.logInPasswordEditText.text.toString()
+        viewModel.loginUser(email = email, pwd = pwd)
+    }
+
+    fun showLoading() {
+        dialogAuthLoading.startLoadingDialog()
+    }
+
+    fun stopLoading() {
+        dialogAuthLoading.dismissDialog()
+    }
+
+    fun processLogin(data: LoginResponse?) {
+        showToast("Success:" + data?.message)
+        if (!data?.token.isNullOrEmpty()) {
+            data?.token?.let {
+                SessionManager.saveAuthToken(requireActivity(), it) }
+            navigateToHome()
+        }
+    }
+
+    fun processError(msg: String?) {
+        showToast("Error:" + msg)
+    }
+
+    fun showToast(msg: String) {
+        Toast.makeText(requireActivity(), msg, Toast.LENGTH_SHORT).show()
+    }
 
     private fun logIn() {
 
