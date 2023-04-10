@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import com.sw1pr0g.goxtype_android.data.api.response.BaseResponse
 import com.sw1pr0g.goxtype_android.data.api.response.LogInResponse
 import com.sw1pr0g.goxtype_android.databinding.FragmentAuthLogInBinding
-import com.sw1pr0g.goxtype_android.domain.DataValidation
+import com.sw1pr0g.goxtype_android.domain.validation.LogInValidation
 import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
 import com.sw1pr0g.goxtype_android.ui.Component
 import com.sw1pr0g.goxtype_android.ui.main.MainActivity
@@ -27,7 +27,7 @@ class AuthLogInFragment: Fragment() {
     private var callbacks: ShowFragmentCallback? = null
 
     private lateinit var component: Component
-    private lateinit var dataValidation: DataValidation
+    private lateinit var dataValidation: LogInValidation
     private lateinit var dialogAuthLoading: DialogAuthLoading
 
     override fun onAttach(context: Context) {
@@ -43,7 +43,7 @@ class AuthLogInFragment: Fragment() {
         _binding = FragmentAuthLogInBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        dataValidation = DataValidation(binding.logInEmailTextLayout, binding.logInPasswordTextLayout)
+        dataValidation = LogInValidation(binding.logInEmailTextLayout, binding.logInPasswordTextLayout)
         dialogAuthLoading = DialogAuthLoading(requireActivity())
         component = Component(requireContext())
 
@@ -57,7 +57,7 @@ class AuthLogInFragment: Fragment() {
                     processLogIn(it.data)
                 }
                 is BaseResponse.Error -> {
-                    dataValidation.authFieldsIncorrect()
+                    dataValidation.fieldsIncorrect()
                     stopLoading()
                 }
                 else -> {
@@ -68,8 +68,8 @@ class AuthLogInFragment: Fragment() {
 
         binding.logInButton.setOnClickListener { doLogIn() }
 
-        binding.logInEmailEditText.addTextChangedListener { dataValidation.authOffMistakes(binding.logInEmailTextLayout, binding.logInPasswordTextLayout) }
-        binding.logInPasswordEditText.addTextChangedListener { dataValidation.authOffMistakes(binding.logInEmailTextLayout, binding.logInPasswordTextLayout) }
+        binding.logInEmailEditText.addTextChangedListener { dataValidation.offFieldsMistakes(binding.logInEmailTextLayout, binding.logInPasswordTextLayout) }
+        binding.logInPasswordEditText.addTextChangedListener { dataValidation.offFieldsMistakes(binding.logInEmailTextLayout, binding.logInPasswordTextLayout) }
 
         binding.goSignUpButton.setOnClickListener {
             callbacks?.showFragment(
@@ -90,7 +90,7 @@ class AuthLogInFragment: Fragment() {
     }
 
     private fun doLogIn() {
-        if (dataValidation.authLogIn()) {
+        if (dataValidation.checkEmptyFields()) {
             val email = binding.logInEmailEditText.text.toString()
             val pwd = binding.logInPasswordEditText.text.toString()
             viewModel.logInUser(email = email, pwd = pwd)

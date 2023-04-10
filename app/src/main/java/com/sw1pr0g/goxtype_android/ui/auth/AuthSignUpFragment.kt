@@ -13,28 +13,19 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputLayout
 import com.sw1pr0g.goxtype_android.R
+import com.sw1pr0g.goxtype_android.databinding.FragmentAuthSignUpBinding
+import com.sw1pr0g.goxtype_android.ui.Component
 import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
 
 class AuthSignUpFragment: Fragment() {
+    private var _binding: FragmentAuthSignUpBinding? = null
+    private val binding get() = _binding!!
 
     private var callbacks: ShowFragmentCallback? = null
     private var validateChecks: Boolean = false
 
-    private lateinit var signUpEmailTextLayout: TextInputLayout
-    private lateinit var signUpEmailEditText: EditText
-
-    private lateinit var signUpPasswordTextLayout: TextInputLayout
-    private lateinit var signUpPasswordEditText: EditText
-
-    private lateinit var signUpRepeatPasswordTextLayout: TextInputLayout
-    private lateinit var signUpRepeatPasswordEditText: EditText
-
-    private lateinit var signUpButton: Button
-    private lateinit var signUpAcceptTermsCheckbox: CheckBox
-    private lateinit var goLogInButton: Button
-
     private lateinit var dialogAuthLoading: DialogAuthLoading
-
+    private lateinit var component: Component
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -46,35 +37,25 @@ class AuthSignUpFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_auth_sign_up, container, false)
+        _binding = FragmentAuthSignUpBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-        signUpEmailTextLayout = view.findViewById(R.id.sign_up_email_text_layout)
-        signUpEmailEditText = view.findViewById(R.id.sign_up_email_edit_text)
+        binding.goLogInButton.setOnClickListener { callbacks?.showFragment(AuthLogInFragment(), false) }
 
-        signUpPasswordTextLayout = view.findViewById(R.id.sign_up_password_text_layout)
-        signUpPasswordEditText = view.findViewById(R.id.sign_up_password_edit_text)
-
-        signUpRepeatPasswordTextLayout = view.findViewById(R.id.sign_up_repeat_password_text_layout)
-        signUpRepeatPasswordEditText = view.findViewById(R.id.sign_up_repeat_password_edit_text)
-
-        signUpButton = view.findViewById(R.id.sign_up_button)
-        signUpAcceptTermsCheckbox = view.findViewById(R.id.sign_up_accept_terms_checkbox)
-
-        goLogInButton = view.findViewById(R.id.go_log_in_button)
-
-        dialogAuthLoading = DialogAuthLoading(requireActivity())
-
-        goLogInButton.setOnClickListener { callbacks?.showFragment(AuthLogInFragment(), false) }
-
-        signUpButton.setOnClickListener {
+        binding.signUpButton.setOnClickListener {
 
         }
 
-        signUpEmailEditText.addTextChangedListener { checkOffMistakes() }
-        signUpPasswordEditText.addTextChangedListener { checkOffMistakes() }
-        signUpRepeatPasswordEditText.addTextChangedListener { checkOffMistakes() }
+        binding.signUpEmailEditText.addTextChangedListener { checkOffMistakes() }
+        binding.signUpPasswordEditText.addTextChangedListener { checkOffMistakes() }
+        binding.signUpRepeatPasswordEditText.addTextChangedListener { checkOffMistakes() }
 
         return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onDetach() {
@@ -83,45 +64,7 @@ class AuthSignUpFragment: Fragment() {
     }
 
     private fun validateSignUpData() {
-        val passwordMatches = signUpPasswordEditText.text.toString() == signUpRepeatPasswordEditText.text.toString()
 
-        if (signUpEmailEditText.text.isEmpty() && signUpPasswordEditText.text.isEmpty() &&
-                signUpRepeatPasswordEditText.text.isEmpty()) {
-            signUpEmailTextLayout.isErrorEnabled = true
-            signUpEmailTextLayout.error = "Email is required"
-            signUpPasswordTextLayout.isErrorEnabled = true
-            signUpPasswordTextLayout.error = "Password is required"
-            signUpRepeatPasswordTextLayout.isErrorEnabled = true
-            signUpRepeatPasswordTextLayout.error = "Repeat password is required"
-            validateChecks = false
-        } else if (signUpEmailEditText.text.isEmpty()) {
-            signUpEmailTextLayout.isErrorEnabled = true
-            signUpEmailTextLayout.error = "Email is required"
-            validateChecks = false
-        } else if (signUpPasswordEditText.text.isEmpty()) {
-            signUpPasswordTextLayout.isErrorEnabled = true
-            signUpPasswordTextLayout.error = "Password is required"
-            validateChecks = false
-        } else if (signUpRepeatPasswordEditText.text.isEmpty()) {
-            signUpRepeatPasswordTextLayout.isErrorEnabled = true
-            signUpRepeatPasswordTextLayout.error = "Repeat password is required"
-            validateChecks = false
-        } else if (!signUpEmailEditText.isEmailValid()){
-            signUpEmailTextLayout.isErrorEnabled = true
-            signUpEmailTextLayout.error = "Email is incorrect"
-            validateChecks = false
-        } else if (!passwordMatches) {
-            signUpPasswordTextLayout.isErrorEnabled = true
-            signUpPasswordTextLayout.error = "Passwords don't match"
-            signUpRepeatPasswordTextLayout.isErrorEnabled = true
-            signUpRepeatPasswordTextLayout.error = "Passwords don't match"
-            validateChecks = false
-        } else {
-            if (!signUpAcceptTermsCheckbox.isChecked) {
-                Toast.makeText(activity, "Please read and accept all our terms and conditions!", Toast.LENGTH_SHORT).show()
-                validateChecks = false
-            }
-        }
 
 
     }
