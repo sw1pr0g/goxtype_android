@@ -8,7 +8,7 @@ import com.sw1pr0g.goxtype_android.ui.Component
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    //private val component = Component(this)
+    private val component = Component(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

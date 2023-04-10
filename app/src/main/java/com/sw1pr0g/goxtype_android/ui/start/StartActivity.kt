@@ -6,6 +6,8 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.sw1pr0g.goxtype_android.databinding.ActivityStartBinding
 import com.sw1pr0g.goxtype_android.ui.Component
 import com.sw1pr0g.goxtype_android.ui.auth.AuthActivity
+import com.sw1pr0g.goxtype_android.ui.main.MainActivity
+import com.sw1pr0g.goxtype_android.utils.SessionManager
 
 class StartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStartBinding
@@ -18,6 +20,11 @@ class StartActivity : AppCompatActivity() {
 
         binding = ActivityStartBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val token = SessionManager.getToken(this)
+        if (!token.isNullOrBlank()) {
+            component.newActivity(MainActivity::class.java, true)
+        }
 
         binding.skipButton.setOnClickListener { component.newActivity(AuthActivity::class.java) }
 

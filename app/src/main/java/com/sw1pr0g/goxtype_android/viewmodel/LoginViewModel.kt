@@ -25,8 +25,11 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                     email = email
                 )
                 val response = userRepo.loginUser(loginRequest = loginRequest)
-                if (response?.code() == 200) {
-                    loginResult.value = BaseResponse.Success(response.body())
+
+                val responseStatus: Boolean = response?.isSuccessful == true
+                // response?.code() == 200/201
+                if (responseStatus) {
+                    loginResult.value = BaseResponse.Success(response?.body())
                 } else {
                     loginResult.value = BaseResponse.Error(response?.message())
                 }
