@@ -11,41 +11,33 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sw1pr0g.goxtype_android.R
+import com.sw1pr0g.goxtype_android.databinding.FragmentMainHomeBinding
+import com.sw1pr0g.goxtype_android.databinding.FragmentMainProfileBinding
+import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
 import com.sw1pr0g.goxtype_android.ui.auth.AuthActivity
 
 class MainProfileFragment: Fragment() {
+    private var _binding: FragmentMainProfileBinding? = null
+    private val binding get() = _binding!!
 
-    interface Callbacks {
-
-        fun showFragment(fragment: Fragment, firstShowing: Boolean)
-
-    }
-
-    private var callbacks: Callbacks? = null
-
-    private lateinit var textView: TextView
-    private lateinit var profileInfoCardView: MaterialCardView
-    private lateinit var logOutCardView: MaterialCardView
+    private var callbacks: ShowFragmentCallback? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        callbacks = context as Callbacks?
+        callbacks = context as ShowFragmentCallback?
     }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_main_profile, container, false)
+    ): View {
+        _binding = FragmentMainProfileBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-        textView = view.findViewById(R.id.textView)
-        profileInfoCardView = view.findViewById(R.id.profile_info_card_view)
-        logOutCardView = view.findViewById(R.id.log_out_card_view)
+        binding.profileInfoCardView.setOnClickListener { callbacks?.showFragment(MainProfileInfoFragment(), false) }
 
-        profileInfoCardView.setOnClickListener { callbacks?.showFragment(MainProfileInfoFragment(), false) }
-
-        logOutCardView.setOnClickListener {
+        binding.logOutCardView.setOnClickListener {
 
             MaterialAlertDialogBuilder(requireContext())
                 .setTitle(resources.getString((R.string.alert_exit_title)))
@@ -63,6 +55,11 @@ class MainProfileFragment: Fragment() {
         }
 
         return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onDetach() {

@@ -4,8 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.sw1pr0g.goxtype_android.R
+import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
 
-class AuthActivity : AppCompatActivity(), AuthShowFragmentCallback {
+class AuthActivity : AppCompatActivity(), ShowFragmentCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,7 +16,6 @@ class AuthActivity : AppCompatActivity(), AuthShowFragmentCallback {
     }
 
     override fun showFragment(fragment: Fragment, firstShowing: Boolean) {
-        // supportFragmentManager will never be null
         val fragmentTransaction = supportFragmentManager.beginTransaction().setCustomAnimations(
             R.anim.slide_in,
             R.anim.fade_out,

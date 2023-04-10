@@ -13,10 +13,11 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputLayout
 import com.sw1pr0g.goxtype_android.R
+import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
 
 class AuthSignUpFragment: Fragment() {
 
-    private var callbacks: AuthShowFragmentCallback? = null
+    private var callbacks: ShowFragmentCallback? = null
     private var validateChecks: Boolean = false
 
     private lateinit var signUpEmailTextLayout: TextInputLayout
@@ -37,7 +38,7 @@ class AuthSignUpFragment: Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        callbacks = context as AuthShowFragmentCallback?
+        callbacks = context as ShowFragmentCallback?
     }
 
     override fun onCreateView(

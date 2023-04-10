@@ -4,23 +4,23 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.sw1pr0g.goxtype_android.data.api.request.LoginRequest
+import com.sw1pr0g.goxtype_android.data.api.request.LogInRequest
 import com.sw1pr0g.goxtype_android.data.api.response.BaseResponse
-import com.sw1pr0g.goxtype_android.data.api.response.LoginResponse
+import com.sw1pr0g.goxtype_android.data.api.response.LogInResponse
 import com.sw1pr0g.goxtype_android.repository.UserRepository
 import kotlinx.coroutines.launch
 
-class LoginViewModel(application: Application) : AndroidViewModel(application) {
+class LogInViewModel(application: Application) : AndroidViewModel(application) {
 
     private val userRepo = UserRepository()
-    val loginResult: MutableLiveData<BaseResponse<LoginResponse>> = MutableLiveData()
+    val logInResult: MutableLiveData<BaseResponse<LogInResponse>> = MutableLiveData()
 
-    fun loginUser(email: String, pwd: String) {
-        loginResult.value = BaseResponse.Loading()
+    fun logInUser(email: String, pwd: String) {
+        logInResult.value = BaseResponse.Loading()
         viewModelScope.launch {
             try {
 
-                val loginRequest = LoginRequest(
+                val loginRequest = LogInRequest(
                     password = pwd,
                     email = email
                 )
@@ -29,13 +29,13 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
                 val responseStatus: Boolean = response?.isSuccessful == true
                 // response?.code() == 200/201
                 if (responseStatus) {
-                    loginResult.value = BaseResponse.Success(response?.body())
+                    logInResult.value = BaseResponse.Success(response?.body())
                 } else {
-                    loginResult.value = BaseResponse.Error(response?.message())
+                    logInResult.value = BaseResponse.Error(response?.message())
                 }
 
             } catch (ex: Exception) {
-                loginResult.value = BaseResponse.Error(ex.message)
+                logInResult.value = BaseResponse.Error(ex.message)
             }
         }
     }
