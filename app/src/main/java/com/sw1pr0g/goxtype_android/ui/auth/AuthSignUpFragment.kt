@@ -1,4 +1,4 @@
-package com.sw1pr0g.goxtype_android
+package com.sw1pr0g.goxtype_android.ui.auth
 
 import android.content.Context
 import android.content.Intent
@@ -13,9 +13,11 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputLayout
-import com.sw1pr0g.goxtype_android.api.ApiInterface
-import com.sw1pr0g.goxtype_android.api.RetrofitInstance
-import com.sw1pr0g.goxtype_android.api.UserBody
+import com.sw1pr0g.goxtype_android.R
+import com.sw1pr0g.goxtype_android.data.api.ApiInterface
+import com.sw1pr0g.goxtype_android.data.api.RetrofitInstance
+import com.sw1pr0g.goxtype_android.data.api.UserBody
+import com.sw1pr0g.goxtype_android.ui.main.MainActivity
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,12 +25,7 @@ import retrofit2.Response
 
 class AuthSignUpFragment: Fragment() {
 
-    interface Callbacks {
-        fun showFragment(fragment: Fragment,
-                         firstShowing: Boolean)
-    }
-
-    private var callbacks: Callbacks? = null
+    private var callbacks: AuthShowFragmentCallback? = null
     private var validateChecks: Boolean = false
 
     private lateinit var signUpEmailTextLayout: TextInputLayout
@@ -49,7 +46,7 @@ class AuthSignUpFragment: Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        callbacks = context as Callbacks?
+        callbacks = context as AuthShowFragmentCallback?
     }
 
     override fun onCreateView(

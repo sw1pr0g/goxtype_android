@@ -1,4 +1,4 @@
-package com.sw1pr0g.goxtype_android.api
+package com.sw1pr0g.goxtype_android.data.api
 
 
 data class UserBody(val email: String,

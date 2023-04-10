@@ -1,4 +1,4 @@
-package com.sw1pr0g.goxtype_android.api
+package com.sw1pr0g.goxtype_android.data.api
 
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
@@ -26,8 +26,8 @@ interface ApiInterface {
 class RetrofitInstance {
     companion object {
 
-        //local macOS ADDRESS - http://192.168.0.166:3001
-        private const val BASE_URL: String = "https://6992-193-242-170-2.eu.ngrok.io"
+        // Local macOS ADDRESS - http://192.168.0.166:3001
+        private const val BASE_URL: String = "https://4c08-193-242-170-2.ngrok-free.app"
 
         private val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
             this.level = HttpLoggingInterceptor.Level.BODY

@@ -1,42 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainTrainerFragment">
+    android:background="@color/background"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <EditText
+        android:id="@+id/trainer_edit_text"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
         android:background="@color/background"
-        android:orientation="vertical">
+        android:inputType="textMultiLine"
+        android:textColor="@color/background"
+        android:textCursorDrawable="@color/background" />
 
-        <EditText
-            android:id="@+id/trainer_edit_text"
-            android:layout_width="1dp"
-            android:layout_height="1dp"
-            android:background="@color/background"
-            android:inputType="textMultiLine"
-            android:textColor="@color/background"
-            android:textCursorDrawable="@color/background" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="77dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Trainer"
+        android:textColor="@color/colorPrimary"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/trainer_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/trainer_start_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center|center_horizontal"
+        android:text="Press to start" />
+
+    <TextView
+        android:id="@+id/user_clicks_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/raleway_medium"
+        android:text="Clicks: 0"
+        android:textColor="@color/colorPrimary"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/user_accuracy_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:fontFamily="@font/raleway_medium"
+        android:text="Accuracy: 0%"
+        android:textColor="@color/colorPrimary"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/user_CPM_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:fontFamily="@font/raleway_medium"
+        android:text="CPM: 0"
+        android:textColor="@color/colorPrimary"
+        android:textSize="25sp" />
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/trainer_text_view"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            android:textAlignment="center"
-            android:textSize="20sp" />
+            android:layout_gravity="start"
+            android:fontFamily="@font/raleway_medium"
+            android:text="Time: "
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp" />
 
-        <Button
-            android:id="@+id/trainer_start_button"
-            android:layout_width="200dp"
+        <Chronometer
+            android:id="@+id/user_time_chronometer"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center|center_horizontal"
-            android:text="Press to start" />
+            android:layout_gravity="start"
+            android:fontFamily="@font/raleway_medium"
+            android:text="Time(in seconds): 0"
+            android:textColor="@color/colorPrimary"
+            android:textSize="25sp" />
 
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>
