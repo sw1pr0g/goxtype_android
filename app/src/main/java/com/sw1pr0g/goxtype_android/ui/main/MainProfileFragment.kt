@@ -13,14 +13,18 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.sw1pr0g.goxtype_android.R
 import com.sw1pr0g.goxtype_android.databinding.FragmentMainHomeBinding
 import com.sw1pr0g.goxtype_android.databinding.FragmentMainProfileBinding
+import com.sw1pr0g.goxtype_android.ui.Component
 import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
 import com.sw1pr0g.goxtype_android.ui.auth.AuthActivity
+import com.sw1pr0g.goxtype_android.utils.SessionManager
 
 class MainProfileFragment: Fragment() {
     private var _binding: FragmentMainProfileBinding? = null
     private val binding get() = _binding!!
 
     private var callbacks: ShowFragmentCallback? = null
+
+    private lateinit var component: Component
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -35,6 +39,8 @@ class MainProfileFragment: Fragment() {
         _binding = FragmentMainProfileBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        component = Component(requireContext())
+
         binding.profileInfoCardView.setOnClickListener { callbacks?.showFragment(MainProfileInfoFragment(), false) }
 
         binding.logOutCardView.setOnClickListener {
@@ -44,11 +50,8 @@ class MainProfileFragment: Fragment() {
                 .setMessage(resources.getString(R.string.alert_exit_supporting_text))
                 .setNegativeButton(resources.getString(R.string.alert_exit_no)) { _, _ -> }
                 .setPositiveButton(resources.getString(R.string.alert_exit_yes)) { _, _ ->
-
-                    val intent = Intent(activity, AuthActivity::class.java)
-                    startActivity(intent)
-                    activity?.finish()
-
+                    SessionManager.clearData(requireActivity())
+                    component.newActivity(AuthActivity::class.java)
                 }
                 .show()
 
