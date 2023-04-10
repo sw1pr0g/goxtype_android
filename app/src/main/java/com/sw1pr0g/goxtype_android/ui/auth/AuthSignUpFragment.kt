@@ -1,7 +1,6 @@
 package com.sw1pr0g.goxtype_android.ui.auth
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,14 +13,6 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputLayout
 import com.sw1pr0g.goxtype_android.R
-import com.sw1pr0g.goxtype_android.data.api.ApiInterface
-import com.sw1pr0g.goxtype_android.data.api.RetrofitInstance
-import com.sw1pr0g.goxtype_android.data.api.UserBody
-import com.sw1pr0g.goxtype_android.ui.main.MainActivity
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class AuthSignUpFragment: Fragment() {
 
@@ -76,20 +67,6 @@ class AuthSignUpFragment: Fragment() {
 
         signUpButton.setOnClickListener {
 
-            validateSignUpData()
-            if (validateChecks) {
-                dialogAuthLoading.startLoadingDialog()
-
-                Thread(
-                    kotlinx.coroutines.Runnable {
-                        signUp(
-                            signUpEmailEditText.text.toString(),
-                            signUpPasswordEditText.text.toString()
-                        )
-                    }
-                ).start()
-            }
-
         }
 
         signUpEmailEditText.addTextChangedListener { checkOffMistakes() }
@@ -102,43 +79,6 @@ class AuthSignUpFragment: Fragment() {
     override fun onDetach() {
         super.onDetach()
         callbacks = null
-    }
-
-    private fun signUp(email: String,
-                       password: String) {
-
-        val retIn = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
-        val signUpInfo = UserBody(email, password)
-
-        retIn.signUp(signUpInfo).enqueue(object :
-            Callback<ResponseBody> {
-
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(activity, t.message, Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-
-                if (response.code() == 201){
-
-                    val intent = Intent(activity, MainActivity::class.java)
-                    startActivity(intent)
-                    activity?.finish()
-
-                } else {
-
-                    if (response.message() == "User email already exists!") {
-                        Toast.makeText(activity, "Please", Toast.LENGTH_SHORT).show()
-                        validateChecks = true
-                    }
-
-                }
-
-            }
-
-            })
-        Thread.sleep(500)
-        dialogAuthLoading.dismissDialog()
     }
 
     private fun validateSignUpData() {

@@ -1,11 +1,13 @@
 package com.sw1pr0g.goxtype_android.ui.auth
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import com.sw1pr0g.goxtype_android.R
 
-class DialogAuthLoading internal constructor(var activity: Activity) {
+class DialogAuthLoading internal constructor(private var activity: Activity) {
     private lateinit var dialog: AlertDialog
+    @SuppressLint("InflateParams")
     fun startLoadingDialog() {
         val builder = AlertDialog.Builder(activity)
         val inflater = activity.layoutInflater

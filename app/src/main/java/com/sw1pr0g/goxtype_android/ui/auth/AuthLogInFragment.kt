@@ -12,7 +12,6 @@ import com.sw1pr0g.goxtype_android.data.api.response.BaseResponse
 import com.sw1pr0g.goxtype_android.data.api.response.LoginResponse
 import com.sw1pr0g.goxtype_android.databinding.FragmentAuthLogInBinding
 import com.sw1pr0g.goxtype_android.domain.DataValidation
-import com.sw1pr0g.goxtype_android.domain.UserAuthAction
 import com.sw1pr0g.goxtype_android.ui.Component
 import com.sw1pr0g.goxtype_android.ui.main.MainActivity
 import com.sw1pr0g.goxtype_android.utils.SessionManager
@@ -28,7 +27,6 @@ class AuthLogInFragment: Fragment() {
 
     private lateinit var component: Component
     private lateinit var dataValidation: DataValidation
-    private lateinit var userAuthAction: UserAuthAction
     private lateinit var dialogAuthLoading: DialogAuthLoading
 
     override fun onAttach(context: Context) {
@@ -45,7 +43,6 @@ class AuthLogInFragment: Fragment() {
         val view = binding.root
 
         dataValidation = DataValidation(binding.logInEmailTextLayout, binding.logInPasswordTextLayout)
-        userAuthAction = UserAuthAction()
         dialogAuthLoading = DialogAuthLoading(requireActivity())
         component = Component(requireContext())
 
