@@ -10,18 +10,24 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
 import com.sw1pr0g.goxtype_android.R
+import com.sw1pr0g.goxtype_android.data.api.response.BaseResponse
 import com.sw1pr0g.goxtype_android.databinding.FragmentAuthLogInBinding
 import com.sw1pr0g.goxtype_android.domain.DataValidation
 import com.sw1pr0g.goxtype_android.domain.UserAuthAction
 import com.sw1pr0g.goxtype_android.ui.Component
 import com.sw1pr0g.goxtype_android.ui.main.MainActivity
+import com.sw1pr0g.goxtype_android.utils.SessionManager
+import com.sw1pr0g.goxtype_android.viewmodel.LoginViewModel
 import kotlinx.coroutines.*
 
 
 class AuthLogInFragment: Fragment() {
     private var _binding: FragmentAuthLogInBinding? = null
     private val binding get() = _binding!!
+    private val viewModel by viewModels<LoginViewModel>()
 
     private var callbacks: AuthShowFragmentCallback? = null
 
@@ -44,13 +50,36 @@ class AuthLogInFragment: Fragment() {
         _binding = FragmentAuthLogInBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        val token = SessionManager.getToken(requireActivity())
+        if (token.isNullOrBlank()) {
+            navigateToHome()
+        }
+
+        viewModel.loginResult.observe(requireActivity()) {
+            when(it) {
+                is BaseResponse.Loading -> {
+                    showLoading()
+                }
+                is BaseResponse.Success -> {
+                    stopLoading()
+                    processLogin(it.data)
+                }
+                is BaseResponse.Error -> {
+                    processError(it.msg)
+                }
+                else -> {
+                    stopLoading()
+                }
+            }
+        }
+
         dataValidation = DataValidation(binding.logInEmailTextLayout, binding.logInPasswordTextLayout)
 
         userAuthAction = UserAuthAction()
 
         dialogAuthLoading = DialogAuthLoading(requireActivity())
 
-        binding.logInButton.setOnClickListener { logIn() }
+        binding.logInButton.setOnClickListener { doLogin() }
 
         binding.logInEmailEditText.addTextChangedListener { dataValidation.authOffMistakes(binding.logInEmailTextLayout, binding.logInPasswordTextLayout) }
         binding.logInPasswordEditText.addTextChangedListener { dataValidation.authOffMistakes(binding.logInEmailTextLayout, binding.logInPasswordTextLayout) }
@@ -66,12 +95,15 @@ class AuthLogInFragment: Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        ViewModel.
     }
 
     override fun onDetach() {
         super.onDetach()
         callbacks = null
     }
+
+
 
     private fun logIn() {
 
