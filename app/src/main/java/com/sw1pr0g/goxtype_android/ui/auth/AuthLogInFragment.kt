@@ -2,6 +2,7 @@ package com.sw1pr0g.goxtype_android.ui.auth
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
@@ -73,7 +74,31 @@ class AuthLogInFragment: Fragment() {
     }
 
     private fun logIn() {
-        var userAuthResult = 0
+
+        /*val mainLooper = Looper.getMainLooper()
+
+        var userLogInResponse = 0*/
+
+        Thread(Runnable {
+
+            userAuthAction.logIn(binding.logInEmailEditText.text.toString(),
+                binding.logInPasswordEditText.text.toString())
+
+            /*if(dataValidation.authLogIn()) {
+
+
+                Handler(mainLooper).post {
+                    dataValidation.authFieldsUpdate(userLogInResponse, requireContext())
+                }
+            }*/
+
+            Thread.sleep(1000)
+
+        }).start()
+
+        val i = 0
+
+        /*var userAuthResult = 0
 
         Thread(Runnable {
             dialogAuthLoading.startLoadingDialog()
@@ -108,7 +133,7 @@ class AuthLogInFragment: Fragment() {
                     Looper.loop()
                 }
             }
-        }
+        }*/
     }
 
 }
