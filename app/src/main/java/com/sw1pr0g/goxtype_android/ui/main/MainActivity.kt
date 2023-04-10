@@ -2,7 +2,6 @@ package com.sw1pr0g.goxtype_android.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.sw1pr0g.goxtype_android.R
 import com.sw1pr0g.goxtype_android.databinding.ActivityMainBinding
 import com.sw1pr0g.goxtype_android.ui.Component
 

@@ -7,15 +7,15 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
-    var httpLoggingInterceptor = HttpLoggingInterceptor()
+    private var httpLoggingInterceptor = HttpLoggingInterceptor()
         .setLevel(HttpLoggingInterceptor.Level.BODY)
 
-    var okHttpClient = OkHttpClient
+    private var okHttpClient = OkHttpClient
         .Builder()
         .addInterceptor(httpLoggingInterceptor)
         .build()
 
-    var retrofit: Retrofit? = null
+    private var retrofit: Retrofit? = null
 
     val client: Retrofit?
         get() {
