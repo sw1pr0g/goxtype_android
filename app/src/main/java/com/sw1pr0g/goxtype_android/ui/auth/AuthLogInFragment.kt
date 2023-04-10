@@ -4,8 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NO_HISTORY
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,18 +11,14 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import com.sw1pr0g.goxtype_android.R
 import com.sw1pr0g.goxtype_android.data.api.response.BaseResponse
 import com.sw1pr0g.goxtype_android.data.api.response.LoginResponse
 import com.sw1pr0g.goxtype_android.databinding.FragmentAuthLogInBinding
 import com.sw1pr0g.goxtype_android.domain.DataValidation
 import com.sw1pr0g.goxtype_android.domain.UserAuthAction
-import com.sw1pr0g.goxtype_android.ui.Component
 import com.sw1pr0g.goxtype_android.ui.main.MainActivity
 import com.sw1pr0g.goxtype_android.utils.SessionManager
 import com.sw1pr0g.goxtype_android.viewmodel.LoginViewModel
-import kotlinx.coroutines.*
 
 
 class AuthLogInFragment: Fragment() {
@@ -37,8 +31,6 @@ class AuthLogInFragment: Fragment() {
     private lateinit var dataValidation: DataValidation
     private lateinit var userAuthAction: UserAuthAction
     private lateinit var dialogAuthLoading: DialogAuthLoading
-
-    private val component = Component(activity)
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -55,7 +47,7 @@ class AuthLogInFragment: Fragment() {
 
         val token = SessionManager.getToken(requireActivity())
         if (token.isNullOrBlank()) {
-            navigateToHome()
+            navigateToMain()
         }
 
         viewModel.loginResult.observe(requireActivity()) {
@@ -98,7 +90,6 @@ class AuthLogInFragment: Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        ViewModel.
     }
 
     override fun onDetach() {
@@ -106,7 +97,7 @@ class AuthLogInFragment: Fragment() {
         callbacks = null
     }
 
-    private fun navigateToHome() {
+    private fun navigateToMain() {
         val intent = Intent(requireActivity(), MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         intent.addFlags(FLAG_ACTIVITY_NO_HISTORY)
@@ -132,7 +123,7 @@ class AuthLogInFragment: Fragment() {
         if (!data?.token.isNullOrEmpty()) {
             data?.token?.let {
                 SessionManager.saveAuthToken(requireActivity(), it) }
-            navigateToHome()
+            navigateToMain()
         }
     }
 
@@ -150,24 +141,24 @@ class AuthLogInFragment: Fragment() {
 
         var userLogInResponse = 0*/
 
-        Thread(Runnable {
+        /*Thread(Runnable {
 
             userAuthAction.logIn(binding.logInEmailEditText.text.toString(),
                 binding.logInPasswordEditText.text.toString())
 
-            /*if(dataValidation.authLogIn()) {
+            *//*if(dataValidation.authLogIn()) {
 
 
                 Handler(mainLooper).post {
                     dataValidation.authFieldsUpdate(userLogInResponse, requireContext())
                 }
-            }*/
+            }*//*
 
             Thread.sleep(1000)
 
         }).start()
 
-        val i = 0
+        val i = 0*/
 
         /*var userAuthResult = 0
 
