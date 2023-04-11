@@ -29,16 +29,12 @@ class AuthActivity : AppCompatActivity(), AuthActivityCallback, ShowFragmentCall
         showFragment(AuthLogInFragment(), true)
     }
 
-    override fun processLogIn(data: AuthResponse?) {
+    override fun processAuth(data: AuthResponse?) {
         if (!data?.token.isNullOrEmpty()) {
             data?.token?.let {
                 SessionManager.saveAuthToken(this, it) }
             component.newActivity(MainActivity::class.java, true)
         }
-    }
-
-    fun processSignUp(data: AuthResponse?) {
-
     }
 
     override fun showErrorSnackBar(message: String?) {
