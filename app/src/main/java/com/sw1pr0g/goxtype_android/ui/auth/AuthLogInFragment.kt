@@ -9,29 +9,29 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.sw1pr0g.goxtype_android.data.api.response.BaseResponse
-import com.sw1pr0g.goxtype_android.data.api.response.LoginResponse
 import com.sw1pr0g.goxtype_android.databinding.FragmentAuthLogInBinding
-import com.sw1pr0g.goxtype_android.domain.DataValidation
+import com.sw1pr0g.goxtype_android.domain.validation.LogInValidation
+import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
 import com.sw1pr0g.goxtype_android.ui.Component
-import com.sw1pr0g.goxtype_android.ui.main.MainActivity
-import com.sw1pr0g.goxtype_android.utils.SessionManager
-import com.sw1pr0g.goxtype_android.viewmodel.LoginViewModel
+import com.sw1pr0g.goxtype_android.viewmodel.AuthViewModel
 
 
 class AuthLogInFragment: Fragment() {
     private var _binding: FragmentAuthLogInBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<LoginViewModel>()
+    private val viewModel by viewModels<AuthViewModel>()
 
-    private var callbacks: AuthShowFragmentCallback? = null
+    private var showFragmentCallback: ShowFragmentCallback? = null
+    private var authActivityCallback: AuthActivityCallback? = null
 
     private lateinit var component: Component
-    private lateinit var dataValidation: DataValidation
+    private lateinit var logInValidation: LogInValidation
     private lateinit var dialogAuthLoading: DialogAuthLoading
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        callbacks = context as AuthShowFragmentCallback?
+        showFragmentCallback = context as ShowFragmentCallback?
+        authActivityCallback = context as AuthActivityCallback?
     }
 
     override fun onCreateView(
@@ -42,21 +42,22 @@ class AuthLogInFragment: Fragment() {
         _binding = FragmentAuthLogInBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        dataValidation = DataValidation(binding.logInEmailTextLayout, binding.logInPasswordTextLayout)
+        logInValidation = LogInValidation(binding.logInEmailTextLayout, binding.logInPasswordTextLayout)
         dialogAuthLoading = DialogAuthLoading(requireActivity())
         component = Component(requireContext())
 
-        viewModel.loginResult.observe(requireActivity()) {
+        viewModel.authResult.observe(requireActivity()) {
             when(it) {
                 is BaseResponse.Loading -> {
                     showLoading()
                 }
                 is BaseResponse.Success -> {
                     stopLoading()
-                    processLogin(it.data)
+                    authActivityCallback?.processAuth(it.data)
                 }
                 is BaseResponse.Error -> {
-                    dataValidation.authFieldsIncorrect()
+                    authActivityCallback?.showErrorSnackBar(it.msg)
+                    logInValidation.fieldsIncorrect()
                     stopLoading()
                 }
                 else -> {
@@ -65,13 +66,13 @@ class AuthLogInFragment: Fragment() {
             }
         }
 
-        binding.logInButton.setOnClickListener { doLogin() }
+        binding.logInButton.setOnClickListener { doLogIn() }
 
-        binding.logInEmailEditText.addTextChangedListener { dataValidation.authOffMistakes(binding.logInEmailTextLayout, binding.logInPasswordTextLayout) }
-        binding.logInPasswordEditText.addTextChangedListener { dataValidation.authOffMistakes(binding.logInEmailTextLayout, binding.logInPasswordTextLayout) }
+        binding.logInEmailEditText.addTextChangedListener { logInValidation.offFieldsMistakes() }
+        binding.logInPasswordEditText.addTextChangedListener { logInValidation.offFieldsMistakes() }
 
         binding.goSignUpButton.setOnClickListener {
-            callbacks?.showFragment(
+            showFragmentCallback?.showFragment(
                 AuthSignUpFragment(), false)
         }
 
@@ -85,14 +86,16 @@ class AuthLogInFragment: Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        callbacks = null
+        showFragmentCallback = null
+        authActivityCallback = null
     }
 
-    private fun doLogin() {
-        if (dataValidation.authLogIn()) {
+    private fun doLogIn() {
+        if (logInValidation.checkEmptyFields()) {
             val email = binding.logInEmailEditText.text.toString()
             val pwd = binding.logInPasswordEditText.text.toString()
-            viewModel.loginUser(email = email, pwd = pwd)
+            viewModel.logInAction = true
+            viewModel.authUser(email = email, pwd = pwd)
         }
     }
 
@@ -102,14 +105,6 @@ class AuthLogInFragment: Fragment() {
 
     private fun stopLoading() {
         dialogAuthLoading.dismissDialog()
-    }
-
-    private fun processLogin(data: LoginResponse?) {
-        if (!data?.token.isNullOrEmpty()) {
-            data?.token?.let {
-                SessionManager.saveAuthToken(requireActivity(), it) }
-            component.newActivity(MainActivity::class.java, true)
-        }
     }
 
 }
