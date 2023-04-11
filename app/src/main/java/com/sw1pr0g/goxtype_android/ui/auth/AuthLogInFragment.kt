@@ -56,6 +56,7 @@ class AuthLogInFragment: Fragment() {
                     authActivityCallback?.processLogIn(it.data)
                 }
                 is BaseResponse.Error -> {
+                    authActivityCallback?.showErrorSnackBar(it.msg)
                     dataValidation.fieldsIncorrect()
                     stopLoading()
                 }

@@ -2,9 +2,11 @@ package com.sw1pr0g.goxtype_android.ui.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import com.sw1pr0g.goxtype_android.R
-import com.sw1pr0g.goxtype_android.data.api.response.LogInResponse
+import com.sw1pr0g.goxtype_android.data.api.response.AuthResponse
 import com.sw1pr0g.goxtype_android.databinding.ActivityAuthBinding
 import com.sw1pr0g.goxtype_android.ui.Component
 import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
@@ -27,11 +29,23 @@ class AuthActivity : AppCompatActivity(), AuthActivityCallback, ShowFragmentCall
         showFragment(AuthLogInFragment(), true)
     }
 
-    override fun processLogIn(data: LogInResponse?) {
+    override fun processLogIn(data: AuthResponse?) {
         if (!data?.token.isNullOrEmpty()) {
             data?.token?.let {
                 SessionManager.saveAuthToken(this, it) }
             component.newActivity(MainActivity::class.java, true)
+        }
+    }
+
+    fun processSignUp(data: AuthResponse?) {
+
+    }
+
+    override fun showErrorSnackBar(message: String?) {
+        if (message != null) {
+            Snackbar.make(binding.authFragmentContainer, message, Snackbar.LENGTH_SHORT)
+                .setBackgroundTint(ContextCompat.getColor(applicationContext, R.color.colorPrimary))
+                .show()
         }
     }
 

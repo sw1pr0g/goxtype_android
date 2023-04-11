@@ -1,16 +1,19 @@
 package com.sw1pr0g.goxtype_android.domain.validation
 
-import android.view.View
+import android.content.Context
 import android.widget.CheckBox
 import android.widget.EditText
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
+import com.sw1pr0g.goxtype_android.ui.auth.AuthActivityCallback
 
-class SignUpValidation(private val snackBarView: View,
-                       private val emailLayout: TextInputLayout,
-                       private val passwordLayout: TextInputLayout,
-                       private val repeatPasswordLayout: TextInputLayout,
-                       private val acceptTermsCheckBox: CheckBox) {
+class SignUpValidation(
+    context: Context,
+    private val emailLayout: TextInputLayout,
+    private val passwordLayout: TextInputLayout,
+    private val repeatPasswordLayout: TextInputLayout,
+    private val acceptTermsCheckBox: CheckBox) {
+
+    private var authActivityCallback: AuthActivityCallback? = context as AuthActivityCallback?
 
     fun checkEmptyFields() : Boolean {
         var returns = true
@@ -50,7 +53,7 @@ class SignUpValidation(private val snackBarView: View,
             returns = false
         } else {
             if (!acceptTermsCheckBox.isChecked) {
-                Snackbar.make(snackBarView, "Please read and accept all our terms and conditions!", Snackbar.LENGTH_SHORT).show()
+                authActivityCallback?.showErrorSnackBar("Please read and accept all our terms and conditions!")
                 returns = false
             }
         }
