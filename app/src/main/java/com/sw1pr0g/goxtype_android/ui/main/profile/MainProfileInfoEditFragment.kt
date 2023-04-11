@@ -1,4 +1,4 @@
-package com.sw1pr0g.goxtype_android.ui.main
+package com.sw1pr0g.goxtype_android.ui.main.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater

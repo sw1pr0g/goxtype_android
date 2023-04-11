@@ -47,5 +47,4 @@ object SessionManager {
         editor.apply()
     }
 
-
 }

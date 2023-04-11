@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.sw1pr0g.goxtype_android.R
 import com.sw1pr0g.goxtype_android.databinding.ActivityMainBinding
 import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
+import com.sw1pr0g.goxtype_android.ui.main.profile.MainProfileFragment
 
 class MainActivity : AppCompatActivity(), ShowFragmentCallback {
     private lateinit var binding: ActivityMainBinding

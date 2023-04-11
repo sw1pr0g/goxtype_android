@@ -1,4 +1,4 @@
-package com.sw1pr0g.goxtype_android.ui.main
+package com.sw1pr0g.goxtype_android.ui.main.profile
 
 import android.content.Context
 import android.os.Bundle
