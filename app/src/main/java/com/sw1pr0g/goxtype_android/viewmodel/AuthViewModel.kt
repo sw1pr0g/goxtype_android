@@ -9,7 +9,7 @@ import com.sw1pr0g.goxtype_android.data.api.response.BaseResponse
 import com.sw1pr0g.goxtype_android.data.api.response.AuthResponse
 import com.sw1pr0g.goxtype_android.repository.UserRepository
 import kotlinx.coroutines.launch
-import retrofit2.Response
+import org.json.JSONObject
 
 class AuthViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -37,13 +37,13 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                     }
                 }
 
-
                 val responseStatus: Boolean = response?.isSuccessful == true
                 // response?.code() == 200/201
                 if (responseStatus) {
                     authResult.value = BaseResponse.Success(response?.body())
                 } else {
-                    authResult.value = BaseResponse.Error(response?.message())
+                    val jsonResponse = JSONObject(response?.errorBody()!!.charStream().readText())
+                    authResult.value = BaseResponse.Error(jsonResponse.getString("message"))
                 }
 
             } catch (ex: Exception) {
