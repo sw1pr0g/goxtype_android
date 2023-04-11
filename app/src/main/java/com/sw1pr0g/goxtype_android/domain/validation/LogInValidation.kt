@@ -26,8 +26,7 @@ class LogInValidation(private val emailLayout: TextInputLayout,
         return returns
     }
 
-    fun offFieldsMistakes(emailLayout: TextInputLayout,
-                          passwordLayout: TextInputLayout) {
+    fun offFieldsMistakes() {
         emailLayout.isErrorEnabled = false
         passwordLayout.isErrorEnabled = false
     }

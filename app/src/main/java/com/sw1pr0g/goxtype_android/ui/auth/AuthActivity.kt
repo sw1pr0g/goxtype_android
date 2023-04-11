@@ -27,6 +27,14 @@ class AuthActivity : AppCompatActivity(), AuthActivityCallback, ShowFragmentCall
         showFragment(AuthLogInFragment(), true)
     }
 
+    override fun processLogIn(data: LogInResponse?) {
+        if (!data?.token.isNullOrEmpty()) {
+            data?.token?.let {
+                SessionManager.saveAuthToken(this, it) }
+            component.newActivity(MainActivity::class.java, true)
+        }
+    }
+
     override fun showFragment(fragment: Fragment, firstShowing: Boolean) {
         val fragmentTransaction = supportFragmentManager.beginTransaction().setCustomAnimations(
             R.anim.slide_in,
@@ -38,14 +46,6 @@ class AuthActivity : AppCompatActivity(), AuthActivityCallback, ShowFragmentCall
         if (!firstShowing) fragmentTransaction.addToBackStack(null)
 
         fragmentTransaction.commit()
-    }
-
-    override fun processLogIn(data: LogInResponse?) {
-        if (!data?.token.isNullOrEmpty()) {
-            data?.token?.let {
-                SessionManager.saveAuthToken(this, it) }
-            component.newActivity(MainActivity::class.java, true)
-        }
     }
 
 }

@@ -1,12 +1,14 @@
 package com.sw1pr0g.goxtype_android.domain.validation
 
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputLayout
 
 class SignUpValidation(private val emailLayout: TextInputLayout,
                        private val passwordLayout: TextInputLayout,
-                       private val repeatPasswordLayout: TextInputLayout) {
+                       private val repeatPasswordLayout: TextInputLayout,
+                       private val acceptTermsCheckBox: CheckBox) {
 
     fun checkEmptyFields() : Boolean {
         var returns = true
@@ -45,16 +47,16 @@ class SignUpValidation(private val emailLayout: TextInputLayout,
             repeatPasswordLayout.error = "Passwords don't match"
             returns = false
         } else {
-            if (!signUpAcceptTermsCheckbox.isChecked) {
-                Toast.makeText(activity, "Please read and accept all our terms and conditions!", Toast.LENGTH_SHORT).show()
+            if (!acceptTermsCheckBox.isChecked) {
+                // TODO("Replace Toast")
+                // Toast.makeText(activity, "Please read and accept all our terms and conditions!", Toast.LENGTH_SHORT).show()
                 returns = false
             }
         }
         return returns
     }
 
-    fun offFieldsMistakes(emailLayout: TextInputLayout,
-                          passwordLayout: TextInputLayout) {
+    fun offFieldsMistakes() {
         emailLayout.isErrorEnabled = false
         passwordLayout.isErrorEnabled = false
         repeatPasswordLayout.isErrorEnabled = false

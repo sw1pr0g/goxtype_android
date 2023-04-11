@@ -70,8 +70,8 @@ class AuthLogInFragment: Fragment() {
 
         binding.logInButton.setOnClickListener { doLogIn() }
 
-        binding.logInEmailEditText.addTextChangedListener { dataValidation.offFieldsMistakes(binding.logInEmailTextLayout, binding.logInPasswordTextLayout) }
-        binding.logInPasswordEditText.addTextChangedListener { dataValidation.offFieldsMistakes(binding.logInEmailTextLayout, binding.logInPasswordTextLayout) }
+        binding.logInEmailEditText.addTextChangedListener { dataValidation.offFieldsMistakes() }
+        binding.logInPasswordEditText.addTextChangedListener { dataValidation.offFieldsMistakes() }
 
         binding.goSignUpButton.setOnClickListener {
             showFragmentCallback?.showFragment(
