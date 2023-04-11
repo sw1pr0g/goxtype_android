@@ -4,13 +4,13 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.sw1pr0g.goxtype_android.data.api.request.LogInRequest
+import com.sw1pr0g.goxtype_android.data.api.request.AuthRequest
 import com.sw1pr0g.goxtype_android.data.api.response.BaseResponse
 import com.sw1pr0g.goxtype_android.data.api.response.LogInResponse
 import com.sw1pr0g.goxtype_android.repository.UserRepository
 import kotlinx.coroutines.launch
 
-class LogInViewModel(application: Application) : AndroidViewModel(application) {
+class AuthViewModel(application: Application) : AndroidViewModel(application) {
 
     private val userRepo = UserRepository()
     val logInResult: MutableLiveData<BaseResponse<LogInResponse>> = MutableLiveData()
@@ -20,7 +20,7 @@ class LogInViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             try {
 
-                val loginRequest = LogInRequest(
+                val loginRequest = AuthRequest(
                     password = pwd,
                     email = email
                 )

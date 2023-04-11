@@ -9,20 +9,17 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.sw1pr0g.goxtype_android.data.api.response.BaseResponse
-import com.sw1pr0g.goxtype_android.data.api.response.LogInResponse
 import com.sw1pr0g.goxtype_android.databinding.FragmentAuthLogInBinding
 import com.sw1pr0g.goxtype_android.domain.validation.LogInValidation
 import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
 import com.sw1pr0g.goxtype_android.ui.Component
-import com.sw1pr0g.goxtype_android.ui.main.MainActivity
-import com.sw1pr0g.goxtype_android.utils.SessionManager
-import com.sw1pr0g.goxtype_android.viewmodel.LogInViewModel
+import com.sw1pr0g.goxtype_android.viewmodel.AuthViewModel
 
 
 class AuthLogInFragment: Fragment() {
     private var _binding: FragmentAuthLogInBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<LogInViewModel>()
+    private val viewModel by viewModels<AuthViewModel>()
 
     private var showFragmentCallback: ShowFragmentCallback? = null
     private var authActivityCallback: AuthActivityCallback? = null
