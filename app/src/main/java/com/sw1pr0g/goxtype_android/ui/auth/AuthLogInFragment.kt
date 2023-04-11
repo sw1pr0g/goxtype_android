@@ -24,7 +24,8 @@ class AuthLogInFragment: Fragment() {
     private val binding get() = _binding!!
     private val viewModel by viewModels<LogInViewModel>()
 
-    private var callbacks: ShowFragmentCallback? = null
+    private var showFragmentCallback: ShowFragmentCallback? = null
+    private var authActivityCallback: AuthActivityCallback? = null
 
     private lateinit var component: Component
     private lateinit var dataValidation: LogInValidation
@@ -32,7 +33,8 @@ class AuthLogInFragment: Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        callbacks = context as ShowFragmentCallback?
+        showFragmentCallback = context as ShowFragmentCallback?
+        authActivityCallback = context as AuthActivityCallback?
     }
 
     override fun onCreateView(
@@ -54,7 +56,7 @@ class AuthLogInFragment: Fragment() {
                 }
                 is BaseResponse.Success -> {
                     stopLoading()
-                    processLogIn(it.data)
+                    authActivityCallback?.processLogIn(it.data)
                 }
                 is BaseResponse.Error -> {
                     dataValidation.fieldsIncorrect()
@@ -72,7 +74,7 @@ class AuthLogInFragment: Fragment() {
         binding.logInPasswordEditText.addTextChangedListener { dataValidation.offFieldsMistakes(binding.logInEmailTextLayout, binding.logInPasswordTextLayout) }
 
         binding.goSignUpButton.setOnClickListener {
-            callbacks?.showFragment(
+            showFragmentCallback?.showFragment(
                 AuthSignUpFragment(), false)
         }
 
@@ -86,7 +88,8 @@ class AuthLogInFragment: Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        callbacks = null
+        showFragmentCallback = null
+        authActivityCallback = null
     }
 
     private fun doLogIn() {
@@ -103,14 +106,6 @@ class AuthLogInFragment: Fragment() {
 
     private fun stopLoading() {
         dialogAuthLoading.dismissDialog()
-    }
-
-    private fun processLogIn(data: LogInResponse?) {
-        if (!data?.token.isNullOrEmpty()) {
-            data?.token?.let {
-                SessionManager.saveAuthToken(requireActivity(), it) }
-            component.newActivity(MainActivity::class.java, true)
-        }
     }
 
 }
