@@ -1,11 +1,13 @@
 package com.sw1pr0g.goxtype_android.domain.validation
 
+import android.view.View
 import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
-class SignUpValidation(private val emailLayout: TextInputLayout,
+class SignUpValidation(private val snackBarView: View,
+                       private val emailLayout: TextInputLayout,
                        private val passwordLayout: TextInputLayout,
                        private val repeatPasswordLayout: TextInputLayout,
                        private val acceptTermsCheckBox: CheckBox) {
@@ -48,8 +50,7 @@ class SignUpValidation(private val emailLayout: TextInputLayout,
             returns = false
         } else {
             if (!acceptTermsCheckBox.isChecked) {
-                // TODO("Replace Toast")
-                // Toast.makeText(activity, "Please read and accept all our terms and conditions!", Toast.LENGTH_SHORT).show()
+                Snackbar.make(snackBarView, "Please read and accept all our terms and conditions!", Snackbar.LENGTH_SHORT).show()
                 returns = false
             }
         }

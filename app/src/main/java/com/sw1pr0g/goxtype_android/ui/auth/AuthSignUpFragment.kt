@@ -37,7 +37,8 @@ class AuthSignUpFragment: Fragment() {
         _binding = FragmentAuthSignUpBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        dataValidation = SignUpValidation(binding.signUpEmailTextLayout,
+        dataValidation = SignUpValidation(binding.signUpFrameLayout,
+                                            binding.signUpEmailTextLayout,
                                             binding.signUpPasswordTextLayout,
                                             binding.signUpRepeatPasswordTextLayout,
                                             binding.signUpAcceptTermsCheckbox)
