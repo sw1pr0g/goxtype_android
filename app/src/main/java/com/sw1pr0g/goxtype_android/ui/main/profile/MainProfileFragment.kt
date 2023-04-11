@@ -18,13 +18,13 @@ class MainProfileFragment: Fragment() {
     private var _binding: FragmentMainProfileBinding? = null
     private val binding get() = _binding!!
 
-    private var callbacks: ShowFragmentCallback? = null
+    private var showFragmentCallback: ShowFragmentCallback? = null
 
     private lateinit var component: Component
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        callbacks = context as ShowFragmentCallback?
+        showFragmentCallback = context as ShowFragmentCallback?
     }
 
     override fun onCreateView(
@@ -37,7 +37,7 @@ class MainProfileFragment: Fragment() {
 
         component = Component(requireContext())
 
-        binding.profileInfoCardView.setOnClickListener { callbacks?.showFragment(
+        binding.profileInfoCardView.setOnClickListener { showFragmentCallback?.showFragment(
             MainProfileInfoFragment(), false) }
 
         binding.logOutCardView.setOnClickListener {
@@ -64,7 +64,7 @@ class MainProfileFragment: Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        callbacks = null
+        showFragmentCallback = null
     }
 
 }

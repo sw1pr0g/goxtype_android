@@ -2,11 +2,14 @@ package com.sw1pr0g.goxtype_android.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.auth0.android.jwt.JWT
 import com.sw1pr0g.goxtype_android.R
 import com.sw1pr0g.goxtype_android.databinding.ActivityMainBinding
 import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
 import com.sw1pr0g.goxtype_android.ui.main.profile.MainProfileFragment
+import com.sw1pr0g.goxtype_android.utils.SessionManager
 
 class MainActivity : AppCompatActivity(), ShowFragmentCallback {
     private lateinit var binding: ActivityMainBinding
@@ -20,6 +23,12 @@ class MainActivity : AppCompatActivity(), ShowFragmentCallback {
 
         showFragment(MainHomeFragment(), true)
         binding.mainBottomNavigationView.selectedItemId = 0
+
+        val jwtToken = JWT(SessionManager.getToken(this).toString())
+        val issuer = jwtToken.issuer
+        val id = jwtToken.getClaim("id").asString()
+
+        Toast.makeText(this, "user_id - $id", Toast.LENGTH_SHORT).show()
 
         binding.mainBottomNavigationView.setOnItemSelectedListener {
 

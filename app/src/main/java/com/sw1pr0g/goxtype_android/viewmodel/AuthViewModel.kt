@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.sw1pr0g.goxtype_android.data.api.request.AuthRequest
 import com.sw1pr0g.goxtype_android.data.api.response.BaseResponse
 import com.sw1pr0g.goxtype_android.data.api.response.AuthResponse
-import com.sw1pr0g.goxtype_android.repository.UserRepository
+import com.sw1pr0g.goxtype_android.data.repository.UserRepository
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
