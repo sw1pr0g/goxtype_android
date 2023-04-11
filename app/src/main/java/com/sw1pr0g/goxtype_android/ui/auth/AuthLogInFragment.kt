@@ -13,7 +13,7 @@ import com.sw1pr0g.goxtype_android.databinding.FragmentAuthLogInBinding
 import com.sw1pr0g.goxtype_android.domain.validation.LogInValidation
 import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
 import com.sw1pr0g.goxtype_android.ui.Component
-import com.sw1pr0g.goxtype_android.viewmodel.AuthViewModel
+import com.sw1pr0g.goxtype_android.ui.viewmodel.AuthViewModel
 
 
 class AuthLogInFragment: Fragment() {

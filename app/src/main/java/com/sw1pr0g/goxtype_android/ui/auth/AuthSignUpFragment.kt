@@ -13,7 +13,7 @@ import com.sw1pr0g.goxtype_android.databinding.FragmentAuthSignUpBinding
 import com.sw1pr0g.goxtype_android.domain.validation.SignUpValidation
 import com.sw1pr0g.goxtype_android.ui.Component
 import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
-import com.sw1pr0g.goxtype_android.viewmodel.AuthViewModel
+import com.sw1pr0g.goxtype_android.ui.viewmodel.AuthViewModel
 
 class AuthSignUpFragment: Fragment() {
     private var _binding: FragmentAuthSignUpBinding? = null

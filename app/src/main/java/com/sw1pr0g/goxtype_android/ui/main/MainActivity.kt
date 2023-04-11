@@ -24,11 +24,12 @@ class MainActivity : AppCompatActivity(), ShowFragmentCallback {
         showFragment(MainHomeFragment(), true)
         binding.mainBottomNavigationView.selectedItemId = 0
 
+        val currentToken = SessionManager.getToken(this).toString()
         val jwtToken = JWT(SessionManager.getToken(this).toString())
         val issuer = jwtToken.issuer
         val id = jwtToken.getClaim("id").asString()
 
-        Toast.makeText(this, "user_id - $id", Toast.LENGTH_SHORT).show()
+        // Toast.makeText(this, "user_id - $id", Toast.Le).show()
 
         binding.mainBottomNavigationView.setOnItemSelectedListener {
 
