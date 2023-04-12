@@ -13,13 +13,16 @@ import com.sw1pr0g.goxtype_android.databinding.FragmentAuthLogInBinding
 import com.sw1pr0g.goxtype_android.domain.validation.LogInValidation
 import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
 import com.sw1pr0g.goxtype_android.ui.Component
+import com.sw1pr0g.goxtype_android.ui.main.MainActivity
 import com.sw1pr0g.goxtype_android.ui.viewmodel.AuthViewModel
+import com.sw1pr0g.goxtype_android.ui.viewmodel.GetUserDataViewModel
+import com.sw1pr0g.goxtype_android.utils.SessionManager
 
 
 class AuthLogInFragment: Fragment() {
     private var _binding: FragmentAuthLogInBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<AuthViewModel>()
+    private val authViewModel by viewModels<AuthViewModel>()
 
     private var showFragmentCallback: ShowFragmentCallback? = null
     private var authActivityCallback: AuthActivityCallback? = null
@@ -46,7 +49,7 @@ class AuthLogInFragment: Fragment() {
         dialogAuthLoading = DialogAuthLoading(requireActivity())
         component = Component(requireContext())
 
-        viewModel.authResult.observe(requireActivity()) {
+        authViewModel.authResult.observe(requireActivity()) {
             when(it) {
                 is BaseResponse.Loading -> {
                     showLoading()
@@ -94,8 +97,8 @@ class AuthLogInFragment: Fragment() {
         if (logInValidation.checkEmptyFields()) {
             val email = binding.logInEmailEditText.text.toString()
             val pwd = binding.logInPasswordEditText.text.toString()
-            viewModel.logInAction = true
-            viewModel.authUser(email = email, pwd = pwd)
+            authViewModel.logInAction = true
+            authViewModel.authUser(email = email, pwd = pwd)
         }
     }
 
