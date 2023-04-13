@@ -3,9 +3,13 @@ package com.sw1pr0g.goxtype_android.data.api.methods
 import com.sw1pr0g.goxtype_android.data.api.ApiClient
 import com.sw1pr0g.goxtype_android.data.api.request.AuthRequest
 import com.sw1pr0g.goxtype_android.data.api.response.AuthResponse
+import com.sw1pr0g.goxtype_android.data.api.response.getUserDataResponse.GetUserDataResponse
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface UserApi {
 
@@ -14,6 +18,12 @@ interface UserApi {
 
     @POST("signup")
     suspend fun signUpUser(@Body signUpRequest: AuthRequest): Response<AuthResponse>
+
+    @GET("users/{id}")
+    suspend fun getUserData(@Header("Authorization")
+                                getUserDataHeader: String,
+                            @Path("id")
+                                userId: String): Response<GetUserDataResponse>
 
     companion object {
         fun getApi(): UserApi? {

@@ -1,4 +1,4 @@
-package com.sw1pr0g.goxtype_android.viewmodel
+package com.sw1pr0g.goxtype_android.ui.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

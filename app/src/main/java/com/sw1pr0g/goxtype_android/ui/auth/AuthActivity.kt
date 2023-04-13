@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.sw1pr0g.goxtype_android.R
 import com.sw1pr0g.goxtype_android.data.api.response.AuthResponse
+import com.sw1pr0g.goxtype_android.data.api.response.getUserDataResponse.GetUserDataResponse
 import com.sw1pr0g.goxtype_android.databinding.ActivityAuthBinding
 import com.sw1pr0g.goxtype_android.ui.Component
 import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
@@ -29,10 +30,25 @@ class AuthActivity : AppCompatActivity(), AuthActivityCallback, ShowFragmentCall
         showFragment(AuthLogInFragment(), true)
     }
 
-    override fun processAuth(data: AuthResponse?) {
-        if (!data?.token.isNullOrEmpty()) {
-            data?.token?.let {
+    override fun processAuth(authResponse: AuthResponse?) {
+        if (!authResponse?.token.isNullOrEmpty())
+            authResponse?.token?.let {
                 SessionManager.saveAuthToken(this, it) }
+    }
+
+    override fun processGetUserData(getUserDataResponse: GetUserDataResponse?) {
+        if (!getUserDataResponse?.data?.email.isNullOrEmpty()) {
+            getUserDataResponse?.data?.email.let {
+                if (it != null) {
+                    SessionManager.saveUserEmail(this, it)
+                }
+            }
+            getUserDataResponse?.data?.name.let {
+                if (it != null) {
+                    SessionManager.saveUserName(this, it)
+                }
+            }
+
             component.newActivity(MainActivity::class.java, true)
         }
     }

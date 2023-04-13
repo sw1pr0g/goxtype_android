@@ -13,12 +13,15 @@ import com.sw1pr0g.goxtype_android.databinding.FragmentAuthSignUpBinding
 import com.sw1pr0g.goxtype_android.domain.validation.SignUpValidation
 import com.sw1pr0g.goxtype_android.ui.Component
 import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
-import com.sw1pr0g.goxtype_android.viewmodel.AuthViewModel
+import com.sw1pr0g.goxtype_android.ui.viewmodel.AuthViewModel
+import com.sw1pr0g.goxtype_android.ui.viewmodel.GetUserDataViewModel
+import com.sw1pr0g.goxtype_android.utils.SessionManager
 
 class AuthSignUpFragment: Fragment() {
     private var _binding: FragmentAuthSignUpBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<AuthViewModel>()
+    private val authViewModel by viewModels<AuthViewModel>()
+    private val getUserDataViewModel by viewModels<GetUserDataViewModel>()
 
     private var showFragmentCallback: ShowFragmentCallback? = null
     private var authActivityCallback: AuthActivityCallback? = null
@@ -49,14 +52,15 @@ class AuthSignUpFragment: Fragment() {
         dialogAuthLoading = DialogAuthLoading(requireActivity())
         component = Component(requireContext())
 
-        viewModel.authResult.observe(requireActivity()) {
+        authViewModel.authResult.observe(requireActivity()) {
             when(it) {
                 is BaseResponse.Loading -> {
                     showLoading()
                 }
                 is BaseResponse.Success -> {
-                    stopLoading()
                     authActivityCallback?.processAuth(it.data)
+                    stopLoading()
+                    getUserData()
                 }
                 is BaseResponse.Error -> {
                     authActivityCallback?.showErrorSnackBar(it.msg)
@@ -67,6 +71,29 @@ class AuthSignUpFragment: Fragment() {
                     stopLoading()
                 }
             }
+        }
+
+        getUserDataViewModel.getUserDataResult.observe(requireActivity()) {
+
+            when (it) {
+
+                is BaseResponse.Loading -> {
+                    showLoading()
+                }
+                is BaseResponse.Success -> {
+                    authActivityCallback?.processGetUserData(it.data)
+                    stopLoading()
+                }
+                is BaseResponse.Error -> {
+                    authActivityCallback?.showErrorSnackBar(it.msg)
+                    stopLoading()
+                }
+                else -> {
+                    stopLoading()
+                }
+
+            }
+
         }
 
         binding.goLogInButton.setOnClickListener {
@@ -97,9 +124,16 @@ class AuthSignUpFragment: Fragment() {
         if(signUpValidation.checkEmptyFields()) {
             val email = binding.signUpEmailEditText.text.toString()
             val pwd = binding.signUpPasswordEditText.text.toString()
-            viewModel.logInAction = false
-            viewModel.authUser(email = email, pwd = pwd)
+            authViewModel.logInAction = false
+            authViewModel.authUser(email = email, pwd = pwd)
         }
+    }
+
+    private fun getUserData() {
+        getUserDataViewModel.getUserData(
+            token = SessionManager.getToken(requireContext()).toString(),
+            userId = SessionManager.getIdFromToken(requireContext())
+        )
     }
 
     private fun showLoading() {
