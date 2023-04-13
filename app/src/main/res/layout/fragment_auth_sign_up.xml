@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/sign_up_frame_layout">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -106,7 +107,7 @@
                 android:fontFamily="@font/raleway_medium"
                 android:text="I have read and accept all terms and conditions"
                 android:textColor="@color/text_color"
-                android:textSize="16sp" />
+                android:textSize="16sp"/>
 
             <Button
                 android:id="@+id/sign_up_button"

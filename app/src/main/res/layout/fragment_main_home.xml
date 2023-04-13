@@ -32,6 +32,7 @@
             android:fontFamily="@font/poppins_semibold_italic" />
 
         <TextView
+            android:id="@+id/user_name_greeting_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Alex"
@@ -108,11 +109,12 @@
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/typing_test_start_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginEnd="8dp"
-                android:text="Start typing test"
-                android:layout_gravity="center_horizontal"/>
+                android:text="Start typing test" />
 
         </LinearLayout>
 

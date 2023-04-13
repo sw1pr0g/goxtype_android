@@ -1,15 +1,18 @@
-package com.sw1pr0g.goxtype_android
+package com.sw1pr0g.goxtype_android.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.auth0.android.jwt.JWT
+import com.sw1pr0g.goxtype_android.R
 import com.sw1pr0g.goxtype_android.databinding.ActivityMainBinding
+import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
+import com.sw1pr0g.goxtype_android.ui.main.profile.MainProfileFragment
+import com.sw1pr0g.goxtype_android.utils.SessionManager
 
-class MainActivity : AppCompatActivity(), MainProfileFragment.Callbacks, MainProfileInfoFragment.Callbacks {
+class MainActivity : AppCompatActivity(), ShowFragmentCallback {
     private lateinit var binding: ActivityMainBinding
-
-    private lateinit var mainBottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -18,20 +21,16 @@ class MainActivity : AppCompatActivity(), MainProfileFragment.Callbacks, MainPro
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mainBottomNavigationView = findViewById(R.id.main_bottom_navigation_view)
-
         showFragment(MainHomeFragment(), true)
-        mainBottomNavigationView.selectedItemId = 0
+        binding.mainBottomNavigationView.selectedItemId = 0
 
         binding.mainBottomNavigationView.setOnItemSelectedListener {
 
             when(it.itemId) {
-
                 R.id.home -> showFragment(MainHomeFragment(), false)
                 R.id.trainer -> showFragment(MainTrainerFragment(), false)
                 R.id.notifications -> showFragment(MainNotificationsFragment(), false)
                 R.id.profile -> showFragment(MainProfileFragment(), false)
-
             }
             true
         }
@@ -39,15 +38,14 @@ class MainActivity : AppCompatActivity(), MainProfileFragment.Callbacks, MainPro
     }
 
     override fun showFragment(fragment: Fragment, firstShowing: Boolean) {
-
-        val supportFragmentManager = supportFragmentManager.beginTransaction()
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
             .replace(R.id.main_fragment_container, fragment)
 
-        if (!firstShowing) supportFragmentManager.addToBackStack(null)
+        if (!firstShowing) fragmentTransaction.addToBackStack(null)
 
-        supportFragmentManager.commit()
-
+        fragmentTransaction.commit()
     }
+
 }
 
 
