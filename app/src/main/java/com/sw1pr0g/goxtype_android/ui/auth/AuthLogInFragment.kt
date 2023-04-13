@@ -13,7 +13,6 @@ import com.sw1pr0g.goxtype_android.databinding.FragmentAuthLogInBinding
 import com.sw1pr0g.goxtype_android.domain.validation.LogInValidation
 import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
 import com.sw1pr0g.goxtype_android.ui.Component
-import com.sw1pr0g.goxtype_android.ui.main.MainActivity
 import com.sw1pr0g.goxtype_android.ui.viewmodel.AuthViewModel
 import com.sw1pr0g.goxtype_android.ui.viewmodel.GetUserDataViewModel
 import com.sw1pr0g.goxtype_android.utils.SessionManager
@@ -50,18 +49,18 @@ class AuthLogInFragment: Fragment() {
         dialogAuthLoading = DialogAuthLoading(requireActivity())
         component = Component(requireContext())
 
-        authViewModel.authResult.observe(requireActivity()) { itAuth ->
-            when(itAuth) {
+        authViewModel.authResult.observe(requireActivity()) {
+            when(it) {
                 is BaseResponse.Loading -> {
                     showLoading()
                 }
                 is BaseResponse.Success -> {
-                    authActivityCallback?.processAuth(itAuth.data)
+                    authActivityCallback?.processAuth(it.data)
                     stopLoading()
                     getUserData()
                 }
                 is BaseResponse.Error -> {
-                    authActivityCallback?.showErrorSnackBar(itAuth.msg)
+                    authActivityCallback?.showErrorSnackBar(it.msg)
                     logInValidation.fieldsIncorrect()
                     stopLoading()
                 }
@@ -71,19 +70,19 @@ class AuthLogInFragment: Fragment() {
             }
         }
 
-        getUserDataViewModel.getUserDataResult.observe(requireActivity()) { itGetUserData ->
+        getUserDataViewModel.getUserDataResult.observe(requireActivity()) {
 
-            when (itGetUserData) {
+            when (it) {
 
                 is BaseResponse.Loading -> {
                     showLoading()
                 }
                 is BaseResponse.Success -> {
-                    authActivityCallback?.processGetUserData(itGetUserData.data)
+                    authActivityCallback?.processGetUserData(it.data)
                     stopLoading()
                 }
                 is BaseResponse.Error -> {
-                    authActivityCallback?.showErrorSnackBar(itGetUserData.msg)
+                    authActivityCallback?.showErrorSnackBar(it.msg)
                     stopLoading()
                 }
                 else -> {
@@ -94,10 +93,7 @@ class AuthLogInFragment: Fragment() {
 
         }
 
-        binding.logInButton.setOnClickListener {
-            doLogIn()
-
-        }
+        binding.logInButton.setOnClickListener { doLogIn() }
 
         binding.logInEmailEditText.addTextChangedListener { logInValidation.offFieldsMistakes() }
         binding.logInPasswordEditText.addTextChangedListener { logInValidation.offFieldsMistakes() }

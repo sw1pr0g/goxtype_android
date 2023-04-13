@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sw1pr0g.goxtype_android.databinding.FragmentMainHomeBinding
 import com.sw1pr0g.goxtype_android.ui.ShowFragmentCallback
+import com.sw1pr0g.goxtype_android.utils.SessionManager
 
 class MainHomeFragment : Fragment() {
     private var _binding: FragmentMainHomeBinding? = null
@@ -27,6 +28,7 @@ class MainHomeFragment : Fragment() {
         _binding = FragmentMainHomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        binding.userNameGreetingTextView.text = SessionManager.getUserName(requireContext())
         binding.typingTestStartButton.setOnClickListener {  }
 
         return view

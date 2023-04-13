@@ -24,10 +24,6 @@ class MainActivity : AppCompatActivity(), ShowFragmentCallback {
         showFragment(MainHomeFragment(), true)
         binding.mainBottomNavigationView.selectedItemId = 0
 
-        val name = SessionManager.getUserName(this)
-        val email = SessionManager.getUserEmail(this)
-        // Toast.makeText(this, "user_id - $id", Toast.Le).show()
-
         binding.mainBottomNavigationView.setOnItemSelectedListener {
 
             when(it.itemId) {

@@ -37,8 +37,10 @@ class MainProfileFragment: Fragment() {
 
         component = Component(requireContext())
 
-        binding.profileInfoCardView.setOnClickListener { showFragmentCallback?.showFragment(
-            MainProfileInfoFragment(), false) }
+        binding.userNameTextView.text = SessionManager.getUserName(requireContext())
+
+        binding.profileInfoCardView.setOnClickListener { /*showFragmentCallback?.showFragment(
+            MainProfileInfoFragment(), false)*/ }
 
         binding.logOutCardView.setOnClickListener {
 
