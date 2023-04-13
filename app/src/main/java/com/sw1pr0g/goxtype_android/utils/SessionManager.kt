@@ -8,8 +8,8 @@ import com.sw1pr0g.goxtype_android.R
 object SessionManager {
 
     private const val USER_TOKEN = "user_token"
-    private const val USER_EMAIL = "user_token"
-    private const val USER_NAME = "user_token"
+    private const val USER_EMAIL = "user_email"
+    private const val USER_NAME = "user_name"
 
     fun getIdFromToken(context: Context): String {
         val currentToken = getToken(context).toString()
@@ -38,6 +38,14 @@ object SessionManager {
      */
     fun getToken(context: Context): String? {
         return getString(context, USER_TOKEN)
+    }
+
+    fun getUserEmail(context: Context): String? {
+        return getString(context, USER_EMAIL)
+    }
+
+    fun getUserName(context: Context): String? {
+        return getString(context, USER_NAME)
     }
 
     private fun saveString(context: Context, key: String, value: String) {

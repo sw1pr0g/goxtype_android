@@ -3,7 +3,7 @@ package com.sw1pr0g.goxtype_android.data.api.methods
 import com.sw1pr0g.goxtype_android.data.api.ApiClient
 import com.sw1pr0g.goxtype_android.data.api.request.AuthRequest
 import com.sw1pr0g.goxtype_android.data.api.response.AuthResponse
-import com.sw1pr0g.goxtype_android.data.api.response.GetUserDataResponse
+import com.sw1pr0g.goxtype_android.data.api.response.getUserDataResponse.GetUserDataResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET

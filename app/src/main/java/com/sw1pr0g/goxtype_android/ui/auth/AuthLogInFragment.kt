@@ -23,6 +23,7 @@ class AuthLogInFragment: Fragment() {
     private var _binding: FragmentAuthLogInBinding? = null
     private val binding get() = _binding!!
     private val authViewModel by viewModels<AuthViewModel>()
+    private val getUserDataViewModel by viewModels<GetUserDataViewModel>()
 
     private var showFragmentCallback: ShowFragmentCallback? = null
     private var authActivityCallback: AuthActivityCallback? = null
@@ -49,17 +50,18 @@ class AuthLogInFragment: Fragment() {
         dialogAuthLoading = DialogAuthLoading(requireActivity())
         component = Component(requireContext())
 
-        authViewModel.authResult.observe(requireActivity()) {
-            when(it) {
+        authViewModel.authResult.observe(requireActivity()) { itAuth ->
+            when(itAuth) {
                 is BaseResponse.Loading -> {
                     showLoading()
                 }
                 is BaseResponse.Success -> {
+                    authActivityCallback?.processAuth(itAuth.data)
                     stopLoading()
-                    authActivityCallback?.processAuth(it.data)
+                    getUserData()
                 }
                 is BaseResponse.Error -> {
-                    authActivityCallback?.showErrorSnackBar(it.msg)
+                    authActivityCallback?.showErrorSnackBar(itAuth.msg)
                     logInValidation.fieldsIncorrect()
                     stopLoading()
                 }
@@ -69,7 +71,33 @@ class AuthLogInFragment: Fragment() {
             }
         }
 
-        binding.logInButton.setOnClickListener { doLogIn() }
+        getUserDataViewModel.getUserDataResult.observe(requireActivity()) { itGetUserData ->
+
+            when (itGetUserData) {
+
+                is BaseResponse.Loading -> {
+                    showLoading()
+                }
+                is BaseResponse.Success -> {
+                    authActivityCallback?.processGetUserData(itGetUserData.data)
+                    stopLoading()
+                }
+                is BaseResponse.Error -> {
+                    authActivityCallback?.showErrorSnackBar(itGetUserData.msg)
+                    stopLoading()
+                }
+                else -> {
+                    stopLoading()
+                }
+
+            }
+
+        }
+
+        binding.logInButton.setOnClickListener {
+            doLogIn()
+
+        }
 
         binding.logInEmailEditText.addTextChangedListener { logInValidation.offFieldsMistakes() }
         binding.logInPasswordEditText.addTextChangedListener { logInValidation.offFieldsMistakes() }
@@ -100,6 +128,13 @@ class AuthLogInFragment: Fragment() {
             authViewModel.logInAction = true
             authViewModel.authUser(email = email, pwd = pwd)
         }
+    }
+
+    private fun getUserData() {
+        getUserDataViewModel.getUserData(
+            token = SessionManager.getToken(requireContext()).toString(),
+            userId = SessionManager.getIdFromToken(requireContext())
+        )
     }
 
     private fun showLoading() {
