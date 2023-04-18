@@ -12,7 +12,7 @@
         android:layout_marginBottom="13dp"
         android:fontFamily="@font/inter_bold"
         android:text="Notifications"
-        android:textColor="@color/colorPrimary"
+        android:textColor="?android:colorPrimary"
         android:textSize="25sp" />
 
     <ScrollView
