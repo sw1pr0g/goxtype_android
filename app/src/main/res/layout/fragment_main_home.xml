@@ -14,7 +14,7 @@
         android:layout_marginBottom="13dp"
         android:fontFamily="@font/inter_bold"
         android:text="Good morning"
-        android:textColor="@color/colorPrimary"
+        android:textColor="?android:colorPrimary"
         android:textSize="25sp" />
 
     <LinearLayout
@@ -67,7 +67,7 @@
         android:text="Try our lessons"
         android:fontFamily="@font/raleway_bold"
         android:textSize="19sp"
-        android:textColor="?android:textColorPrimary"
+        android:textColor="?android:textColorSecondary"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="35dp" />
 
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
         android:layout_marginEnd="12dp"
-        app:cardBackgroundColor="@color/colorPrimary">
+        app:cardBackgroundColor="?android:colorPrimary">
 
         <LinearLayout
             android:layout_width="match_parent"

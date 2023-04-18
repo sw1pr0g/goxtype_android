@@ -9,20 +9,20 @@
         android:id="@+id/trainer_edit_text"
         android:layout_width="1dp"
         android:layout_height="1dp"
-        android:background="?android:background"
+        android:background="?android:windowBackground"
         android:inputType="textMultiLine"
-        android:textColor="?android:background"
-        android:textCursorDrawable="?android:background" />
+        android:textColor="?android:windowBackground"
+        android:textCursorDrawable="?android:windowBackground" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="77dp"
+        android:layout_marginBottom="30dp"
         android:fontFamily="@font/inter_bold"
         android:text="Trainer"
-        android:textColor="@color/colorPrimary"
+        android:textColor="?android:colorPrimary"
         android:textSize="25sp" />
 
     <TextView
@@ -50,7 +50,7 @@
         android:layout_marginTop="40dp"
         android:fontFamily="@font/raleway_medium"
         android:text="Clicks: 0"
-        android:textColor="@color/colorPrimary"
+        android:textColor="?android:colorPrimary"
         android:textSize="25sp" />
 
     <TextView
@@ -60,7 +60,7 @@
         android:layout_gravity="start"
         android:fontFamily="@font/raleway_medium"
         android:text="Accuracy: 0%"
-        android:textColor="@color/colorPrimary"
+        android:textColor="?android:colorPrimary"
         android:textSize="25sp" />
 
     <TextView
@@ -70,7 +70,7 @@
         android:layout_gravity="start"
         android:fontFamily="@font/raleway_medium"
         android:text="CPM: 0"
-        android:textColor="@color/colorPrimary"
+        android:textColor="?android:colorPrimary"
         android:textSize="25sp" />
     
     <LinearLayout
@@ -83,7 +83,7 @@
             android:layout_gravity="start"
             android:fontFamily="@font/raleway_medium"
             android:text="Time: "
-            android:textColor="@color/colorPrimary"
+            android:textColor="?android:colorPrimary"
             android:textSize="25sp" />
 
         <Chronometer
@@ -93,7 +93,7 @@
             android:layout_gravity="start"
             android:fontFamily="@font/raleway_medium"
             android:text="Time(in seconds): 0"
-            android:textColor="@color/colorPrimary"
+            android:textColor="?android:colorPrimary"
             android:textSize="25sp" />
 
     </LinearLayout>
