@@ -9,7 +9,7 @@
         android:icon="@drawable/baseline_keyboard_24"/>
     <item android:title="Notifications"
         android:id="@+id/notifications"
-        android:icon="@drawable/notification_icon"/>
+        android:icon="@drawable/notification_icon" />
     <item android:title="Profile"
         android:id="@+id/profile"
         android:icon="@drawable/profile_icon"/>
