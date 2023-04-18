@@ -27,7 +27,7 @@
         android:gravity="center_horizontal"
         android:text="@string/start_heading_first_slider"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
+        android:textColor="?android:colorPrimary"
         android:textSize="29sp"
         app:layout_constraintTop_toBottomOf="@+id/slider_start_image_view"
         tools:layout_editor_absoluteX="0dp" />
@@ -40,7 +40,7 @@
         android:fontFamily="@font/raleway_medium"
         android:gravity="center_horizontal"
         android:text="@string/start_description_first_slider"
-        android:textColor="@color/text_color"
+        android:textColor="?android:textColorPrimary"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

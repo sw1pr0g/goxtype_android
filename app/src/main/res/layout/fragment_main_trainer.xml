@@ -3,17 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:orientation="vertical">
 
     <EditText
         android:id="@+id/trainer_edit_text"
         android:layout_width="1dp"
         android:layout_height="1dp"
-        android:background="@color/background"
+        android:background="?android:background"
         android:inputType="textMultiLine"
-        android:textColor="@color/background"
-        android:textCursorDrawable="@color/background" />
+        android:textColor="?android:background"
+        android:textCursorDrawable="?android:background" />
 
     <TextView
         android:layout_width="wrap_content"

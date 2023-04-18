@@ -39,7 +39,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Welcome "
-            android:textColor="@color/profile_welcome_color"
+            android:textColor="?android:textColorPrimary"
             android:textSize="23sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -64,7 +64,7 @@
         android:layout_height="4dp"
         android:layout_gravity="right"
         android:layout_marginTop="21dp"
-        app:cardBackgroundColor="@color/profile_welcome_color" />
+        app:cardBackgroundColor="?android:textColorPrimary" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/profile_info_card_view"
