@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hey "
-            android:textColor="@color/profile_welcome_color"
+            android:textColor="?android:textColorPrimary"
             android:textSize="23sp"
             android:fontFamily="@font/poppins_semibold_italic" />
 
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Alex"
-            android:textColor="@color/profile_welcome_color"
+            android:textColor="?android:textColorPrimary"
             android:textSize="23sp"
             android:fontFamily="@font/poppins_semibold_italic" />
 
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=","
-            android:textColor="@color/profile_welcome_color"
+            android:textColor="?android:textColorPrimary"
             android:textSize="23sp"
             android:fontFamily="@font/poppins_semibold_italic" />
 
@@ -57,7 +57,7 @@
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="16dp"
         android:layout_gravity="right"
-        android:textColor="@color/start_skip_button"
+        android:textColor="?android:textColorPrimary"
         android:textSize="19sp"
         android:fontFamily="@font/raleway_medium" />
 
@@ -67,7 +67,7 @@
         android:text="Try our lessons"
         android:fontFamily="@font/raleway_bold"
         android:textSize="19sp"
-        android:textColor="@color/lightBlack"
+        android:textColor="?android:textColorPrimary"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="35dp" />
 
@@ -95,7 +95,7 @@
                     android:fontFamily="@font/raleway_semibold"
                     android:text="Typing test"
                     android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textColor="@color/profile_welcome_color" />
+                    android:textColor="?android:textColorPrimary" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
                     android:layout_marginTop="8dp"
                     android:text="Take a test to determine the level of your typing"
                     android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="@color/lightBlack"
+                    android:textColor="?android:textColorPrimary"
                     android:fontFamily="@font/raleway_bold"/>
 
             </LinearLayout>

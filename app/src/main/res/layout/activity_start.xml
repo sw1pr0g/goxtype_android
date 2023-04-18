@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="?android:windowBackground">
 
     <TextView
         android:layout_width="wrap_content"
@@ -12,7 +12,7 @@
         android:layout_marginTop="26dp"
         android:fontFamily="@font/inter_bold"
         android:text="@string/app_name"
-        android:textColor="@color/colorPrimary"
+        android:textColor="?android:colorPrimary"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
         android:fontFamily="@font/raleway_bold"
         android:text="@string/start_skip_button"
         android:textAllCaps="false"
-        android:textColor="@color/start_skip_button"
+        android:textColor="?android:textColorPrimary"
         android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

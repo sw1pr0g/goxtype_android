@@ -4,7 +4,7 @@
     android:shape="oval">
 
     <solid
-        android:color="@color/inactive"/>
+        android:color="@color/unSelectedField"/>
 
     <size
         android:width="8dp"

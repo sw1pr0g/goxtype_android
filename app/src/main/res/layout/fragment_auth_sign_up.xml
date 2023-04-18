@@ -12,7 +12,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background"
             android:orientation="vertical">
 
             <TextView
@@ -22,7 +21,7 @@
                 android:layout_marginTop="61dp"
                 android:fontFamily="@font/inter_bold"
                 android:text="@string/app_name"
-                android:textColor="@color/colorPrimary"
+                android:textColor="?android:colorPrimary"
                 android:textSize="25sp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -34,7 +33,7 @@
                 android:layout_marginTop="70dp"
                 android:layout_marginRight="42dp"
                 android:hint="Email"
-                android:textColorHint="@color/colorAccent">
+                android:textColorHint="?android:textColorPrimary">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/sign_up_email_edit_text"
@@ -43,7 +42,7 @@
                     android:fontFamily="@font/raleway_bold"
                     android:inputType="textEmailAddress"
                     android:singleLine="true"
-                    android:textColor="@color/text_color"
+                    android:textColor="?android:textColorSecondary"
                     android:textSize="21sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -57,7 +56,7 @@
                 android:layout_marginTop="26dp"
                 android:layout_marginRight="42dp"
                 android:hint="Password"
-                android:textColorHint="@color/colorAccent"
+                android:textColorHint="?android:textColorPrimary"
                 app:endIconMode="password_toggle">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -67,7 +66,7 @@
                     android:fontFamily="@font/raleway_bold"
                     android:inputType="textPassword"
                     android:singleLine="true"
-                    android:textColor="@color/text_color"
+                    android:textColor="?android:textColorSecondary"
                     android:textSize="21sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -81,7 +80,7 @@
                 android:layout_marginTop="26dp"
                 android:layout_marginRight="42dp"
                 android:hint="Repeat Password"
-                android:textColorHint="@color/colorAccent"
+                android:textColorHint="?android:textColorPrimary"
                 app:endIconMode="password_toggle">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -91,7 +90,7 @@
                     android:fontFamily="@font/raleway_bold"
                     android:inputType="textPassword"
                     android:singleLine="true"
-                    android:textColor="@color/text_color"
+                    android:textColor="?android:textColorSecondary"
                     android:textSize="21sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -106,8 +105,9 @@
                 android:layout_marginRight="42dp"
                 android:fontFamily="@font/raleway_medium"
                 android:text="I have read and accept all terms and conditions"
-                android:textColor="@color/text_color"
-                android:textSize="16sp"/>
+                android:textColor="?android:textColorSecondary"
+                android:textSize="16sp"
+                android:buttonTint="?android:colorPrimary"/>
 
             <Button
                 android:id="@+id/sign_up_button"
@@ -132,7 +132,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/raleway_medium"
                     android:text="Already have an account?"
-                    android:textColor="@color/text_color"
+                    android:textColor="?android:textColorSecondary"
                     android:textSize="18sp" />
 
                 <Button
@@ -143,7 +143,7 @@
                     android:fontFamily="@font/raleway_bold"
                     android:text="Log In"
                     android:textAllCaps="false"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="?android:colorPrimary"
                     android:textSize="21sp" />
 
             </LinearLayout>
