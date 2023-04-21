@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.auth0.android.jwt.JWT
 import com.sw1pr0g.goxtype_android.R
+import java.util.Calendar
 
 object SessionManager {
 
@@ -72,5 +73,18 @@ object SessionManager {
         editor.clear()
         editor.apply()
     }
+
+    fun getGreetingMessage(): String {
+        val c = Calendar.getInstance()
+
+        return when (c.get(Calendar.HOUR_OF_DAY)) {
+            in 0..5 -> "Good night"
+            in 6..12 -> "Good morning"
+            in 13..18 -> "Good afternoon"
+            in 19..23 -> "Good evening"
+            else -> "Good morning"
+        }
+    }
+
 
 }

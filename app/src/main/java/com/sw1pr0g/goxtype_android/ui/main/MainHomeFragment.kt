@@ -28,6 +28,7 @@ class MainHomeFragment : Fragment() {
         _binding = FragmentMainHomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        binding.greetingMessageTextView.text = SessionManager.getGreetingMessage()
         binding.userNameGreetingTextView.text = SessionManager.getUserName(requireContext())
         binding.typingTestStartButton.setOnClickListener {  }
 
